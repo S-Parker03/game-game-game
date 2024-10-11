@@ -70,3 +70,18 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+
+#Ignoring personal scenes used for feature testing
+/[Aa]ssets/[Ss]tanley.unity
+/[Aa]ssets/[Ss]tanley.unity.meta
+
+/[Aa]ssets/[Aa]tanas.unity
+/[Aa]ssets/[Aa]tanas.unity.meta
+
+/[Aa]ssets/[Aa]mrina.unity
+/[Aa]ssets/[Aa]mrina.unity.meta
+
+/[Aa]ssets/[Hh]alak.unity
+/[Aa]ssets/[Aa]alak.unity.meta
+
