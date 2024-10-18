@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
+using Quaternion = UnityEngine.Quaternion;
 
 
 public class PlayerController : MonoBehaviour
@@ -22,6 +24,9 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float rotate_speed;
     private Rigidbody playerbody;
+    // public Vector2 mouseRotate;        
+    // public float sensitivity = 0.5f;
+
     //------------------------------\\
 
 
@@ -31,6 +36,7 @@ public class PlayerController : MonoBehaviour
         sanity = maxSanity;
 
         playerbody = gameObject.GetComponent<Rigidbody>();
+        // Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -48,10 +54,14 @@ public class PlayerController : MonoBehaviour
 
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
+        // mouseRotate.x = Input.GetAxis("Mouse X") * sensitivity;
+        // mouseRotate.y = Input.GetAxis("Mouse Y") * sensitivity;
 
         // playerbody.velocity = new Vector3(horizontalMove * speed * Time.fixedDeltaTime, 0, verticalMove * speed * Time.fixedDeltaTime);
         playerbody.velocity = (transform.forward * verticalMove) * speed * Time.fixedDeltaTime;
         transform.Rotate((transform.up * horizontalMove) * rotate_speed * Time.fixedDeltaTime);
+        // transform.Rotate(0, mouseRotate.x, 0, Space.World);
+        // transform.Rotate(Quaternion.Euler(-mouseRotate.y, mouseRotate.x, 0));
     }
 
     public void ChangeSanity(int value){
