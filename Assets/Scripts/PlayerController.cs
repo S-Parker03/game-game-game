@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 
 public class PlayerController : MonoBehaviour
@@ -16,8 +19,9 @@ public class PlayerController : MonoBehaviour
     //----------------------------\\
 
     //Variables for movement system\\
-    float speed;
-    float rotation;
+    public float speed;
+    public float rotate_speed;
+    private Rigidbody playerbody;
     //------------------------------\\
 
 
@@ -25,6 +29,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         sanity = maxSanity;
+
+        playerbody = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -39,13 +45,14 @@ public class PlayerController : MonoBehaviour
             ChangeSanity(-1);
             print(sanity);
         }
+
+        float horizontalMove = Input.GetAxis("Horizontal");
+        float verticalMove = Input.GetAxis("Vertical");
+
+        // playerbody.velocity = new Vector3(horizontalMove * speed * Time.fixedDeltaTime, 0, verticalMove * speed * Time.fixedDeltaTime);
+        playerbody.velocity = (transform.forward * verticalMove) * speed * Time.fixedDeltaTime;
+        transform.Rotate((transform.up * horizontalMove) * rotate_speed * Time.fixedDeltaTime);
     }
-
-    // void fixedUpdate(){
-    //     Vector3 moveDirection = Vector3.zero;
-
-    //     moveDirection = new Vector3(rotation, 0, 0);
-    // }
 
     public void ChangeSanity(int value){
         sanity += value;
