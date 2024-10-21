@@ -9,6 +9,7 @@
       },
       "url": "https://packages.unity.com"
     },
+<<<<<<< Updated upstream
     "com.unity.cinemachine": {
       "version": "2.9.7",
       "depth": 0,
@@ -18,6 +19,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> Stashed changes
     "com.unity.collab-proxy": {
       "version": "2.5.2",
       "depth": 0,
