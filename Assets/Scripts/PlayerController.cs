@@ -31,15 +31,9 @@ public class PlayerController : MonoBehaviour
 
     //Variables to do with Door Interactions\\
     [SerializeField]
-    private TextMeshPro UseText;
-    [SerializeField]
-    private Transform Camera;
-    [SerializeField]
     private float MaxUseDistance = 5f;
     [SerializeField]
     private LayerMask UseLayers;
-
-    public TextMeshPro doorOpenText;
 
     RaycastHit hit;
 
@@ -88,31 +82,7 @@ public class PlayerController : MonoBehaviour
 
         playerbody.velocity = (transform.right * horizontalMove + transform.forward * verticalMove) * speed * Time.fixedDeltaTime;
         transform.Rotate(0, mouseRotate.x, 0);
-
-        // if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxUseDistance, UseLayers) 
-        // && hit.collider.TryGetComponent<Door>(out Door door))
-        // {
-        //     if (door.isOpen)
-        //     {
-                
-        //         doorOpenText.SetText("Close 'E'");
-        //     }
-        //     else
-        //     {
-        //         doorOpenText.SetText("Open 'E'");
-        //     }
-        //     doorOpenText.gameObject.SetActive(true);
-        //     // UseText.transform.position = hit.point - (hit.point - transform.position).normalized * 0.01f;
-        //     // UseText.transform.rotation = Quaternion.LookRotation((hit.point - transform.position).normalized);
-        // }
-        // else
-        // {
-        //     doorOpenText.gameObject.SetActive(false);
-        // }
     }
-
-
-
 
     public void ChangeSanity(int value){
         sanity += value;
