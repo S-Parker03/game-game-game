@@ -26,21 +26,25 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //runs when the object is enabled
     private void Awake(){
         player = GameObject.Find("Player");
         agent = GetComponent<NavMeshAgent>(); 
     }
 
+    //using NavMesh to chase the player
     private void chasePlayer(){
         agent.SetDestination(player.transform.position);
         
     }
-
+    //manages collision with player
     void OnCollisionEnter(Collision other){
         if(other.gameObject.tag == "Player"){
             attackPlayer();
         }
     }
+
+    //attack function, eventually with have animaitons etc but for now just decreases sanity.
     private void attackPlayer(){
         player.GetComponent<PlayerController>().ChangeSanity(-1);
         

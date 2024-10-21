@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     //Variables for sanity system\\
     private int sanity;
     int maxSanity = 10;
+    //allowing readonly access to sanity
     public int Sanity => sanity;
     //----------------------------\\
 
@@ -46,8 +47,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //setting sanity to max sanity on game start, not a permanent solution
         sanity = maxSanity;
-
+        //getting the rigidbody component of the player
         playerbody = gameObject.GetComponent<Rigidbody>();
     }
     public void OnUse()
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //debug for sanity system
         if (Input.GetKeyDown(KeyCode.UpArrow)){
             ChangeSanity(1);
             print(sanity);
@@ -81,6 +84,7 @@ public class PlayerController : MonoBehaviour
             print(sanity);
         }
 
+        //movement system
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
         mouseRotate.x = Input.GetAxis("Mouse X") * sensitivity;
@@ -114,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
 
 
+    //method to safely change sanity
     public void ChangeSanity(int value){
         sanity += value;
         sanity = Math.Clamp(sanity, 0, maxSanity);
