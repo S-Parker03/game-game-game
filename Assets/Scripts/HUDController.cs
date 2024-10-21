@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
 {
@@ -26,5 +27,11 @@ public class HUDController : MonoBehaviour
         sanityText.text = "Sanity: " + sanity.ToString() + " / 10";
         int dependency = (int)Math.Round(player.GetComponent<Dependency>().DependencyPercent);
         dependencyText.text = "Dependency: " + dependency.ToString() + "%";
+        updateBar();
+    }
+
+    void updateBar(){
+      Slider dependencyBar = GameObject.Find("DependencyBar").GetComponent<Slider>();
+      dependencyBar.value = player.GetComponent<Dependency>().DependencyPercent / 100;
     }
 }
