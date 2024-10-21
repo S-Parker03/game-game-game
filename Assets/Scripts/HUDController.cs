@@ -14,12 +14,14 @@ public class HUDController : MonoBehaviour
 
     void Start()
     {
+      //Finding the player
       player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+      //updating HUD elements
         int sanity = player.GetComponent<PlayerController>().Sanity;
         sanityText.text = "Sanity: " + sanity.ToString() + " / 10";
         int dependency = (int)Math.Round(player.GetComponent<Dependency>().DependencyPercent);
