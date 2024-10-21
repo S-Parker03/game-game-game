@@ -451,9 +451,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1534630907469249520, guid: fe8b46b8971d8dd4ba22b92625590b6f, type: 3}
+      propertyPath: m_text
+      value: 'Sanity : 7 / 10'
+      objectReference: {fileID: 0}
     - target: {fileID: 5341950393474798364, guid: fe8b46b8971d8dd4ba22b92625590b6f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509186009031874739, guid: fe8b46b8971d8dd4ba22b92625590b6f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7627859176735447279, guid: fe8b46b8971d8dd4ba22b92625590b6f, type: 3}
       propertyPath: m_Name
@@ -691,6 +699,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6724664050142143055, guid: 8df3294b0a6dfdc409c2ae738c4ee595, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592983132571121975, guid: 8df3294b0a6dfdc409c2ae738c4ee595, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 94e32373ffdfa394cb383e8f52e8ca57, type: 2}
+    - target: {fileID: 8833323677814538787, guid: 8df3294b0a6dfdc409c2ae738c4ee595, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 6766893106937013757, guid: fc1f27d1d0bc366439f10bd426263046, type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.1794
@@ -726,18 +746,6 @@ PrefabInstance:
     - target: {fileID: 6766893106937013757, guid: fc1f27d1d0bc366439f10bd426263046, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6724664050142143055, guid: 8df3294b0a6dfdc409c2ae738c4ee595, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7592983132571121975, guid: 8df3294b0a6dfdc409c2ae738c4ee595, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 94e32373ffdfa394cb383e8f52e8ca57, type: 2}
-    - target: {fileID: 8833323677814538787, guid: 8df3294b0a6dfdc409c2ae738c4ee595, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
