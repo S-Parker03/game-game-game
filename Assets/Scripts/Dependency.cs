@@ -39,7 +39,8 @@ public class Dependency : MonoBehaviour
     }
 
     //method to safely change dependency
-    void changeDependency(float value){
+    public void changeDependency(float value){
         dependencyPercent += value;
+        dependencyPercent = Mathf.Clamp(dependencyPercent, 0, 100);
     }
 }
