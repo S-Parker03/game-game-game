@@ -49,4 +49,8 @@ public class EnemyController : MonoBehaviour
         player.GetComponent<PlayerController>().ChangeSanity(-1);
         
     }
+
+    public void setActive(bool value){
+        active = value;
+    }
 }

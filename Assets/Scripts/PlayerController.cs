@@ -80,6 +80,13 @@ public class PlayerController : MonoBehaviour
         mouseRotate.x = Input.GetAxis("Mouse X") * sensitivity;
         mouseRotate.y = Input.GetAxis("Mouse Y") * sensitivity;
 
+        if(Input.GetKey(KeyCode.LeftShift)){
+            speed = 600;
+        }
+        else{
+            speed = 300;
+        }               
+
         playerbody.velocity = (transform.right * horizontalMove + transform.forward * verticalMove) * speed * Time.fixedDeltaTime;
         transform.Rotate(0, mouseRotate.x, 0);
     }
