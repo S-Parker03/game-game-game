@@ -12,6 +12,7 @@ using TMPro;
 using Unity.VisualScripting;
 
 
+
 public class PlayerController : MonoBehaviour
 {
 
@@ -28,6 +29,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerbody;
     public Vector2 mouseRotate;        
     public float sensitivity = 0.01f;
+
+     private PlayerActionControls playerActionControls;
+    private InputAction sprintAction;
+
+
     //------------------------------\\
 
     //Variables to do with Door Interactions\\
@@ -37,7 +43,28 @@ public class PlayerController : MonoBehaviour
     private LayerMask UseLayers;
     RaycastHit hit;
 
+    //------------------------------\\
+
     // Pick up variables
+
+
+    void Awake()
+    {
+        playerActionControls = new PlayerActionControls();
+        sprintAction = playerActionControls.Player.Sprint;
+    }
+
+
+    private void OnEnable()
+    {
+        playerActionControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerActionControls.Disable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +92,14 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
+    public bool sprintCheck(){
+        if(sprintAction.ReadValue<float>() > 0){
+            return true;
+        }
+        else{return false;}
+    }
+
+
     // Update is called once per frame
     private void Update()
     {
@@ -83,7 +118,7 @@ public class PlayerController : MonoBehaviour
         mouseRotate.x = Input.GetAxis("Mouse X") * sensitivity;
         mouseRotate.y = Input.GetAxis("Mouse Y") * sensitivity;
 
-        if(Input.GetKey(KeyCode.LeftShift)){
+        if(sprintCheck()){
             speed = 600;
         }
         else{
