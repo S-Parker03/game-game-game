@@ -15,9 +15,10 @@ using Unity.VisualScripting;
 public class PlayerController : MonoBehaviour
 {
 
+    public bool playerHasKey = false;
     //Variables for sanity system\\
     private int sanity;
-    int maxSanity = 10;
+    int maxSanity = 5;
     public int Sanity => sanity;
     //----------------------------\\
 
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sanity = 7;
+        sanity = 5;
 
         playerbody = gameObject.GetComponent<Rigidbody>();
     }
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
         {
             if(hit.collider.TryGetComponent<Door>(out Door door))
             {
+                
                 if (door.isOpen)
                 {
                     door.Close();
@@ -58,8 +60,9 @@ public class PlayerController : MonoBehaviour
                 {
                     door.Open(transform.position);
                 }
+                
             }
-        }
+        } 
     }
 
     // Update is called once per frame
@@ -93,9 +96,12 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if(other.gameObject.tag == "SanityPickUp" && sanity < 10){
+        if(other.gameObject.tag == "SanityPickUp" && sanity < maxSanity){
             other.gameObject.SetActive(false);
             ChangeSanity(2);
+        } else if(other.gameObject.tag == "KeyItem"){
+            other.gameObject.SetActive(false);
+            playerHasKey = true;
         }
     }
 
