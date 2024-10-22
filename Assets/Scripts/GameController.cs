@@ -7,28 +7,32 @@ public class GameController : MonoBehaviour
 {
     GameObject player;
     public GameObject GameOver;
-    TextMeshProUGUI dependencyText;
-    TextMeshProUGUI sanityText;
+    public GameObject RestartButton;
+    // TextMeshProUGUI dependencyText;
+    // TextMeshProUGUI sanityText;
+    public Pause pause;
 
     void Start()
     {
       //Finding the player
       player = GameObject.FindGameObjectWithTag("Player");
-      sanityText = GameObject.Find("SanityText").GetComponent<TextMeshProUGUI>();
-      dependencyText = GameObject.Find("DependencyText").GetComponent<TextMeshProUGUI>();
+    //   sanityText = GameObject.Find("SanityText").GetComponent<TextMeshProUGUI>();
+    //   dependencyText = GameObject.Find("DependencyText").GetComponent<TextMeshProUGUI>();
+    //   pause = player.GetComponent<Pause>();
       GameOver.SetActive(false);
     }
     void Update() {
         //
         int endGame = player.GetComponent<PlayerController>().Sanity;
-        //if sanity <= 0, game over screen, button, and text display
         if (endGame <= 0) {
             GameOver.SetActive(true);
+            pause.pauseGame();
         }
     }
 
     public void RestartGame() {
         Debug.Log("test");
+        GameOver.SetActive(false);
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         // player.GetComponent<PlayerController>().Sanity = 7;
