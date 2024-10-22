@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     //Variables for movement system\\
     public float speed;
+
+    public GameObject player;
     public float rotate_speed;
     private Rigidbody playerbody;
     public Vector2 mouseRotate;        
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         playerActionControls = new PlayerActionControls();
         sprintAction = playerActionControls.Player.Sprint;
+        player = GameObject.Find("Player");
     }
 
 
@@ -138,8 +141,14 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.tag == "SanityPickUp" && sanity < maxSanity){
+            //get the dependency value of the player
+            float dependency = player.GetComponent<Dependency>().DependencyPercent/100;
             other.gameObject.SetActive(false);
-            ChangeSanity(2);
+            //increase the players sanity by 2*(1-dependency)
+            ChangeSanity((int)Math.Round(2*(1f-dependency)));
+            //increase the players dependency
+            player.GetComponent<Dependency>().changeDependency(10f);
+            
         } else if(other.gameObject.tag == "KeyItem"){
             other.gameObject.SetActive(false);
             playerHasKey = true;
