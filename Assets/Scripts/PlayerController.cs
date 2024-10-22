@@ -15,6 +15,7 @@ using Unity.VisualScripting;
 public class PlayerController : MonoBehaviour
 {
 
+    public bool playerHasKey = false;
     //Variables for sanity system\\
     private int sanity;
     int maxSanity = 10;
@@ -50,16 +51,20 @@ public class PlayerController : MonoBehaviour
         {
             if(hit.collider.TryGetComponent<Door>(out Door door))
             {
-                if (door.isOpen)
-                {
-                    door.Close();
-                }
-                else
-                {
-                    door.Open(transform.position);
+                if(playerHasKey){
+                    if (door.isOpen)
+                    {
+                        door.Close();
+                    }
+                    else
+                    {
+                        door.Open(transform.position);
+                    }
+                }else{
+                    Debug.Log("The door is locked");
                 }
             }
-        }
+        } 
     }
 
     // Update is called once per frame
@@ -96,6 +101,9 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag == "SanityPickUp" && sanity < 10){
             other.gameObject.SetActive(false);
             ChangeSanity(2);
+        } else if(other.gameObject.tag == "KeyItem"){
+            other.gameObject.SetActive(false);
+            playerHasKey = true;
         }
     }
 
