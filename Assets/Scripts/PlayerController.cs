@@ -34,9 +34,9 @@ public class PlayerController : MonoBehaviour
     private float MaxUseDistance = 5f;
     [SerializeField]
     private LayerMask UseLayers;
-
     RaycastHit hit;
 
+    // Pick up variables
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +89,14 @@ public class PlayerController : MonoBehaviour
 
         playerbody.velocity = (transform.right * horizontalMove + transform.forward * verticalMove) * speed * Time.fixedDeltaTime;
         transform.Rotate(0, mouseRotate.x, 0);
+    }
+
+    void OnTriggerEnter(Collider other) 
+    {
+        if(other.gameObject.tag == "SanityPickUp" && sanity < 10){
+            other.gameObject.SetActive(false);
+            ChangeSanity(2);
+        }
     }
 
     public void ChangeSanity(int value){
