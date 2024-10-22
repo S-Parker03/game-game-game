@@ -60,6 +60,10 @@ public class Pause : MonoBehaviour
 
     public void resetGame(){
         Time.timeScale = 1;
+        player.GetComponent<PlayerController>().enabled = true;
+        player.GetComponent<Dependency>().enabled = true;
+        enemy.GetComponent<EnemyController>().enabled = true;
+        paused = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 

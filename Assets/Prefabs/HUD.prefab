@@ -685,10 +685,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340cbda60d440fe468ca42cff18e315f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: {fileID: 0}
+  player: {fileID: 1387761832114955644, guid: 8df3294b0a6dfdc409c2ae738c4ee595, type: 3}
+  enemy: {fileID: 4325390894720066598, guid: 8296363fdb272e74a9073f133f5d27b9, type: 3}
   pauseText: {fileID: 919087926262027078}
   paused: 0
+  gameOver: 0
 --- !u!1 &8084553064903173906
 GameObject:
   m_ObjectHideFlags: 0
