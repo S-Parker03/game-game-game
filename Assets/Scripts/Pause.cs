@@ -32,9 +32,11 @@ public class Pause : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape) && !paused){
             pauseGame();
             pauseText.text = "Game Paused";
+            paused = true;
         }else if (Input.GetKeyDown(KeyCode.Escape) && paused){
             resumeGame();
             pauseText.text = "";
+            paused = false;
         }          
     }
 
@@ -45,7 +47,7 @@ public class Pause : MonoBehaviour
         enemy.GetComponent<EnemyController>().enabled = false;
         
         Time.timeScale = 0;
-        paused = true;
+        
     }
 
     public void resumeGame(){
@@ -55,7 +57,7 @@ public class Pause : MonoBehaviour
         enemy.GetComponent<EnemyController>().enabled = true;
         
         Time.timeScale = 1;
-        paused = false;
+        
     }
 
     public void resetGame(){

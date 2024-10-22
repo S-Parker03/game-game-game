@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
         int endGame = player.GetComponent<PlayerController>().Sanity;
         if (endGame <= 0) {
             GameOver.SetActive(true);
+            player.GetComponent<PlayerController>().ChangeSanity(5);
             pause.pauseGame();
         }
     }
@@ -33,6 +34,7 @@ public class GameController : MonoBehaviour
     public void RestartGame() {
         Debug.Log("test");
         GameOver.SetActive(false);
+        pause.resumeGame();
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         // player.GetComponent<PlayerController>().Sanity = 7;
