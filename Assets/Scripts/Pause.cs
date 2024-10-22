@@ -21,15 +21,20 @@ public class Pause : MonoBehaviour
         paused = false;
         player = GameObject.Find("Player");
         enemy = GameObject.Find("Monster");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        gameOver = player.GetComponent<PlayerController>().Sanity <= 0;
+
         if(Input.GetKeyDown(KeyCode.Escape) && !paused){
             pauseGame();
+            pauseText.text = "Game Paused";
         }else if (Input.GetKeyDown(KeyCode.Escape) && paused){
             resumeGame();
+            pauseText.text = "";
         }          
     }
 
@@ -38,7 +43,7 @@ public class Pause : MonoBehaviour
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Dependency>().enabled = false;
         enemy.GetComponent<EnemyController>().enabled = false;
-        pauseText.text = "Game Paused";
+        
         Time.timeScale = 0;
         paused = true;
     }
@@ -48,7 +53,7 @@ public class Pause : MonoBehaviour
         player.GetComponent<PlayerController>().enabled = true;
         player.GetComponent<Dependency>().enabled = true;
         enemy.GetComponent<EnemyController>().enabled = true;
-        pauseText.text = "";
+        
         Time.timeScale = 1;
         paused = false;
     }
