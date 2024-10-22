@@ -27,8 +27,7 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameOver = player.GetComponent<PlayerController>().Sanity <= 0;
-
+        //check if the player presses the escape key, if they do pause or unpause the game
         if(Input.GetKeyDown(KeyCode.Escape) && !paused){
             pauseGame();
             pauseText.text = "Game Paused";
@@ -39,7 +38,7 @@ public class Pause : MonoBehaviour
             paused = false;
         }          
     }
-
+    //function to pause the game
     public void pauseGame(){
         Cursor.lockState = CursorLockMode.None;
         player.GetComponent<PlayerController>().enabled = false;
@@ -49,7 +48,7 @@ public class Pause : MonoBehaviour
         Time.timeScale = 0;
         
     }
-
+    //function to resume the game
     public void resumeGame(){
         Cursor.lockState = CursorLockMode.Locked;
         player.GetComponent<PlayerController>().enabled = true;

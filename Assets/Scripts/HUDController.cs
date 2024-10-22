@@ -30,6 +30,7 @@ public class HUDController : MonoBehaviour
         updateBar();
     }
 
+    //function to update the dependency bar
     void updateBar(){
       Slider dependencyBar = GameObject.Find("DependencyBar").GetComponent<Slider>();
       dependencyBar.value = player.GetComponent<Dependency>().DependencyPercent / 100;
