@@ -1,21 +1,21 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NPCInteractable : MonoBehaviour
+public class Diialogue : MonoBehaviour
 {
+    [SerializeField]
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
 
-    public int index = 0;
+    private int index;
     
-    void Start()
+    public void Start()
     {
         textComponent.text = string.Empty;
-        // StartDialogue();
+        StartDialogue();
     }
 
    
@@ -38,7 +38,6 @@ public class NPCInteractable : MonoBehaviour
 
     public void StartDialogue()
     {
-        Debug.Log("Interact!");
         index = 0;
         StartCoroutine(TypeLine());
 
