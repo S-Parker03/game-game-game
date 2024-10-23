@@ -27,6 +27,7 @@ If your dependency is too high, picking up new health items won't raise your san
 Game controls
 -------------
 Esc - pause game
+
 Reset button - resets game - player and enemy position, and sanity and dependency counters
 
 
