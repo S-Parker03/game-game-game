@@ -13,7 +13,6 @@ D - Move to the right
 Shift - Sprint
 
 E - Interact
-Left mouse button - conversing with other characters
 
 Pick up green blocks, by going through them to raise your sanity meter
 
