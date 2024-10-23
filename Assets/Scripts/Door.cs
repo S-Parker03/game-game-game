@@ -16,11 +16,14 @@ public class Door : MonoBehaviour
 
     private Coroutine AnimationCoroutine;
 
+    // Awake is called when the script instance is being loaded
     private void Awake()
     {
+        //rest the door to initial position
         StartPosition = transform.position;
     }
 
+    //Open the door
     public void Open(Vector3 UserPosition)
     {
         if (!isOpen)
@@ -33,6 +36,7 @@ public class Door : MonoBehaviour
         }
     }
 
+    //Coroutine to open the door
     private IEnumerator DoSlidingOpen()
     {
         Vector3 endPosition = StartPosition + slideDistance * slideDirection;
@@ -42,12 +46,14 @@ public class Door : MonoBehaviour
         isOpen = true;
         while(time < 1)
         {
+            //move the door from start position to end position over time
             transform.position = Vector3.Lerp(startPosition, endPosition, time);
             yield return null;
             time += Time.deltaTime * speed;
         }
     }
 
+    //close the door
     public void Close()
     {
         if(isOpen)
@@ -61,6 +67,7 @@ public class Door : MonoBehaviour
         }
     }
 
+    //Coroutine to close the door
     private IEnumerator DoSlidingCLose()
     {
         Vector3 endPosition = StartPosition;
@@ -71,6 +78,7 @@ public class Door : MonoBehaviour
 
         while (time < 1)
         {
+            //move the door from end position to start position over time
             transform.position = Vector3.Lerp(startPosition, endPosition, time);
             yield return null;
             time += Time.deltaTime * speed;

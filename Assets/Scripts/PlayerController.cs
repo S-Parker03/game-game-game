@@ -10,6 +10,7 @@ using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
 using TMPro;
 using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
 
 
 
@@ -47,13 +48,14 @@ public class PlayerController : MonoBehaviour
 
     // Pick up variables
 
-
+    //run once at start
     void Awake()
     {
         playerActionControls = new PlayerActionControls();
         sprintAction = playerActionControls.Player.Sprint;
     }
 
+    //Enable and disable input
 
     private void OnEnable()
     {
@@ -72,6 +74,8 @@ public class PlayerController : MonoBehaviour
 
         playerbody = gameObject.GetComponent<Rigidbody>();
     }
+
+    //Method to use objects
     public void OnUse()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxUseDistance, UseLayers))
@@ -92,6 +96,7 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
+    //function to check if sprinting
     public bool sprintCheck(){
         if(sprintAction.ReadValue<float>() > 0){
             return true;
@@ -112,28 +117,34 @@ public class PlayerController : MonoBehaviour
             ChangeSanity(-1);
             print(sanity);
         }
-
+        //getting player inputs for movement and rotation
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
         mouseRotate.x = Input.GetAxis("Mouse X") * sensitivity;
         mouseRotate.y = Input.GetAxis("Mouse Y") * sensitivity;
 
+        //check if sprinting
         if(sprintCheck()){
             speed = 600;
         }
         else{
             speed = 300;
-        }               
+        }        
 
+        //move the player
         playerbody.velocity = (transform.right * horizontalMove + transform.forward * verticalMove) * speed * Time.fixedDeltaTime;
         transform.Rotate(0, mouseRotate.x, 0);
     }
 
+    //method to handle collision with healing items and key items
     void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.tag == "SanityPickUp" && sanity < maxSanity){
+            //find Dependecy value and calculate dependency as a value netween 0 and 1
+            float dependency = GameObject.Find("Player").GetComponent<Dependency>().DependencyPercent/100;
             other.gameObject.SetActive(false);
-            ChangeSanity(2);
+            //heal by 2*(1-dependency)
+            ChangeSanity((int)Math.Round(2*(1-dependency)));
         } else if(other.gameObject.tag == "KeyItem"){
             other.gameObject.SetActive(false);
             playerHasKey = true;
