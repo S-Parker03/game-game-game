@@ -28,3 +28,8 @@ Game controls
 -------------
 Esc - pause game
 Reset button - resets game - player and enemy position, and sanity and dependency counters
+
+
+Resources used for Prototype
+----------------------------
+Door.cs - script - Adapted from LiamAcademy Rotating and Sliding Doors tutorial on youtube - https://www.youtube.com/watch?v=cPltQK5LlGE 

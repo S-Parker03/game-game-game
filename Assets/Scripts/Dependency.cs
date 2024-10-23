@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Dependency : MonoBehaviour
@@ -18,7 +16,7 @@ public class Dependency : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //debug for dependency system
+        //debug for dependency system\\
         if (Input.GetKeyDown(KeyCode.Keypad8)){
             changeDependency(10f);
             Debug.Log(dependencyPercent);
@@ -30,6 +28,7 @@ public class Dependency : MonoBehaviour
             Debug.Log(dependencyPercent);
 
         }
+        //---------------------------\\
 
         //manages dependency over time (decreases)
         dependencyPercent -=0.001f;

@@ -1,20 +1,21 @@
+
+// --------------------------------------------------------------------------------------------------------------------- \\
+// Adapted from LiamAcademy Rotating and Sliding Doors tutorial on youtube - https://www.youtube.com/watch?v=cPltQK5LlGE \\
+// --------------------------------------------------------------------------------------------------------------------- \\
+
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    // variables used to transform a door object's location to make it appear as if it's sliding\\
     public bool isOpen = false;
-    [SerializeField]
-    private float speed = 1.0f;
-    [SerializeField]
-    private Vector3 slideDirection = Vector3.back;
-    [SerializeField]
-    private float slideDistance = 2.0f;
-
+    public float speed = 1.0f;
+    public Vector3 slideDirection = Vector3.back;
+    public float slideDistance = 0.0f;
     private Vector3 StartPosition;
-
     private Coroutine AnimationCoroutine;
+    //-------------------------------------------------------------------------------------------\\
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -23,7 +24,7 @@ public class Door : MonoBehaviour
         StartPosition = transform.position;
     }
 
-    //Open the door
+    //open the door using coroutine, first checking if it's not open
     public void Open(Vector3 UserPosition)
     {
         if (!isOpen)
@@ -36,7 +37,8 @@ public class Door : MonoBehaviour
         }
     }
 
-    //Coroutine to open the door
+    // Do sliding open method to move the door from its original position to a 
+    // new position whose direction is determined by a vector and its transformation in that direction by slideDistance variable
     private IEnumerator DoSlidingOpen()
     {
         Vector3 endPosition = StartPosition + slideDistance * slideDirection;
@@ -47,13 +49,13 @@ public class Door : MonoBehaviour
         while(time < 1)
         {
             //move the door from start position to end position over time
+            time += Time.deltaTime * speed;
             transform.position = Vector3.Lerp(startPosition, endPosition, time);
             yield return null;
-            time += Time.deltaTime * speed;
         }
     }
 
-    //close the door
+    //close the door using coroutine, first checking if it's open
     public void Close()
     {
         if(isOpen)
@@ -67,7 +69,7 @@ public class Door : MonoBehaviour
         }
     }
 
-    //Coroutine to close the door
+    // Do sliding close method to move the door from its new position to its origial position
     private IEnumerator DoSlidingCLose()
     {
         Vector3 endPosition = StartPosition;
@@ -78,10 +80,10 @@ public class Door : MonoBehaviour
 
         while (time < 1)
         {
-            //move the door from end position to start position over time
+            // move the door from end position to start position using transform over time
+            time += Time.deltaTime * speed;
             transform.position = Vector3.Lerp(startPosition, endPosition, time);
             yield return null;
-            time += Time.deltaTime * speed;
         }
     }
 }

@@ -1,18 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
-using Quaternion = UnityEngine.Quaternion;
-using TMPro;
-using Unity.VisualScripting;
-using System.Runtime.CompilerServices;
-
-
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,22 +16,17 @@ public class PlayerController : MonoBehaviour
 
     //Variables for movement system\\
     public float speed;
-    public float rotate_speed;
     private Rigidbody playerbody;
     public Vector2 mouseRotate;        
     public float sensitivity = 0.01f;
 
      private PlayerActionControls playerActionControls;
     private InputAction sprintAction;
-
-
     //------------------------------\\
 
     //Variables to do with Door Interactions\\
-    [SerializeField]
-    private float MaxUseDistance = 5f;
-    [SerializeField]
-    private LayerMask UseLayers;
+    public float MaxUseDistance = 5f;
+    public LayerMask UseLayers;
     RaycastHit hit;
 
     //------------------------------\\
@@ -75,14 +60,16 @@ public class PlayerController : MonoBehaviour
         playerbody = gameObject.GetComponent<Rigidbody>();
     }
 
-    //Method to use objects
+    // Method to use the binding set up in the "Use" action in the input system
     public void OnUse()
     {
+        // Use Raycast to detect how far away the player's front is from an object
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxUseDistance, UseLayers))
         {
+            // Get Door collider component and see if it's been hit
             if(hit.collider.TryGetComponent<Door>(out Door door))
             {
-                
+                //if door is open, then run close method. Otherwise open door with open method
                 if (door.isOpen)
                 {
                     door.Close();
@@ -108,6 +95,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        // sanity debudding \\
         if (Input.GetKeyDown(KeyCode.UpArrow)){
             ChangeSanity(1);
             print(sanity);
@@ -117,7 +105,9 @@ public class PlayerController : MonoBehaviour
             ChangeSanity(-1);
             print(sanity);
         }
-        //getting player inputs for movement and rotation
+        // ----------------- \\
+
+        //getting player inputs for movement and rotation using the input system
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
         mouseRotate.x = Input.GetAxis("Mouse X") * sensitivity;
@@ -131,7 +121,7 @@ public class PlayerController : MonoBehaviour
             speed = 300;
         }        
 
-        //move the player
+        //move the player using actions set up in input system and rotate using the mouse
         playerbody.velocity = (transform.right * horizontalMove + transform.forward * verticalMove) * speed * Time.fixedDeltaTime;
         transform.Rotate(0, mouseRotate.x, 0);
     }
@@ -151,6 +141,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // change sanity value as enemies collide with player
     public void ChangeSanity(int value){
         sanity += value;
         sanity = Math.Clamp(sanity, 0, maxSanity);
