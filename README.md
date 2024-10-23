@@ -10,6 +10,8 @@ A - Move to the left
 S - Move backwards
 D - Move to the right
 
+Move mouse or use touchpad to rotate character and camera
+
 Shift - Sprint
 
 E - Interact
