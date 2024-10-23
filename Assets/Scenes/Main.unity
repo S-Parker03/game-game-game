@@ -437,11 +437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7266691859530190043, guid: 122fd72ed157fac44a5e40cc6434b807, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000003296683
+      value: -0.000000032966827
       objectReference: {fileID: 0}
     - target: {fileID: 7266691859530190043, guid: 122fd72ed157fac44a5e40cc6434b807, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004838502
+      value: 0.0000000048385016
       objectReference: {fileID: 0}
     - target: {fileID: 7678787568934656479, guid: 122fd72ed157fac44a5e40cc6434b807, type: 3}
       propertyPath: m_LocalPosition.x
@@ -465,11 +465,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7678787568934656479, guid: 122fd72ed157fac44a5e40cc6434b807, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000003296683
+      value: -0.000000032966827
       objectReference: {fileID: 0}
     - target: {fileID: 7678787568934656479, guid: 122fd72ed157fac44a5e40cc6434b807, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004838502
+      value: 0.0000000048385016
       objectReference: {fileID: 0}
     - target: {fileID: 9052337506627321160, guid: 122fd72ed157fac44a5e40cc6434b807, type: 3}
       propertyPath: m_Name
@@ -1198,6 +1198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
+    - target: {fileID: 7901806681664096434, guid: 5030a25b063861d43aaebd9e205032b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1211,6 +1215,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1665173600}
     m_Modifications:
+    - target: {fileID: 139570504285355754, guid: 0cb4a77cc491a254f98761211692ec69, type: 3}
+      propertyPath: textComponent
+      value: 
+      objectReference: {fileID: 1421770717}
     - target: {fileID: 7071292522218146448, guid: 0cb4a77cc491a254f98761211692ec69, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1294,6 +1302,10 @@ PrefabInstance:
     - target: {fileID: 9157248732244586847, guid: 0cb4a77cc491a254f98761211692ec69, type: 3}
       propertyPath: m_Name
       value: Dialogues
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157248732244586847, guid: 0cb4a77cc491a254f98761211692ec69, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

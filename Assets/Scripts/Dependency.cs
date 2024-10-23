@@ -7,7 +7,7 @@ public class Dependency : MonoBehaviour
 
     private float dependencyPercent;
 
-    //allowing readonly access to dependency
+    //allowing read-only access to dependency
     public float DependencyPercent => dependencyPercent;
     // Start is called before the first frame update
     void Start()

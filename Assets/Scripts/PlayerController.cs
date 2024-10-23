@@ -15,19 +15,16 @@ using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
-    //Variable to check if the player has the key
+
     public bool playerHasKey = false;
     //Variables for sanity system\\
     private int sanity;
     int maxSanity = 5;
-    //readOnly property for sanity
     public int Sanity => sanity;
     //----------------------------\\
 
     //Variables for movement system\\
     public float speed;
-
-    public GameObject player;
     public float rotate_speed;
     private Rigidbody playerbody;
     public Vector2 mouseRotate;        
@@ -55,7 +52,6 @@ public class PlayerController : MonoBehaviour
     {
         playerActionControls = new PlayerActionControls();
         sprintAction = playerActionControls.Player.Sprint;
-        player = GameObject.Find("Player");
     }
 
 
@@ -72,7 +68,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //set initial sanity to max sanity
         sanity = 5;
 
         playerbody = gameObject.GetComponent<Rigidbody>();
@@ -97,7 +92,6 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
-    //Function to check if the player is sprinting
     public bool sprintCheck(){
         if(sprintAction.ReadValue<float>() > 0){
             return true;
@@ -109,7 +103,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //debug inputs for sanity system
         if (Input.GetKeyDown(KeyCode.UpArrow)){
             ChangeSanity(1);
             print(sanity);
@@ -125,37 +118,28 @@ public class PlayerController : MonoBehaviour
         mouseRotate.x = Input.GetAxis("Mouse X") * sensitivity;
         mouseRotate.y = Input.GetAxis("Mouse Y") * sensitivity;
 
-        //check if the player is sprinting, set speed accordingly
         if(sprintCheck()){
             speed = 600;
         }
         else{
             speed = 300;
         }               
-        //move the player
+
         playerbody.velocity = (transform.right * horizontalMove + transform.forward * verticalMove) * speed * Time.fixedDeltaTime;
         transform.Rotate(0, mouseRotate.x, 0);
     }
 
-    //Function to check if the player has collided with a sanity pickup or key item
     void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.tag == "SanityPickUp" && sanity < maxSanity){
-            //get the dependency value of the player
-            float dependency = player.GetComponent<Dependency>().DependencyPercent/100;
             other.gameObject.SetActive(false);
-            //increase the players sanity by 2*(1-dependency)
-            ChangeSanity((int)Math.Round(2*(1f-dependency)));
-            //increase the players dependency
-            player.GetComponent<Dependency>().changeDependency(10f);
-            
+            ChangeSanity(2);
         } else if(other.gameObject.tag == "KeyItem"){
             other.gameObject.SetActive(false);
             playerHasKey = true;
         }
     }
 
-    //Function to change the players sanity
     public void ChangeSanity(int value){
         sanity += value;
         sanity = Math.Clamp(sanity, 0, maxSanity);
