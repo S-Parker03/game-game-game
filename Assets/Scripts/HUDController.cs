@@ -24,12 +24,13 @@ public class HUDController : MonoBehaviour
     {
       //updating HUD elements
         int sanity = player.GetComponent<PlayerController>().Sanity;
-        sanityText.text = "Sanity: " + sanity.ToString() + " / 10";
+        sanityText.text = "Sanity: " + sanity.ToString() + " / 5";
         int dependency = (int)Math.Round(player.GetComponent<Dependency>().DependencyPercent);
         dependencyText.text = "Dependency: " + dependency.ToString() + "%";
         updateBar();
     }
 
+    //function to update the dependency bar
     void updateBar(){
       Slider dependencyBar = GameObject.Find("DependencyBar").GetComponent<Slider>();
       dependencyBar.value = player.GetComponent<Dependency>().DependencyPercent / 100;
