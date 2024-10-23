@@ -13,13 +13,14 @@ D - Move to the right
 Shift - Sprint
 
 E - Interact
+Left mouse button - conversing with other characters
 
 Pick up green blocks, by going through them to raise your sanity meter
 
 If your sanity drops to 0, you lose the game
 
 When you pick up green blocks, your dependency will go up
-If your dependency is too high, picking up new health items won't raise your sanity as high anymore
+If your dependency is too high, picking up new health items won't raise your sanity as high anymore. 
 
 
 Game controls
