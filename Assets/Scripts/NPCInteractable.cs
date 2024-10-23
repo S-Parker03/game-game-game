@@ -6,11 +6,11 @@ using TMPro;
 
 public class NPCInteractable : MonoBehaviour
 {
-    public TextMeshProUGUI textComponent;
-    public string[] lines;
-    public float textSpeed;
+    public TextMeshProUGUI textComponent; // Reference to the TextMeshProUGUI component for displaying dialogue
+    public string[] lines; // Array to hold the lines of dialogue
+    public float textSpeed; // Speed at which characters are typed out
 
-    public int index = 0;
+    public int index = 0;  // Index to keep track of the current dialogue line
     
     void Start()
     {
@@ -20,12 +20,12 @@ public class NPCInteractable : MonoBehaviour
 
    
     public void Update()
-    {
+    { //// Check for mouse button click (left mouse button)
         if (Input.GetMouseButtonDown(0))
         {
             if (textComponent.text == lines[index])
             {
-                NextLine();
+                NextLine(); // Go to the next line of dialogue
             }
             else
             {
@@ -38,33 +38,33 @@ public class NPCInteractable : MonoBehaviour
 
     public void StartDialogue()
     {
-        Debug.Log("Interact!");
+        Debug.Log("Interact!"); //for debugging
         index = 0;
-        StartCoroutine(TypeLine());
+        StartCoroutine(TypeLine()); // Start the typing coroutine
 
     }
 
     IEnumerator TypeLine()
-    {
+    { // Type out each character of the current line
         foreach (char c in lines[index].ToCharArray())
         {
-            textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            textComponent.text += c;  // Append the character to the text component
+            yield return new WaitForSeconds(textSpeed); // Wait for  specified time before typing the next character
             
         }
     }
 
     public void NextLine()
-    {
+    { // Check if there are more lines to display
         if (index < lines.Length -1)
         {
             index++;
-            textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
+            textComponent.text = string.Empty; // Clear the text for the new line
+            StartCoroutine(TypeLine()); // Start typing the next line
         }
         else
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); // Deactivate the NPC object if there are no more lines
         }
     }
 }
