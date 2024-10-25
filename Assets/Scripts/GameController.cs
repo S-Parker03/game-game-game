@@ -19,10 +19,9 @@ public class GameController : MonoBehaviour
         // checks if player sanity is 0 and ends game if so
         if (endGame <= 0) {
             GameOver.SetActive(true);
-            //sets sanity to 5 to avoid being stuck in game over screen
-            player.GetComponent<PlayerController>().ChangeSanity(5);
             // pause function from pause script
             pause.pauseGame();
+            
         }
     }
 
@@ -32,6 +31,8 @@ public class GameController : MonoBehaviour
         GameOver.SetActive(false);
         // resume function from pause script
         pause.resumeGame();
+        //sets sanity to 5 to avoid being stuck in game over screen
+        player.GetComponent<PlayerController>().ChangeSanity(5);
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
