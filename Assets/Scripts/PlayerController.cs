@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
@@ -17,11 +18,17 @@ public class PlayerController : MonoBehaviour
     //Variables for movement system\\
     public float speed;
     private Rigidbody playerbody;
-    public Vector2 mouseRotate;        
+    public Vector2 mouseRotate;   
+    public Vector3 movement;// new     
     public float sensitivity = 0.01f;
 
-     private PlayerActionControls playerActionControls;
+    private PlayerActionControls playerActionControls;
     private InputAction sprintAction;
+
+    //Variables to do with jumping
+    public float jumpForce = 5.0f;
+    bool isGrounded = true;
+
     //------------------------------\\
 
     //Variables to do with Door Interactions\\
@@ -41,7 +48,6 @@ public class PlayerController : MonoBehaviour
     }
 
     //Enable and disable input
-
     private void OnEnable()
     {
         playerActionControls.Enable();
@@ -91,20 +97,19 @@ public class PlayerController : MonoBehaviour
         else{return false;}
     }
 
-
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         // sanity debudding \\
-        if (Input.GetKeyDown(KeyCode.UpArrow)){
-            ChangeSanity(1);
-            print(sanity);
-        }
+        // if (Input.GetKeyDown(KeyCode.UpArrow)){
+        //     ChangeSanity(1);
+        //     print(sanity);
+        // }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow)){
-            ChangeSanity(-1);
-            print(sanity);
-        }
+        // if (Input.GetKeyDown(KeyCode.DownArrow)){
+        //     ChangeSanity(-1);
+        //     print(sanity);
+        // }
         // ----------------- \\
 
         //getting player inputs for movement and rotation using the input system
@@ -120,10 +125,55 @@ public class PlayerController : MonoBehaviour
         else{
             speed = 300;
         }        
+        
+        // movement = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")).normalized;
 
         //move the player using actions set up in input system and rotate using the mouse
-        playerbody.velocity = (transform.right * horizontalMove + transform.forward * verticalMove) * speed * Time.fixedDeltaTime;
+        // playerbody.velocity = (transform.right * movement.x + transform.forward * movement.z) * speed * Time.deltaTime;
+        // transform.Rotate(0, mouseRotate.x, 0);
+
+        // playerbody.velocity = movement * speed * Time.fixedDeltaTime;
+        // float horizontalMove = Input.GetAxis("Horizontal");
+        // float verticalMove = Input.GetAxis("Vertical");
+        movement = new Vector3(horizontalMove, 0.0f, verticalMove).normalized;
+        // movement.y = playerbody.velocity.y;
+        // playerbody.velocity = movement * speed;
+
+        playerbody.velocity = (transform.right * movement.x + transform.forward * movement.z) * speed * Time.fixedDeltaTime  + transform.up * playerbody.velocity.y ;
         transform.Rotate(0, mouseRotate.x, 0);
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            //playerbody.velocity = new Vector3(0.0f, jumpForce, 0.0f);
+            // playerbody.AddForce(new Vector3(0.0f, 100, 0.0f));
+             playerbody.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
+            // playerbody.AddForce(new Vector3(0.0f, jumpForce, 0.0f));
+
+            // Debug.Log(isGrounded);
+
+
+            isGrounded = false;
+        }
+
+    }
+    // public void OnJump()
+    // {
+    //     if (isGrounded){
+    //         // playerbody.AddForce(new Vector3(0.0f, jumpForce, 0.0f));
+    //         playerbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+
+
+    //         isGrounded = false;
+    //     }
+    // }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Grounded")
+        {
+            isGrounded = true;
+        }
     }
 
     //method to handle collision with healing items and key items
@@ -141,6 +191,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // void FixedUpdate() {
+    //     // playerbody.velocity = movement * speed * Time.fixedDeltaTime;
+    //     float horizontalMove = Input.GetAxis("Horizontal");
+    //     float verticalMove = Input.GetAxis("Vertical");
+    //     movement = new Vector3(horizontalMove, 0.0f, verticalMove).normalized;
+    //     // movement.y = playerbody.velocity.y;
+    //     // playerbody.velocity = movement * speed;
+
+    //     playerbody.velocity = (transform.right * movement.x + transform.up * playerbody.velocity.y + transform.forward * movement.z) * speed * Time.fixedDeltaTime;
+    //     transform.Rotate(0, mouseRotate.x, 0);
+
+    //     // if (Input.GetButtonDown("Jump") && isGrounded)
+    //     // {
+    //     //     // playerbody.velocity = new Vector3(0.0f, jumpForce, 0.0f);
+    //     //     // playerbody.AddForce(new Vector3(0.0f, 100, 0.0f));
+    //     //     // playerbody.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
+    //     //     playerbody.AddForce(0.0f, jumpForce, 0.0f);
+
+    //     //     Debug.Log(isGrounded);
+
+
+    //     //     // isGrounded = false;
+    //     // }
+    //             // transform.Rotate(0, mouseRotate.x, 0);
+
+    //     // if (Input.GetButtonDown("Jump") && !isGrounded)
+    //     // {
+    //     //     // playerbody.velocity = new Vector3(0.0f, -jumpForce, 0.0f);
+    //     //     playerbody.AddForce(new Vector3(0.0f, -100, 0.0f));
+    //     //     // playerbody.AddForce(Vector3.down * jumpForce , ForceMode.Impulse);
+
+
+    //     //     isGrounded = true;
+    //     // }
+    // }
     // change sanity value as enemies collide with player
     public void ChangeSanity(int value){
         sanity += value;

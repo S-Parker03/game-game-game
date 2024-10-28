@@ -10,6 +10,7 @@ TagManager:
   - PickUp
   - LoreItem
   - KeyItem
+  - Grounded
   layers:
   - Default
   - TransparentFX
