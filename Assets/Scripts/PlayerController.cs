@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     //Variables for movement system\\
     public float speed;
     private Rigidbody playerbody;
+    private GameObject playerCollider;
     public Vector2 mouseRotate;   
     public Vector3 movement;// new     
     public float sensitivity = 0.01f;
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
         sanity = 5;
 
         playerbody = gameObject.GetComponent<Rigidbody>();
+
+        playerCollider = GameObject.FindGameObjectWithTag("GroundCollider");
     }
 
     // Method to use the binding set up in the "Use" action in the input system

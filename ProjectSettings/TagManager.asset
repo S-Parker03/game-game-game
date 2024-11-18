@@ -11,6 +11,7 @@ TagManager:
   - LoreItem
   - KeyItem
   - Grounded
+  - GroundCollider
   layers:
   - Default
   - TransparentFX
