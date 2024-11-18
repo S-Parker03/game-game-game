@@ -7,9 +7,11 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
 [System.Serializable]
-public class ItemInfo : ScriptableObject
+public class ItemInfo : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public bool hasItem;
     public string itemName;
 
     [TextArea]
@@ -20,6 +22,17 @@ public class ItemInfo : ScriptableObject
     public ItemType itemType;
     public string itemID;
 
-    public GameObject modelPrefab;
+    public GameObject pickupObject;
+
+
+    public void collect(){
+        if (pickupObject.GetComponent<Collider>() != null){
+            pickupObject.GetComponent<Collider>().enabled = false;
+        }
+        if (pickupObject != null){
+            pickupObject.SetActive(false);
+        }
+        hasItem = true;
+    }
 
 }
