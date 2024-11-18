@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9206782559266073357}
   - component: {fileID: 6871946612303551570}
   - component: {fileID: 3648018751421337699}
+  - component: {fileID: 601189192213034989}
   m_Layer: 0
   m_Name: Key
   m_TagString: KeyItem
@@ -99,7 +100,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -107,3 +108,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &601189192213034989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94551900408336592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 1
+  itemName: Temp Key
+  itemDescription: Key Key Key
+  itemImage: {fileID: 21300000, guid: 4802cc67e4d7c5c48a29edb8bd8ca63b, type: 3}
+  itemType: 0
+  itemID: t_key
+  pickupObject: {fileID: 94551900408336592}
