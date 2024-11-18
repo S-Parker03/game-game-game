@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 movement;// new     
     public float sensitivity = 0.01f;
 
+
+
     private PlayerActionControls playerActionControls;
     private InputAction sprintAction;
 
@@ -61,6 +63,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         sanity = 5;
 
         playerbody = gameObject.GetComponent<Rigidbody>();
@@ -185,9 +189,6 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             //heal by 2*(1-dependency)
             ChangeSanity((int)Math.Round(2*(1-dependency)));
-        } else if(other.gameObject.tag == "KeyItem"){
-            other.gameObject.SetActive(false);
-            playerHasKey = true;
         }
     }
 

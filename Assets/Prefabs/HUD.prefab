@@ -689,7 +689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1387761832114955644, guid: 8df3294b0a6dfdc409c2ae738c4ee595, type: 3}
   enemy: {fileID: 4325390894720066598, guid: 8296363fdb272e74a9073f133f5d27b9, type: 3}
-  pauseText: {fileID: 919087926262027078}
+  inventoryUI: {fileID: 0}
   paused: 0
   gameOver: 0
 --- !u!114 &4932313567980513995
@@ -742,7 +742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -163, y: 176}
+  m_AnchoredPosition: {x: 2070, y: 164}
   m_SizeDelta: {x: 300, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8530381765113121069

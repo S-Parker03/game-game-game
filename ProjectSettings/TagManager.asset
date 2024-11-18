@@ -8,9 +8,8 @@ TagManager:
   - Door
   - SanityPickUp
   - PickUp
-  - LoreItem
-  - KeyItem
   - Grounded
+  - Item
   layers:
   - Default
   - TransparentFX
