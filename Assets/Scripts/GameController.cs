@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     // finds player object and sets game over screen to false
       player = GameObject.FindGameObjectWithTag("Player");
       GameOver.SetActive(false);
+      Cursor.visible = false;
     }
     void Update() {
         // finds player sanity value.
