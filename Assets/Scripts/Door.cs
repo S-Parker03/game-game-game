@@ -4,24 +4,30 @@
 // --------------------------------------------------------------------------------------------------------------------- \\
 
 using System.Collections;
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class Door : MonoBehaviour
 {
     // variables used to transform a door object's location to make it appear as if it's sliding\\
     public bool isOpen = false;
     public float speed = 1.0f;
-    public Vector3 slideDirection = Vector3.back;
-    public float slideDistance = 0.0f;
-    private Vector3 StartPosition;
+    private float RotationAmount = 90f;
+    public float ForwardDirection = 0;
+    private Vector3 StartRotation;
+    private Vector3 Forward;
     private Coroutine AnimationCoroutine;
     //-------------------------------------------------------------------------------------------\\
 
     // Awake is called when the script instance is being loaded
     private void Awake()
     {
+        StartRotation = transform.rotation.eulerAngles;
         //rest the door to initial position
-        StartPosition = transform.position;
+        Forward = transform.position;
+
     }
 
     //open the door using coroutine, first checking if it's not open
@@ -33,25 +39,35 @@ public class Door : MonoBehaviour
             {
                 StopCoroutine(AnimationCoroutine);
             }
-            AnimationCoroutine = StartCoroutine(DoSlidingOpen());
+            float dot = Vector3.Dot(Forward, (UserPosition - transform.position).normalized);
+            Debug.Log($"Dot: {dot.ToString("N3")}");
+            AnimationCoroutine = StartCoroutine(DoRotationOpen(dot));
         }
     }
 
-    // Do sliding open method to move the door from its original position to a 
-    // new position whose direction is determined by a vector and its transformation in that direction by slideDistance variable
-    private IEnumerator DoSlidingOpen()
+    private IEnumerator DoRotationOpen(float ForwardAmount)
     {
-        Vector3 endPosition = StartPosition + slideDistance * slideDirection;
-        Vector3 startPosition = transform.position;
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation;
+
+        if (ForwardAmount >= ForwardDirection)
+        {
+            endRotation = Quaternion.Euler(new Vector3(0, StartRotation.y - RotationAmount, 0));
+        }
+        else
+        {
+            endRotation = Quaternion.Euler(new Vector3(0, StartRotation.y + RotationAmount, 0));
+        }
+        isOpen = true;
 
         float time = 0;
-        isOpen = true;
-        while(time < 1)
+        while(time <1)
         {
-            //move the door from start position to end position over time
-            time += Time.deltaTime * speed;
-            transform.position = Vector3.Lerp(startPosition, endPosition, time);
+            // use Slerp instead of Lerp to create a slower movement effect when door is 
+            // almost fully open or closed, and faster when it's in the middle of the animation
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, time);
             yield return null;
+            time += Time.deltaTime * speed;
         }
     }
 
@@ -65,25 +81,23 @@ public class Door : MonoBehaviour
                 StopCoroutine(AnimationCoroutine);
             }
 
-            AnimationCoroutine = StartCoroutine(DoSlidingCLose());
+            AnimationCoroutine = StartCoroutine(DoRotationCLose());
         }
     }
 
-    // Do sliding close method to move the door from its new position to its origial position
-    private IEnumerator DoSlidingCLose()
+    private IEnumerator DoRotationCLose()
     {
-        Vector3 endPosition = StartPosition;
-        Vector3 startPosition = transform.position;
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = Quaternion.Euler(StartRotation);
 
-        float time = 0;
         isOpen = false;
 
-        while (time < 1)
+        float time = 0;
+        while(time <1)
         {
-            // move the door from end position to start position using transform over time
-            time += Time.deltaTime * speed;
-            transform.position = Vector3.Lerp(startPosition, endPosition, time);
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, time);
             yield return null;
+            time += Time.deltaTime * speed;
         }
     }
 }

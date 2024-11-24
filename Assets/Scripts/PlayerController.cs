@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     // Variables for camera movement \\
     public Camera cam;
+    public Transform cam4ray;
     float horizRotate;
     float vertRotate;
     //----------------------------\\
@@ -90,8 +91,9 @@ public class PlayerController : MonoBehaviour
     public void OnUse()
     {
         // Use Raycast to detect how far away the player's front is from an object
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxUseDistance, UseLayers))
+        if (Physics.Raycast(cam4ray.position, cam4ray.forward, out RaycastHit hit, MaxUseDistance, UseLayers))
         {
+            Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
             // Get Door collider component and see if it's been hit
             if(hit.collider.TryGetComponent<Door>(out Door door))
             {
@@ -141,7 +143,7 @@ public class PlayerController : MonoBehaviour
 
         //check if sprinting
         if(sprintCheck()){
-            speed = 300;
+            speed = 200;
         }
         else{
             speed = 150;

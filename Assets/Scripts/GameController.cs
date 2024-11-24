@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     }
 
 
-// function RestartGame to be triggered when restart button is clicked
+    // function RestartGame to be triggered when restart button is clicked
     public void RestartGame() {
         GameOver.SetActive(false);
         // resume function from pause script
