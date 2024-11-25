@@ -10,8 +10,10 @@ public class GameController : MonoBehaviour
     void Start()
     {
     // finds player object and sets game over screen to false
-      player = GameObject.FindGameObjectWithTag("Player");
-      GameOver.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player");
+        GameOver.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void Update() {
         // finds player sanity value.
@@ -26,7 +28,7 @@ public class GameController : MonoBehaviour
     }
 
 
-// function RestartGame to be triggered when restart button is clicked
+    // function RestartGame to be triggered when restart button is clicked
     public void RestartGame() {
         GameOver.SetActive(false);
         // resume function from pause script
