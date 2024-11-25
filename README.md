@@ -35,4 +35,5 @@ Resources used for Prototype
 ----------------------------
 Door.cs - script - Adapted from LiamAcademy Rotating and Sliding Doors tutorial on youtube - https://www.youtube.com/watch?v=cPltQK5LlGE 
 PlayerController.cs - script - Adapted parts of camera rotation and angle clamping from - https://gamedev.stackexchange.com/questions/191968/how-do-i-easily-clamp-my-cameras-rotation-when-using-transform-rotate 
+Complete darkness for camera - https://www.youtube.com/watch?v=MDwVMaJ4mFc&t=50s 
 
