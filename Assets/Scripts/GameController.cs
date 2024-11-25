@@ -10,9 +10,10 @@ public class GameController : MonoBehaviour
     void Start()
     {
     // finds player object and sets game over screen to false
-      player = GameObject.FindGameObjectWithTag("Player");
-      GameOver.SetActive(false);
-      Cursor.visible = false;
+        player = GameObject.FindGameObjectWithTag("Player");
+        GameOver.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void Update() {
         // finds player sanity value.
