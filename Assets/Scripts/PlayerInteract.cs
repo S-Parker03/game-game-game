@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 
@@ -17,6 +18,9 @@ public class PlayerInteract : MonoBehaviour
     RaycastHit hit;
     private GameObject playerObj;
 
+    private GameObject lastObject = null;
+
+
 
     void Start()
     {
@@ -28,15 +32,30 @@ public class PlayerInteract : MonoBehaviour
     void FixedUpdate()
     {
         Debug.DrawLine(cam4ray.position, cam4ray.position + cam4ray.forward * MaxUseDistance, Color.red);
-        //code to highlight an interactable object (item, npc or door) when the player is in range
+        // code to highlight an interactable object (item, npc or door) when the player is in range
         if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UseLayers))
         {
             if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item"))
             {
-                highlight(hit.collider.gameObject);
+                highlight(hit.collider.gameObject, true);
                 // Debug.Log("highlighted"+hit.collider.gameObject.name);
+                lastObject = hit.collider.gameObject;
+                
             }
         }
+        else
+        {
+            try
+            {
+                highlight(lastObject, false);
+            }
+            catch (Exception e)
+            {
+                Debug.Log("No object to unhighlight");
+            }
+                
+        }    
+        
 
     }
 
@@ -82,12 +101,35 @@ public class PlayerInteract : MonoBehaviour
         } 
     }
 
-    public void highlight(GameObject obj)
+    public void highlight(GameObject obj, bool toggle)
     {
-        obj.GetComponent<Renderer>().material.color = Color.green;
+        List<Material> materials = new List<Material>();
+        Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
+        
+        foreach (Renderer r in renderers)
+        {
+            materials.AddRange(new List<Material>(r.materials));
+        }
+
+        if(toggle == true)
+        {
+            foreach (Material m in materials)
+            {
+                m.EnableKeyword("_EMISSION");
+                m.SetColor("_EmissionColor", Color.yellow);
+                m.SetFloat("_EmissionBrightness", 0.1f);
+            }
+            Debug.Log("highlighted" + obj.name);
+        }
+        if(toggle == false)
+        {
+            foreach (Material m in materials)
+            {
+                m.DisableKeyword("_EMISSION");
+            }
+            Debug.Log("unhighlighted" + obj.name);
+        }
     }
-
-
 
 
 }
