@@ -2,30 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 // Inventory class to manage the inventory UI
-//made with help from this tutorial: https://gamedevbeginner.com/how-to-make-an-inventory-system-in-unity/#inventory_systems
-
-
+// Made with help from this tutorial: https://gamedevbeginner.com/how-to-make-an-inventory-system-in-unity/#inventory_systems
 public class Inventory : MonoBehaviour
 {
+    public List<ItemInfo> KeyItems = new List<ItemInfo>();
+    public List<ItemInfo> LoreItems = new List<ItemInfo>();
 
-    
-
-    public List<ItemInfo> KeyItems = new();
-    public List<ItemInfo> LoreItems = new();
-
-    
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     void Awake()
@@ -39,6 +30,7 @@ public class Inventory : MonoBehaviour
         if (item.itemType == ItemInfo.ItemType.Key)
         {
             KeyItems.Add(item);
+            print("Key Item Added");
         }
         else if (item.itemType == ItemInfo.ItemType.Lore)
         {
@@ -58,14 +50,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void checkKeyItems(){
+    void checkKeyItems()
+    {
         foreach (ItemInfo item in KeyItems)
         {
             Debug.Log(item.itemID);
         }
     }
 
-    void checkLoreItems(){
+    void checkLoreItems()
+    {
         foreach (ItemInfo item in LoreItems)
         {
             Debug.Log(item.itemID);
