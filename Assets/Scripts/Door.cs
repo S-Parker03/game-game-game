@@ -26,7 +26,7 @@ public class Door : MonoBehaviour
     {
         StartRotation = transform.rotation.eulerAngles;
         //rest the door to initial position
-        Forward = transform.position;
+        Forward = transform.forward;
 
     }
 
@@ -40,7 +40,9 @@ public class Door : MonoBehaviour
                 StopCoroutine(AnimationCoroutine);
             }
             float dot = Vector3.Dot(Forward, (UserPosition - transform.position).normalized);
-            Debug.Log($"Dot: {dot.ToString("N3")}");
+                        Debug.Log(Forward);
+            Debug.Log(UserPosition);
+
             AnimationCoroutine = StartCoroutine(DoRotationOpen(dot));
         }
     }
@@ -49,8 +51,10 @@ public class Door : MonoBehaviour
     {
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation;
-            Debug.Log($"Dot: {ForwardAmount.ToString("N3")}");
-            Debug.Log($"Dot: {ForwardDirection.ToString("N3")}");
+            // Debug.Log($"Dot: {ForwardAmount.ToString("N3")}");
+            Debug.Log(ForwardAmount);
+
+            // Debug.Log($"Dot: {ForwardDirection.ToString("N3")}");
 
         if (ForwardAmount >= ForwardDirection)
         {
