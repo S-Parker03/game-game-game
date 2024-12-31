@@ -35,7 +35,8 @@ public class PlayerInteract : MonoBehaviour
         // code to highlight an interactable object (item, npc or door) when the player is in range
         if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UseLayers))
         {
-            if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item"))
+            if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item")
+            || hit.collider.CompareTag("SanityPickUp"))
             {
                 highlight(hit.collider.gameObject, true);
                 // Debug.Log("highlighted"+hit.collider.gameObject.name);
@@ -51,7 +52,7 @@ public class PlayerInteract : MonoBehaviour
             }
             catch (Exception e)
             {
-                Debug.Log("No object to unhighlight");
+                // Debug.Log("No object to unhighlight");
             }
                 
         }    
@@ -116,10 +117,10 @@ public class PlayerInteract : MonoBehaviour
             foreach (Material m in materials)
             {
                 m.EnableKeyword("_EMISSION");
-                m.SetColor("_EmissionColor", Color.yellow);
+                m.SetColor("_EmissionColor", Color.white);
                 m.SetFloat("_EmissionBrightness", 0.1f);
             }
-            Debug.Log("highlighted" + obj.name);
+            // Debug.Log("highlighted" + obj.name);
         }
         if(toggle == false)
         {
@@ -127,7 +128,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 m.DisableKeyword("_EMISSION");
             }
-            Debug.Log("unhighlighted" + obj.name);
+            // Debug.Log("unhighlighted" + obj.name);
         }
     }
 
