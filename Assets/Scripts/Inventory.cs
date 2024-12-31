@@ -6,8 +6,11 @@ using UnityEngine;
 // Made with help from this tutorial: https://gamedevbeginner.com/how-to-make-an-inventory-system-in-unity/#inventory_systems
 public class Inventory : MonoBehaviour
 {
+    // List of key items and lore items
     public List<ItemInfo> KeyItems = new List<ItemInfo>();
     public List<ItemInfo> LoreItems = new List<ItemInfo>();
+
+    public GameObject InventoryUI;
 
     // Start is called before the first frame update
     void Start()
