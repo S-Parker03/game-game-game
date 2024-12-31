@@ -52,7 +52,7 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Dependency>().enabled = false;
-        enemy.GetComponent<EnemyController>().enabled = false;
+        // enemy.GetComponent<EnemyController>().enabled = false;
         
         
         Time.timeScale = 0;

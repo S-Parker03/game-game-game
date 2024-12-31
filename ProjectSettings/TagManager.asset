@@ -11,6 +11,8 @@ TagManager:
   - Grounded
   - GroundCollider
   - Item
+  - KeyItem
+  - AlwaysLocked
   layers:
   - Default
   - TransparentFX
