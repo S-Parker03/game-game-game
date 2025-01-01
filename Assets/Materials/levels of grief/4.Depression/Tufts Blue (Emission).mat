@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 3rd Floor
+  m_Name: Tufts Blue (Emission)
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -79,6 +79,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.6156863, b: 0.3921569, a: 1}
-    - _EmissionColor: {r: 0, g: 1, b: 0.37209296, a: 1}
+    - _Color: {r: 0.30588236, g: 0.4901961, b: 0.7686275, a: 1}
+    - _EmissionColor: {r: 0.3269253, g: 0.47966462, b: 0.8962264, a: 1}
   m_BuildTextureStacks: []

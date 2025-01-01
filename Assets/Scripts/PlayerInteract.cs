@@ -127,7 +127,7 @@ public class PlayerInteract : MonoBehaviour
             foreach (Material m in materials)
             {
                 m.EnableKeyword("_EMISSION");
-                m.SetColor("_EmissionColor", Color.white);
+                m.SetColor("_EmissionColor", Color.gray);
                 m.SetFloat("_EmissionBrightness", 0.1f);
             }
             // Debug.Log("highlighted" + obj.name);

@@ -9,10 +9,10 @@ TagManager:
   - SanityPickUp
   - PickUp
   - Grounded
-  - GroundCollider
   - Item
   - KeyItem
   - AlwaysLocked
+  - CanBeUnlocked
   layers:
   - Default
   - TransparentFX
