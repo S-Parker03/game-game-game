@@ -38,6 +38,7 @@ public class Pause : MonoBehaviour
         //check if the player presses the escape key, if they do pause or unpause the game
         if(!paused){
             pauseGame();
+            UI.GetComponent<InventoryController>().guiNeedsUpdating = true;
             UI.SetActive(true);
             
             paused = true;
