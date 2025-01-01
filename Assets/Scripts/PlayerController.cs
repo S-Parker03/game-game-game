@@ -171,6 +171,10 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.tag == "DeathPlane")
+        {
+            ChangeSanity(-9999999);
+        }
     }
 
     //method to handle collision with healing items and key items
@@ -191,5 +195,10 @@ public class PlayerController : MonoBehaviour
         sanity += value;
         sanity = Math.Clamp(sanity, 0, maxSanity);
     }
+
+    void OnKillYourSelf(){
+        ChangeSanity(-99999);
+    }
+
 
 }
