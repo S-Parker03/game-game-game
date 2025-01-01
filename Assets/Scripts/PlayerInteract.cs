@@ -50,7 +50,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 highlight(lastObject, false);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // Debug.Log("No object to unhighlight");
             }
@@ -80,26 +80,36 @@ public class PlayerInteract : MonoBehaviour
                     door.Open(playerObj.transform.position);
                 }
             }
-            // else if (hit.collider.CompareTag("NPC"))
-            // {
-            //     // Get the NPC component from the hit object and interact with it
-            //     NPC npc = hit.collider.GetComponent<NPC>();
-            //     if (npc != null)
-            //     {
-            //         // npc.Interact();
-            //     }
-            // }
             else if (hit.collider.TryGetComponent<ItemInfo>(out ItemInfo itemInfo))
             {
                 // Get the ItemInfo component from the hit object and interact with it
                 if (itemInfo != null)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>().AddItem(itemInfo);
-                    itemInfo.collect();
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    GameObject inventoryUI = GameObject.Find("Inventory");
+                    if (player != null)
+                    {
+                        Inventory inventory = player.GetComponent<Inventory>();
+                        
+                        if (inventory != null)
+                        {
+                            inventory.AddItem(itemInfo);
+                            itemInfo.collect();
+                            Debug.Log("Item attemepted to add to inventory: " + itemInfo.itemName);
+                        }
+                        else
+                        {
+                            Debug.LogError("Player does not have an Inventory component.");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("Player object not found.");
+                    }
                     
                 }
             }
-        } 
+        }
     }
 
     public void highlight(GameObject obj, bool toggle)
@@ -117,7 +127,7 @@ public class PlayerInteract : MonoBehaviour
             foreach (Material m in materials)
             {
                 m.EnableKeyword("_EMISSION");
-                m.SetColor("_EmissionColor", Color.white);
+                m.SetColor("_EmissionColor", Color.gray);
                 m.SetFloat("_EmissionBrightness", 0.1f);
             }
             // Debug.Log("highlighted" + obj.name);

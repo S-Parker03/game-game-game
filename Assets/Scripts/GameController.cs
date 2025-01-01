@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -35,7 +36,8 @@ public class GameController : MonoBehaviour
         pause.resumeGame();
         //sets sanity to 5 to avoid being stuck in game over screen
         player.GetComponent<PlayerController>().ChangeSanity(5);
-        Time.timeScale = 1;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+
     }
 }

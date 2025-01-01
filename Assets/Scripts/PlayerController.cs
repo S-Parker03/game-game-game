@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     float vertRotate;
     //----------------------------\\
 
-    private GameObject playerCollider;
+    // private GameObject playerCollider;
     public Vector2 mouseRotate;   
     // public Vector3 movement;// new     
 
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
         playerbody = gameObject.GetComponent<Rigidbody>();
 
-        playerCollider = GameObject.FindGameObjectWithTag("GroundCollider");
+        // playerCollider = GameObject.FindGameObjectWithTag("GroundCollider");
     }
 
     // // Method to use the binding set up in the "Use" action in the input system
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
         }        
         
         vertRotate += mouse.y * sensitivity;
-        vertRotate = Mathf.Clamp(vertRotate, -70, 90);
+        vertRotate = Mathf.Clamp(vertRotate, -70, 70);
         cam.transform.eulerAngles = new Vector3(-vertRotate, horizRotate, 0);
         horizRotate = (horizRotate + mouse.x * sensitivity) % 360f;
 
@@ -170,6 +170,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Grounded")
         {
             isGrounded = true;
+        }
+        if (collision.gameObject.tag == "DeathPlane")
+        {
+            ChangeSanity(-9999999);
         }
     }
 
@@ -191,5 +195,10 @@ public class PlayerController : MonoBehaviour
         sanity += value;
         sanity = Math.Clamp(sanity, 0, maxSanity);
     }
+
+    void OnKillYourSelf(){
+        ChangeSanity(-99999);
+    }
+
 
 }

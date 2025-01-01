@@ -4,14 +4,16 @@ using JetBrains.Annotations;
 using NUnit.Framework;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Pause : MonoBehaviour
 {
 
     public GameObject player;
-    public GameObject enemy;
-    public GameObject inventoryUI;
+    // public GameObject enemy;
+    public GameObject UI;
 
     public GameObject HUD;
 
@@ -23,23 +25,26 @@ public class Pause : MonoBehaviour
     {
         paused = false;
         player = GameObject.Find("Player");
-        enemy = GameObject.Find("Monster");
+        UI.SetActive(false);
+
+        // enemy = GameObject.Find("Monster");
     
         
     }
 
     // Update is called once per frame
-    void Update()
+    public void OnPause()
     {
         //check if the player presses the escape key, if they do pause or unpause the game
-        if(Input.GetKeyDown(KeyCode.Escape) && !paused){
+        if(!paused){
             pauseGame();
-            inventoryUI.SetActive(true);
+            UI.GetComponent<InventoryController>().guiNeedsUpdating = true;
+            UI.SetActive(true);
             
             paused = true;
-        }else if (Input.GetKeyDown(KeyCode.Escape) && paused){
+        }else if (paused){
             resumeGame();
-            inventoryUI.SetActive(false);
+            UI.SetActive(false);
             
             paused = false;
         }          
@@ -49,7 +54,7 @@ public class Pause : MonoBehaviour
         foreach( var each in HUD.GetComponentsInChildren<TextMeshProUGUI>()){
             each.alpha = 0;
         }
-        Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Dependency>().enabled = false;
         // enemy.GetComponent<EnemyController>().enabled = false;
@@ -64,10 +69,10 @@ public class Pause : MonoBehaviour
             each.alpha = 1;
         }
         
-        Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         player.GetComponent<PlayerController>().enabled = true;
         player.GetComponent<Dependency>().enabled = true;
-        enemy.GetComponent<EnemyController>().enabled = true;
+        // enemy.GetComponent<EnemyController>().enabled = true;
         
         Time.timeScale = 1;
         
