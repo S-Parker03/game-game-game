@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -14,53 +15,61 @@ public class InventoryController : MonoBehaviour
     private VisualElement m_Root;
     private VisualElement m_SlotContainer;
 
+    public ItemType currentPage = ItemType.Key;
+    
+    public bool guiNeedsUpdating = true;
+
     private void OnGUI()
     {
-        // Ensure the inventory object exists
-        GameObject inventoryObject = GameObject.Find("Inventory");
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (inventoryObject != null)
+        if (guiNeedsUpdating)
         {
-            // Ensure the inventory object has an Inventory component
-            Inventory = playerObj.GetComponent<Inventory>();
-            if (Inventory == null)
+            // Ensure the inventory object exists
+            GameObject inventoryObject = GameObject.Find("Inventory");
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (inventoryObject != null)
             {
-                Debug.LogError("Player object does not have an Inventory component.");
-                return;
+                // Ensure the inventory object has an Inventory component
+                Inventory = playerObj.GetComponent<Inventory>();
+                if (Inventory == null)
+                {
+                    Debug.LogError("Player object does not have an Inventory component.");
+                    return;
+                }
             }
-        }
-        else
-        {
-            Debug.LogError("Inventory object not found.");
-            return;
-        }
-
-        // Ensure the UIDocument component exists
-        UIDocument uiDocument = GetComponent<UIDocument>();
-        if (uiDocument != null)
-        {
-            m_Root = uiDocument.rootVisualElement;
-            if (m_Root == null)
+            else
             {
-                Debug.LogError("Root Visual Element is null.");
+                Debug.LogError("Inventory object not found.");
                 return;
             }
 
-            // Ensure the SlotContainer exists in the UI hierarchy
-            m_SlotContainer = m_Root.Q<VisualElement>("SlotContainer");
-            if (m_SlotContainer == null)
+            // Ensure the UIDocument component exists
+            UIDocument uiDocument = GetComponent<UIDocument>();
+            if (uiDocument != null)
             {
-                Debug.LogError("SlotContainer not found in the UI hierarchy.");
+                m_Root = uiDocument.rootVisualElement;
+                if (m_Root == null)
+                {
+                    Debug.LogError("Root Visual Element is null.");
+                    return;
+                }
+
+                // Ensure the SlotContainer exists in the UI hierarchy
+                m_SlotContainer = m_Root.Q<VisualElement>("SlotContainer");
+                if (m_SlotContainer == null)
+                {
+                    Debug.LogError("SlotContainer not found in the UI hierarchy.");
+                    return;
+                }
+            }
+            else
+            {
+                Debug.LogError("UIDocument component not found.");
                 return;
             }
-        }
-        else
-        {
-            Debug.LogError("UIDocument component not found.");
-            return;
-        }
 
-        DisplayItems(ItemType.Key);
+            DisplayItems(currentPage);
+            guiNeedsUpdating = false;
+        }
     }
 
     public void DisplayItems(ItemType page)
