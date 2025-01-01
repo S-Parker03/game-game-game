@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1686428033558451933
+--- !u!114 &-1591815807274649349
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18,7 +18,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 12.3
+    value: 17.31
   threshold:
     overrideState: 0
     value: 1
@@ -60,4 +60,4 @@ MonoBehaviour:
   m_Name: Main Camera Profile
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: -1686428033558451933}
+  - {fileID: -1591815807274649349}
