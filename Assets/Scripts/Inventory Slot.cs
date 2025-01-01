@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Scripting;
 using UnityEngine.UIElements;
 
-public class InventorySlot : VisualElement
+public class InventorySlot : Button
 {
     public Image Icon;
     public string ItemGuid = "";
+     public string ItemName = "";
+    public string ItemDescription = "";
 
     public InventorySlot()
     {
@@ -17,5 +20,15 @@ public class InventorySlot : VisualElement
         //Add USS style properties to the elements
         Icon.AddToClassList("slotIcon");
         AddToClassList("slotContainer");
+        
     }
+
+#region UXML
+    [Preserve]
+    public new class UxmlFactory : UxmlFactory<InventorySlot, UxmlTraits> { }
+
+    [Preserve]
+    public new class UxmlTraits : VisualElement.UxmlTraits { }
+#endregion
+
 }

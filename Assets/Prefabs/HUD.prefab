@@ -565,7 +565,6 @@ GameObject:
   - component: {fileID: 3694879372395967885}
   - component: {fileID: 1364917024089108737}
   - component: {fileID: 4988896883898856063}
-  - component: {fileID: 402605488649791647}
   - component: {fileID: 4932313567980513995}
   m_Layer: 5
   m_Name: HUD
@@ -675,24 +674,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sanityText: {fileID: 1534630907469249520}
   dependencyText: {fileID: 6703897418179904632}
---- !u!114 &402605488649791647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7627859176735447279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 340cbda60d440fe468ca42cff18e315f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1387761832114955644, guid: 8df3294b0a6dfdc409c2ae738c4ee595, type: 3}
-  enemy: {fileID: 4325390894720066598, guid: 8296363fdb272e74a9073f133f5d27b9, type: 3}
-  inventoryUI: {fileID: 0}
-  HUD: {fileID: 7627859176735447279}
-  paused: 0
-  gameOver: 0
 --- !u!114 &4932313567980513995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,7 +688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOver: {fileID: 1021089178574228617}
   RestartButton: {fileID: 2837880084029693589}
-  pause: {fileID: 402605488649791647}
+  pause: {fileID: 0}
 --- !u!1 &8084553064903173906
 GameObject:
   m_ObjectHideFlags: 0

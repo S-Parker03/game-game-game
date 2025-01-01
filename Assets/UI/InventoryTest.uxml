@@ -1,8 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/Inventory.uss?fileID=7433441132597879392&amp;guid=111f7001bd593da4c8e9fa63c59512d2&amp;type=3#Inventory" />
-    <ui:VisualElement name="Container" class="Container" style="border-top-width: 0; border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-top-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0); border-right-width: 5px; -unity-slice-scale: 0; width: 100%;">
-        <ui:VisualElement name="Inventory" class="Inventory" style="border-left-width: 0; -unity-slice-scale: 0; width: 100%;">
-            <ui:ScrollView vertical-scroller-visibility="AlwaysVisible" name="SlotContainer" style="flex-grow: 1; height: 100%; width: 344px; margin-left: 0; border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-top-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0); border-left-width: 5px; -unity-slice-scale: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; flex-shrink: 1;" />
-        </ui:VisualElement>
-    </ui:VisualElement>
-</ui:UXML>
