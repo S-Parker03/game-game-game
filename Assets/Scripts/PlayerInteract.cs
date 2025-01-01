@@ -68,7 +68,7 @@ public class PlayerInteract : MonoBehaviour
         {
             Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
             // Get Door collider component and see if it's been hit
-            if (hit.collider.TryGetComponent<Door>(out Door door))
+            if (hit.collider.TryGetComponent<Door>(out Door door) && hit.collider.CompareTag("Door"))
             {
                 // If door is open, then run close method. Otherwise open door with open method
                 if (door.isOpen)
