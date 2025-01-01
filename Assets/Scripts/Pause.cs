@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Pause : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Pause : MonoBehaviour
     {
         paused = false;
         player = GameObject.Find("Player");
+        UI.SetActive(false);
+
         // enemy = GameObject.Find("Monster");
     
         
@@ -50,7 +53,7 @@ public class Pause : MonoBehaviour
         foreach( var each in HUD.GetComponentsInChildren<TextMeshProUGUI>()){
             each.alpha = 0;
         }
-        Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Dependency>().enabled = false;
         // enemy.GetComponent<EnemyController>().enabled = false;
@@ -65,7 +68,7 @@ public class Pause : MonoBehaviour
             each.alpha = 1;
         }
         
-        Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         player.GetComponent<PlayerController>().enabled = true;
         player.GetComponent<Dependency>().enabled = true;
         // enemy.GetComponent<EnemyController>().enabled = true;

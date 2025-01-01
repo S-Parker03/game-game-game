@@ -1,5 +1,5 @@
 .Container {
-    flex-grow: initial;
+    flex-grow: 0;
     align-items: center;
     justify-content: flex-start;
     border-top-width: 5px;
@@ -47,6 +47,7 @@
     border-top-width: 0;
     max-width: 70%;
     left: 0;
+    overflow: scroll;
 }
 
 .ItemInfo {
@@ -104,6 +105,7 @@
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
+    
 }
 
 .Header {
@@ -134,13 +136,12 @@
 .slotContainer {
     width: 128px;
     height: 128px;
-    margin: 5px;
+    margin: 1%;
     border-left-color: rgb(48, 48, 48);
     border-right-color: rgb(48, 48, 48);
     border-top-color: rgb(48, 48, 48);
     border-bottom-color: rgb(48, 48, 48);
     background-color: rgb(9, 19, 21);
-    background-image: url('/Assets/WUG/Sprites/ItemSlotBackground.png');
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -152,3 +153,13 @@
     flex-shrink: 0;
     flex-grow: 1;
 }
+
+.slotContainer:hover{
+   border-color: rgb(255, 197, 0);
+   border-width: 5px;
+}
+
+
+
+
+    
