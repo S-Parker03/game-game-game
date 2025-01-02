@@ -1589,6 +1589,8 @@ MonoBehaviour:
   isOpen: 0
   speed: 1
   ForwardDirection: 0
+  doorOpenSound: {fileID: 8300000, guid: 680380005fe0c83459a957e7f95b0966, type: 3}
+  doorCloseSound: {fileID: 8300000, guid: b7d203268ca924340b691ad40ff6fe59, type: 3}
 --- !u!65 &4964245681085098908
 BoxCollider:
   m_ObjectHideFlags: 0
