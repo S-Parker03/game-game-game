@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 731434505255216435}
   - component: {fileID: 5672614059866988400}
   - component: {fileID: 8990412004655342659}
+  - component: {fileID: 4799519670883314765}
+  - component: {fileID: 5046272360688147890}
   m_Layer: 6
   m_Name: 4th Floor
-  m_TagString: PickUp
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +85,48 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4799519670883314765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197710816600354180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: Stained Glass Fragment
+  itemDescription: A fragment of stained glass depicting a hug tentacled monster
+    ripping through a coastal town, a woman cries in the bakground.
+  itemImage: {fileID: 0}
+  itemType: 0
+  itemID: anger_frag
+  pickupObject: {fileID: 1197710816600354180}
+--- !u!64 &5046272360688147890
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197710816600354180}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 410436616158271328, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
 --- !u!1 &2491249517711792083
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +227,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5003918924251836479}
   - {fileID: 4002200298336483787}
   - {fileID: 2274280890075114136}
   - {fileID: 6892295082583180479}
@@ -200,9 +243,11 @@ GameObject:
   - component: {fileID: 5345726640849855156}
   - component: {fileID: 2443640872125022361}
   - component: {fileID: 2956747867725519378}
+  - component: {fileID: 2709208294614554026}
+  - component: {fileID: 2514011556777718437}
   m_Layer: 6
   m_Name: 2nd Floor
-  m_TagString: PickUp
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -272,6 +317,49 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2709208294614554026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5097575933113865333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: Stained Glass Fragment
+  itemDescription: A fragment of stained glass depicting a young woman on the ground
+    crying, her arms are wrapped around her knees and tattered belongings are scattered
+    around her.
+  itemImage: {fileID: 0}
+  itemType: 0
+  itemID: depression_frag
+  pickupObject: {fileID: 5097575933113865333}
+--- !u!64 &2514011556777718437
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5097575933113865333}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1992613278654812978, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
 --- !u!1 &5177771625474098230
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,9 +371,11 @@ GameObject:
   - component: {fileID: 3084265280184627567}
   - component: {fileID: 8944917690860980793}
   - component: {fileID: 2484982837617447248}
+  - component: {fileID: 2270977617154123813}
+  - component: {fileID: 1416375757859612724}
   m_Layer: 6
   m_Name: 1st Floor
-  m_TagString: PickUp
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,6 +445,48 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2270977617154123813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177771625474098230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: Stained Glass Fragment
+  itemDescription: A fragment of stained glass depicting an old man on his knees,
+    a reaper stood behind him has it's scythe to his neck
+  itemImage: {fileID: 0}
+  itemType: 0
+  itemID: acceptance_frag
+  pickupObject: {fileID: 5177771625474098230}
+--- !u!64 &1416375757859612724
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177771625474098230}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7238568900685110747, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
 --- !u!1 &5928433614508307905
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,9 +664,11 @@ GameObject:
   - component: {fileID: 4840359106428537362}
   - component: {fileID: 4543091484906351769}
   - component: {fileID: 4267808025192857894}
+  - component: {fileID: 4536775648844445851}
+  - component: {fileID: 7308798361032995888}
   m_Layer: 6
   m_Name: Basement
-  m_TagString: PickUp
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -604,6 +738,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4536775648844445851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220387890652825525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: Stained Glass Fragment
+  itemDescription: "A piece of stained glass depicting a gory sacrifice of an animal
+    headed humanoid to a creature draped in ragged yellow robes with fleshy plant
+    like tendrils writhing around it, looking at it makes you feel like your head
+    is being ripped apart but you can\u2019t pull your gaze away. "
+  itemImage: {fileID: 0}
+  itemType: 0
+  itemID: horror_frag
+  pickupObject: {fileID: 7220387890652825525}
+--- !u!64 &7308798361032995888
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220387890652825525}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3747310915659182097, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
 --- !u!1 &7944223381526394454
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,9 +793,11 @@ GameObject:
   - component: {fileID: 2424701027035597882}
   - component: {fileID: 6358545441170821940}
   - component: {fileID: 6213468341507498216}
+  - component: {fileID: 4339735324878004360}
+  - component: {fileID: 4386782358962375552}
   m_Layer: 6
   m_Name: 5th Floor
-  m_TagString: PickUp
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -687,6 +867,49 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4339735324878004360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944223381526394454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: Stained Glass Fragment
+  itemDescription: A fragment of stained glass depicting a man in a trench coat,
+    a black hat and glasses, he is holding a torch in his right hand and seems to
+    be looking straight through you.
+  itemImage: {fileID: 0}
+  itemType: 0
+  itemID: denial_frag
+  pickupObject: {fileID: 7944223381526394454}
+--- !u!64 &4386782358962375552
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944223381526394454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 133060127580341253, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
 --- !u!1 &7970564653241581446
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,9 +921,11 @@ GameObject:
   - component: {fileID: 8962737324854493848}
   - component: {fileID: 4079830918391378816}
   - component: {fileID: 6233399964367517431}
+  - component: {fileID: 1995578581922765428}
+  - component: {fileID: 8755621354210245474}
   m_Layer: 6
   m_Name: 3rd Floor
-  m_TagString: PickUp
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -770,6 +995,48 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1995578581922765428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970564653241581446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: Stained Glass Fragment
+  itemDescription: A fragment of stained glass depicting many animal headed humanoids
+    bending a knee in subservience and offering up gold to a robed figure on a throne.
+  itemImage: {fileID: 0}
+  itemType: 0
+  itemID: bargaining_frag
+  pickupObject: {fileID: 7970564653241581446}
+--- !u!64 &8755621354210245474
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970564653241581446}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8685522846587517603, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
 --- !u!1 &9214566251859444833
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,13 +1180,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8380157826906577798, guid: 45bebb5a952d84c45b8849e636ec24a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: 45bebb5a952d84c45b8849e636ec24a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 45bebb5a952d84c45b8849e636ec24a0, type: 3}
       propertyPath: m_Name
       value: sanity pickup
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 45bebb5a952d84c45b8849e636ec24a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 45bebb5a952d84c45b8849e636ec24a0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 45bebb5a952d84c45b8849e636ec24a0, type: 3}
+      propertyPath: m_TagString
+      value: SanityPickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800250516343163423, guid: 45bebb5a952d84c45b8849e636ec24a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -930,82 +1217,4 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 45bebb5a952d84c45b8849e636ec24a0, type: 3}
   m_PrefabInstance: {fileID: 3458784897751293472}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4826667765616072660
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1471834720058673447}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.04933895
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.04933895
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.04933895
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.584
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -18.849
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.804
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_Name
-      value: key
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
---- !u!4 &5003918924251836479 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a7f6a6a1d6b33c643b5e44bd5f4cd3e3, type: 3}
-  m_PrefabInstance: {fileID: 4826667765616072660}
   m_PrefabAsset: {fileID: 0}

@@ -109,6 +109,20 @@ public class PlayerInteract : MonoBehaviour
                     
                 }
             }
+            else if (hit.collider.CompareTag("SanityPickUp")){
+                if (playerObj != null)
+                {
+                    if (playerObj.GetComponent<PlayerController>().Sanity < 5)
+                    {
+                        playerObj.GetComponent<PlayerController>().ChangeSanity(1);
+                        Destroy(hit.collider.gameObject);
+                    }
+                    else
+                    {
+                        Debug.Log("Sanity is full");
+                    }
+                }
+            }
         }
     }
 
