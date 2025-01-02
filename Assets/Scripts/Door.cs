@@ -21,6 +21,15 @@ public class Door : MonoBehaviour
     private Coroutine AnimationCoroutine;
     //-------------------------------------------------------------------------------------------\\
 
+// adding sound effect to the door opening and closing - this is to test if sound effects are working 
+// can potentially add it to dialogues later, also to add the horror
+
+// the audio clips are accepted here in the door script 
+    [SerializeField]private AudioClip doorOpenSound;
+    // private float DelayOpening=0;
+    [SerializeField]private AudioClip doorCloseSound;
+    // private float DelayClosing=0;
+
     // Awake is called when the script instance is being loaded
     private void Awake()
     {
@@ -44,6 +53,8 @@ public class Door : MonoBehaviour
             Debug.Log(UserPosition);
 
             AnimationCoroutine = StartCoroutine(DoRotationOpen(dot));
+            // call the soundmanager function to play the sound
+            SoundManager.instance.PlayDoorOpenClip(doorOpenSound, transform, 1f);
         }
     }
 
@@ -88,6 +99,7 @@ public class Door : MonoBehaviour
             }
 
             AnimationCoroutine = StartCoroutine(DoRotationCLose());
+            SoundManager.instance.PlayDoorCloseClip(doorOpenSound, transform, 1f);
         }
     }
 

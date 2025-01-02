@@ -19,6 +19,11 @@ public class InventoryController : MonoBehaviour
     
     public bool guiNeedsUpdating = true;
 
+    private void Awake(){
+        m_Root = GetComponent<UIDocument>().rootVisualElement;
+        
+    }
+
     private void OnGUI()
     {
         if (guiNeedsUpdating)
@@ -67,6 +72,25 @@ public class InventoryController : MonoBehaviour
                 return;
             }
 
+            Button keyItemsButton = m_Root.Q<Button>("KeyItemsButton");
+            Button loreItemsButton = m_Root.Q<Button>("LoreItemsButton");
+            keyItemsButton.RegisterCallback<ClickEvent>(OnNavButtonClick);
+            loreItemsButton.RegisterCallback<ClickEvent>(OnNavButtonClick);
+
+            if(currentPage == ItemType.Key){
+                loreItemsButton.style.backgroundColor = new StyleColor(new Color(1f, 0.77f,0f));
+                keyItemsButton.style.backgroundColor = new StyleColor(new Color(0.76f, 0.59f, 0f));
+                keyItemsButton.style.borderBottomColor = new StyleColor(new Color(0.76f, 0.59f, 0f));
+                loreItemsButton.style.borderBottomColor = new StyleColor(new Color(1f, 0.77f,0f));
+                
+            } else if (currentPage == ItemType.Lore){
+                loreItemsButton.style.backgroundColor = new StyleColor(new Color(0.76f, 0.59f, 0f));
+                keyItemsButton.style.backgroundColor = new StyleColor(new Color(1f, 0.77f,0f));
+                loreItemsButton.style.borderBottomColor = new StyleColor(new Color(0.76f, 0.59f, 0f));
+                keyItemsButton.style.borderBottomColor = new StyleColor(new Color(1f, 0.77f,0f));
+                
+            }
+
             DisplayItems(currentPage);
             guiNeedsUpdating = false;
         }
@@ -112,6 +136,27 @@ public class InventoryController : MonoBehaviour
                 InventoryItems.Add(slot);
                 m_SlotContainer.Add(slot);
             }
+        }
+    }
+
+    private void OnNavButtonClick(ClickEvent evt){
+        Button button = (Button)evt.target;
+        Button otherButton = m_Root.Q<Button>(button.name == "KeyItemsButton" ? "LoreItemsButton" : "KeyItemsButton");
+        string buttonName = button.name;
+        Debug.Log("Button clicked: " + buttonName);
+        if (buttonName == "KeyItemsButton")
+        {
+            currentPage = ItemType.Key;
+            
+            guiNeedsUpdating = true;
+            
+        }
+        else if (buttonName == "LoreItemsButton")
+        {
+            currentPage = ItemType.Lore;
+            button.style.backgroundColor = new StyleColor(new Color(255, 197,0));
+            otherButton.style.backgroundColor = new StyleColor(new Color(195, 151, 0));
+            guiNeedsUpdating = true;
         }
     }
 }
