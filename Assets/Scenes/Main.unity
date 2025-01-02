@@ -1755,6 +1755,52 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_PVRTiledBaking: 0
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &692975062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 692975064}
+  - component: {fileID: 692975063}
+  m_Layer: 6
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &692975063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692975062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc6a25890f6d36f47bb57c173a073ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundDoorOpenObject: {fileID: 856094739}
+  SoundDoorCloseObject: {fileID: 1305311508}
+--- !u!4 &692975064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692975062}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &542252534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1994,6 +2040,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1305427171}
+    - target: {fileID: 15459601498922006, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 34427076575385238, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2002,14 +2052,26 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1830432420}
+    - target: {fileID: 43361001562199421, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 37
+      objectReference: {fileID: 0}
     - target: {fileID: 59285763385065798, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1401685233}
+    - target: {fileID: 59285763385065798, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 49
+      objectReference: {fileID: 0}
     - target: {fileID: 73027067792909586, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1973467413}
+    - target: {fileID: 73027067792909586, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 411934537959455758, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2026,6 +2088,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 971242792}
+    - target: {fileID: 670203131604264348, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 721307661659629998, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2034,6 +2100,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1111379481}
+    - target: {fileID: 855973405041358029, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 969624892428538186, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2042,6 +2112,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 322758886}
+    - target: {fileID: 989787144718695197, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 1072708064761071556, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2058,6 +2132,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 949550100}
+    - target: {fileID: 1239808961513544894, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 1350503038827561793, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2078,18 +2156,50 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1327542631}
+    - target: {fileID: 1639882212245671102, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662036194192227590, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 680380005fe0c83459a957e7f95b0966, type: 3}
+    - target: {fileID: 1662036194192227590, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorCloseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b7d203268ca924340b691ad40ff6fe59, type: 3}
     - target: {fileID: 1666561911076458863, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 348455498}
+    - target: {fileID: 1666561911076458863, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1899723999014835050, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 195452245}
+    - target: {fileID: 1899723999014835050, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934116050450282533, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 680380005fe0c83459a957e7f95b0966, type: 3}
+    - target: {fileID: 1934116050450282533, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorCloseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b7d203268ca924340b691ad40ff6fe59, type: 3}
     - target: {fileID: 2003753041273518088, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1933106148}
+    - target: {fileID: 2003753041273518088, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 2677184249058241111, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2102,22 +2212,46 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 850029124}
+    - target: {fileID: 2815717153170622556, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 52
+      objectReference: {fileID: 0}
     - target: {fileID: 2907960739815366538, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 758167922}
+    - target: {fileID: 2907960739815366538, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 37
+      objectReference: {fileID: 0}
     - target: {fileID: 3429193089137154102, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1728088890}
+    - target: {fileID: 3429193089137154102, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 37
+      objectReference: {fileID: 0}
     - target: {fileID: 3555397071710289046, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 952129413}
+    - target: {fileID: 3555397071710289046, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 43
+      objectReference: {fileID: 0}
     - target: {fileID: 3680508613440094664, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1339248795}
+    - target: {fileID: 3802334715413695230, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 680380005fe0c83459a957e7f95b0966, type: 3}
+    - target: {fileID: 3802334715413695230, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorCloseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b7d203268ca924340b691ad40ff6fe59, type: 3}
     - target: {fileID: 3854310036562649019, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2126,10 +2260,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1492800569}
+    - target: {fileID: 3883375830864775721, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 4102235771770810371, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 32119905}
+    - target: {fileID: 4102235771770810371, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 37
+      objectReference: {fileID: 0}
     - target: {fileID: 4142536394704641074, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2162,10 +2304,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1537403238}
+    - target: {fileID: 4784329512906617536, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 4805321597781885466, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1233047857}
+    - target: {fileID: 4805321597781885466, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 37
+      objectReference: {fileID: 0}
     - target: {fileID: 4808837339351750542, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2178,6 +2328,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1507706991}
+    - target: {fileID: 4936730110099928243, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 5085229427282438291, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2186,6 +2340,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1339248795}
+    - target: {fileID: 5101330596612043117, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5121321261678674738, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2206,6 +2364,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 217324460}
+    - target: {fileID: 5459080368999483178, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 49
+      objectReference: {fileID: 0}
     - target: {fileID: 5488374401295506734, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2262,14 +2424,30 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2123581234}
+    - target: {fileID: 6123087381027827856, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 6164876022689306038, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 94243800}
+    - target: {fileID: 6164876022689306038, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6382387275967972092, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1083002645}
+    - target: {fileID: 6856398388223021343, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 680380005fe0c83459a957e7f95b0966, type: 3}
+    - target: {fileID: 6856398388223021343, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorCloseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b7d203268ca924340b691ad40ff6fe59, type: 3}
     - target: {fileID: 6777992531291120945, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -2282,10 +2460,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1830432420}
+    - target: {fileID: 7032201957745101568, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 680380005fe0c83459a957e7f95b0966, type: 3}
     - target: {fileID: 7334882136806698883, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 906373733}
+    - target: {fileID: 7334882136806698883, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 43
+      objectReference: {fileID: 0}
     - target: {fileID: 7427528438208791645, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2294,6 +2480,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1083002645}
+    - target: {fileID: 7448515814021124894, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 49
+      objectReference: {fileID: 0}
     - target: {fileID: 7519935297002964325, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2310,10 +2500,22 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 19862687}
+    - target: {fileID: 8085678755162149477, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 46
+      objectReference: {fileID: 0}
     - target: {fileID: 8107622236249678580, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1728088890}
+    - target: {fileID: 8120135990247151411, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 680380005fe0c83459a957e7f95b0966, type: 3}
+    - target: {fileID: 8120135990247151411, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorCloseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b7d203268ca924340b691ad40ff6fe59, type: 3}
     - target: {fileID: 8199593328768912853, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2326,10 +2528,22 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2129471476}
+    - target: {fileID: 8494810420423565132, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 8863796563511537290, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1481124274}
+    - target: {fileID: 8863796563511537290, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: m_VersionIndex
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8914676420448779977, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 680380005fe0c83459a957e7f95b0966, type: 3}
     - target: {fileID: 9036732782914673420, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2878,6 +3092,7 @@ Mesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: pb_Mesh-742430
+  m_Name: pb_Mesh-3834
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -4223,6 +4438,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!82 &1305311508 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8236143774393607704, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+  m_PrefabInstance: {fileID: 803977956166625698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1303704366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7494,6 +7714,120 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4024357600193723249, guid: e7164589ed9f29c47ad87089be078e09, type: 3}
   m_PrefabInstance: {fileID: 8738505833740437544}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &803977956166625698
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 480723691793692351, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_Name
+      value: SoundDoorCloseObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734750907608728881, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96bb048b3a27d6440b6177cd3d3bcb92, type: 3}
+--- !u!1001 &2453583741470296581
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505118795086847226, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370159990423771749, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
+      propertyPath: m_Name
+      value: SoundDoorOpenObject
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 821c2d94bd104a84b8650c8059978e76, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7505,3 +7839,6 @@ SceneRoots:
   - {fileID: 1560611371}
   - {fileID: 8738505833740437544}
   - {fileID: 2057411902}
+  - {fileID: 692975064}
+  - {fileID: 2453583741470296581}
+  - {fileID: 803977956166625698}
