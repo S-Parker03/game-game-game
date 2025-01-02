@@ -114,8 +114,17 @@ public class PlayerInteract : MonoBehaviour
                 {
                     if (playerObj.GetComponent<PlayerController>().Sanity < 5)
                     {
-                        playerObj.GetComponent<PlayerController>().ChangeSanity(1);
-                        Destroy(hit.collider.gameObject);
+                        if (playerObj.GetComponent<Dependency>().DependencyPercent < 50)
+                        {
+                            playerObj.GetComponent<PlayerController>().ChangeSanity(1);
+                            playerObj.GetComponent<Dependency>().changeDependency(10f);
+                            Destroy(hit.collider.gameObject);
+                        }
+                        else
+                        {
+                            Destroy(hit.collider.gameObject);
+                            playerObj.GetComponent<Dependency>().changeDependency(10f);
+                        }
                     }
                     else
                     {
