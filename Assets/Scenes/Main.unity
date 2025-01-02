@@ -1213,7 +1213,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-743372
+  m_Name: pb_Mesh-389732
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2216,6 +2216,14 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 34
       objectReference: {fileID: 0}
+    - target: {fileID: 2253377122182755611, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 680380005fe0c83459a957e7f95b0966, type: 3}
+    - target: {fileID: 2253377122182755611, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
+      propertyPath: doorCloseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b7d203268ca924340b691ad40ff6fe59, type: 3}
     - target: {fileID: 2677184249058241111, guid: bf0aca97fd45c1c4ba269a2f58dcf25a, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -5705,7 +5713,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-743288
+  m_Name: pb_Mesh-389648
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
