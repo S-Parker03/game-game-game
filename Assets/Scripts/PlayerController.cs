@@ -200,5 +200,9 @@ public class PlayerController : MonoBehaviour
         ChangeSanity(-99999);
     }
 
+    void OnLowerSanity(){
+        ChangeSanity(-1);
+    }
+
 
 }

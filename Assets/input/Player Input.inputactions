@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LowerSanity",
+                    "type": "Button",
+                    "id": "5587b2e6-3339-4ab8-b30e-f9dd229ebf3e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -346,11 +355,22 @@
                 {
                     "name": "",
                     "id": "3062557c-18ed-4c26-b076-16b2ce6ad50a",
-                    "path": "<Keyboard>/#(Grave)",
+                    "path": "<Keyboard>/#(0)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "KillYourSelf",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "047e5e7a-cdae-4259-b2c7-6f73f7942895",
+                    "path": "<Keyboard>/#(-)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "LowerSanity",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
