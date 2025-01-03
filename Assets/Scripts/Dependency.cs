@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dependency : MonoBehaviour
 {
 
     private float dependencyPercent;
+
+    // visual slider
+    public Slider slider;
 
     //allowing read-only access to dependency
     public float DependencyPercent => dependencyPercent;
