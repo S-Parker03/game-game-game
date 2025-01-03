@@ -1,5 +1,7 @@
+using Palmmedia.ReportGenerator.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameController : MonoBehaviour
 {
@@ -13,8 +15,11 @@ public class GameController : MonoBehaviour
     // finds player object and sets game over screen to false
         player = GameObject.FindGameObjectWithTag("Player");
         GameOver.SetActive(false);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
+        // player.SetActive(false);
+        
+        pause.pauseGame();
+        GameObject.Find("Settings").GetComponent<UIDocument>().rootVisualElement.style.display= DisplayStyle.None;
     }
     void Update() {
         // finds player sanity value.

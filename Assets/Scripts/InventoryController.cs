@@ -13,6 +13,7 @@ public class InventoryController : MonoBehaviour
     public Inventory Inventory;
 
     private VisualElement m_Root;
+
     private VisualElement m_SlotContainer;
 
     public ItemType currentPage = ItemType.Key;
@@ -26,11 +27,15 @@ public class InventoryController : MonoBehaviour
 
     private void OnGUI()
     {
+        
         if (guiNeedsUpdating)
         {
             // Ensure the inventory object exists
             GameObject inventoryObject = GameObject.Find("Inventory");
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            GameObject settingsObj = GameObject.Find("Settings");
+            GameObject menuObj = GameObject.Find("MainMenu");
+            
             if (inventoryObject != null)
             {
                 // Ensure the inventory object has an Inventory component
@@ -74,20 +79,40 @@ public class InventoryController : MonoBehaviour
 
             Button keyItemsButton = m_Root.Q<Button>("KeyItemsButton");
             Button loreItemsButton = m_Root.Q<Button>("LoreItemsButton");
+            Button closeButton = m_Root.Q<Button>("CloseButton");
+            Button settingsButton = m_Root.Q<Button>("SettingsButton");
+            Button menuButton = m_Root.Q<Button>("QuitButton");
             keyItemsButton.RegisterCallback<ClickEvent>(OnNavButtonClick);
             loreItemsButton.RegisterCallback<ClickEvent>(OnNavButtonClick);
+            closeButton.RegisterCallback<ClickEvent>(evt => {
+                Pause pause = playerObj.GetComponent<Pause>();
+                pause.resumeGame();
+                inventoryObject.SetActive(false);
+            
+                pause.paused = false;
+            });
+            settingsButton.RegisterCallback<ClickEvent>(evt => {
+                Debug.Log("settings clicked");
+                settingsObj.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
+                inventoryObject.SetActive(false);
+            });
+            menuButton.RegisterCallback<ClickEvent>(evt => {
+                inventoryObject.SetActive(false);
+                menuObj.GetComponent<MenuController>().OpenMenu();
+            });
+            
 
             if(currentPage == ItemType.Key){
-                loreItemsButton.style.backgroundColor = new StyleColor(new Color(1f, 0.77f,0f));
-                keyItemsButton.style.backgroundColor = new StyleColor(new Color(0.76f, 0.59f, 0f));
-                keyItemsButton.style.borderBottomColor = new StyleColor(new Color(0.76f, 0.59f, 0f));
-                loreItemsButton.style.borderBottomColor = new StyleColor(new Color(1f, 0.77f,0f));
+                loreItemsButton.style.backgroundColor = new StyleColor(new Color(125f / 255f, 0f, 0f));
+                keyItemsButton.style.backgroundColor = new StyleColor(new Color(72f / 255f, 17f / 255f, 17f / 255f));
+                keyItemsButton.style.borderBottomColor = new StyleColor(new Color(72f / 255f, 17f / 255f, 17f / 255f));
+                loreItemsButton.style.borderBottomColor = new StyleColor(new Color(125f / 255f, 0f, 0f));
                 
             } else if (currentPage == ItemType.Lore){
-                loreItemsButton.style.backgroundColor = new StyleColor(new Color(0.76f, 0.59f, 0f));
-                keyItemsButton.style.backgroundColor = new StyleColor(new Color(1f, 0.77f,0f));
-                loreItemsButton.style.borderBottomColor = new StyleColor(new Color(0.76f, 0.59f, 0f));
-                keyItemsButton.style.borderBottomColor = new StyleColor(new Color(1f, 0.77f,0f));
+                loreItemsButton.style.backgroundColor = new StyleColor(new Color(72f / 255f, 17f / 255f, 17f / 255f));
+                keyItemsButton.style.backgroundColor = new StyleColor(new Color(125f / 255f, 0f, 0f));
+                loreItemsButton.style.borderBottomColor = new StyleColor(new Color(72f / 255f, 17f / 255f, 17f / 255f));
+                keyItemsButton.style.borderBottomColor = new StyleColor(new Color(125f / 255f, 0f, 0f));
                 
             }
 
@@ -154,8 +179,6 @@ public class InventoryController : MonoBehaviour
         else if (buttonName == "LoreItemsButton")
         {
             currentPage = ItemType.Lore;
-            button.style.backgroundColor = new StyleColor(new Color(255, 197,0));
-            otherButton.style.backgroundColor = new StyleColor(new Color(195, 151, 0));
             guiNeedsUpdating = true;
         }
     }

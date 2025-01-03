@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Settings.uss?fileID=7433441132597879392&amp;guid=00d869507cd4c384b9d424d2e6eb854c&amp;type=3#Settings" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgb(0, 0, 0);">
+        <ui:VisualElement name="SettingsButtons" class="setting-slider" style="flex-grow: 1; max-width: 50%; min-width: 50%; flex-direction: row;">
+            <ui:Slider label="Volume" value="100" high-value="100" name="SFXVolume" page-size="0" show-input-field="true" focusable="false" usage-hints="None" inverted="false" style="color: rgb(125, 0, 0); max-width: 75%; height: 20%; white-space: normal; -unity-text-align: middle-left; font-size: 48px; width: 100%; flex-direction: column; min-height: 20px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
