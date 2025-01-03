@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8990412004655342659}
   - component: {fileID: 4799519670883314765}
   - component: {fileID: 5046272360688147890}
+  - component: {fileID: 2959340598892548656}
   m_Layer: 6
   m_Name: 4th Floor
   m_TagString: Item
@@ -101,7 +102,7 @@ MonoBehaviour:
   itemName: Stained Glass Fragment
   itemDescription: A fragment of stained glass depicting a hug tentacled monster
     ripping through a coastal town, a woman cries in the bakground.
-  itemImage: {fileID: 0}
+  itemImage: {fileID: -1689094623, guid: cf6fd53b719b20b4ea10030d395080a2, type: 3}
   itemType: 0
   itemID: anger_frag
   pickupObject: {fileID: 1197710816600354180}
@@ -122,11 +123,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 410436616158271328, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
+--- !u!65 &2959340598892548656
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197710816600354180}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1324105, y: 1.0278083, z: 0.90601945}
+  m_Center: {x: -0.4310744, y: 0.03275317, z: -0.0267952}
 --- !u!1 &2491249517711792083
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +252,7 @@ Transform:
   - {fileID: 4002200298336483787}
   - {fileID: 2274280890075114136}
   - {fileID: 6892295082583180479}
+  - {fileID: 8196574562186040504}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5097575933113865333
@@ -245,6 +268,7 @@ GameObject:
   - component: {fileID: 2956747867725519378}
   - component: {fileID: 2709208294614554026}
   - component: {fileID: 2514011556777718437}
+  - component: {fileID: 5874326491217926013}
   m_Layer: 6
   m_Name: 2nd Floor
   m_TagString: Item
@@ -334,7 +358,7 @@ MonoBehaviour:
   itemDescription: A fragment of stained glass depicting a young woman on the ground
     crying, her arms are wrapped around her knees and tattered belongings are scattered
     around her.
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 1400856036, guid: f144aff26f882fb4c9b3addf6aff1827, type: 3}
   itemType: 0
   itemID: depression_frag
   pickupObject: {fileID: 5097575933113865333}
@@ -355,11 +379,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1992613278654812978, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
+--- !u!65 &5874326491217926013
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5097575933113865333}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1324105, y: 1.0505563, z: 0.86194324}
+  m_Center: {x: -0.4310873, y: 0.048809513, z: 0.04275943}
 --- !u!1 &5177771625474098230
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +418,7 @@ GameObject:
   - component: {fileID: 2484982837617447248}
   - component: {fileID: 2270977617154123813}
   - component: {fileID: 1416375757859612724}
+  - component: {fileID: 6883732115730941041}
   m_Layer: 6
   m_Name: 1st Floor
   m_TagString: Item
@@ -461,7 +507,7 @@ MonoBehaviour:
   itemName: Stained Glass Fragment
   itemDescription: A fragment of stained glass depicting an old man on his knees,
     a reaper stood behind him has it's scythe to his neck
-  itemImage: {fileID: 0}
+  itemImage: {fileID: -1151537012, guid: 7e576a201cb1a934da8acb0a0c4fcc64, type: 3}
   itemType: 0
   itemID: acceptance_frag
   pickupObject: {fileID: 5177771625474098230}
@@ -482,11 +528,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7238568900685110747, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
+--- !u!65 &6883732115730941041
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177771625474098230}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1324105, y: 0.9483292, z: 0.9056169}
+  m_Center: {x: -0.43106058, y: 0.15806238, z: -0.13639186}
 --- !u!1 &5928433614508307905
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +733,7 @@ GameObject:
   - component: {fileID: 4267808025192857894}
   - component: {fileID: 4536775648844445851}
   - component: {fileID: 7308798361032995888}
+  - component: {fileID: 4615032959929224837}
   m_Layer: 6
   m_Name: Basement
   m_TagString: Item
@@ -756,7 +824,7 @@ MonoBehaviour:
     headed humanoid to a creature draped in ragged yellow robes with fleshy plant
     like tendrils writhing around it, looking at it makes you feel like your head
     is being ripped apart but you can\u2019t pull your gaze away. "
-  itemImage: {fileID: 0}
+  itemImage: {fileID: -2067832983, guid: a2ccbf7158899c44099f304140163add, type: 3}
   itemType: 0
   itemID: horror_frag
   pickupObject: {fileID: 7220387890652825525}
@@ -777,11 +845,64 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3747310915659182097, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
+--- !u!65 &4615032959929224837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220387890652825525}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.13241044, y: 0.67549276, z: 0.87923694}
+  m_Center: {x: -0.43105677, y: 0.026933417, z: -0.035419412}
+--- !u!1 &7765616407088523071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8196574562186040504}
+  m_Layer: 0
+  m_Name: keys
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8196574562186040504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7765616407088523071}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 102536481774162175}
+  m_Father: {fileID: 1471834720058673447}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7944223381526394454
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +916,7 @@ GameObject:
   - component: {fileID: 6213468341507498216}
   - component: {fileID: 4339735324878004360}
   - component: {fileID: 4386782358962375552}
+  - component: {fileID: 7482581418207445210}
   m_Layer: 6
   m_Name: 5th Floor
   m_TagString: Item
@@ -884,7 +1006,7 @@ MonoBehaviour:
   itemDescription: A fragment of stained glass depicting a man in a trench coat,
     a black hat and glasses, he is holding a torch in his right hand and seems to
     be looking straight through you.
-  itemImage: {fileID: 0}
+  itemImage: {fileID: -577304792, guid: 08fac8d5fa643bb429e19130899ded3f, type: 3}
   itemType: 0
   itemID: denial_frag
   pickupObject: {fileID: 7944223381526394454}
@@ -905,11 +1027,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 133060127580341253, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
+--- !u!65 &7482581418207445210
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944223381526394454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1324104, y: 0.9774063, z: 0.98643327}
+  m_Center: {x: -0.00000001701906, y: 0.07580278, z: 0.116101764}
 --- !u!1 &7970564653241581446
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +1066,7 @@ GameObject:
   - component: {fileID: 6233399964367517431}
   - component: {fileID: 1995578581922765428}
   - component: {fileID: 8755621354210245474}
+  - component: {fileID: 8960017449686399044}
   m_Layer: 6
   m_Name: 3rd Floor
   m_TagString: Item
@@ -1011,7 +1155,7 @@ MonoBehaviour:
   itemName: Stained Glass Fragment
   itemDescription: A fragment of stained glass depicting many animal headed humanoids
     bending a knee in subservience and offering up gold to a robed figure on a throne.
-  itemImage: {fileID: 0}
+  itemImage: {fileID: -373222453, guid: 3015506de178f8142abe27f212713271, type: 3}
   itemType: 0
   itemID: bargaining_frag
   pickupObject: {fileID: 7970564653241581446}
@@ -1032,11 +1176,32 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8685522846587517603, guid: c44fd025a3651a244a21b3bb77760a76, type: 3}
+--- !u!65 &8960017449686399044
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970564653241581446}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.13241048, y: 0.41565022, z: 1.1211075}
+  m_Center: {x: -0.43104902, y: 0.057016253, z: -0.018551124}
 --- !u!1 &9214566251859444833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,4 +1382,70 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 45bebb5a952d84c45b8849e636ec24a0, type: 3}
   m_PrefabInstance: {fileID: 3458784897751293472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6347579582656889683
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8196574562186040504}
+    m_Modifications:
+    - target: {fileID: 4298705742749281163, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: itemImage
+      value: 
+      objectReference: {fileID: -1629643938, guid: 2cdbbeec0517a354fa04ec0742e5f987, type: 3}
+    - target: {fileID: 5922437127040387350, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_Name
+      value: KeyWorkPlease
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.244167
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -18.288216
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.380178
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000015454306
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70710665
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+--- !u!4 &102536481774162175 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6447863413793330092, guid: 502abf932ecff68448fb7524bed340ab, type: 3}
+  m_PrefabInstance: {fileID: 6347579582656889683}
   m_PrefabAsset: {fileID: 0}
