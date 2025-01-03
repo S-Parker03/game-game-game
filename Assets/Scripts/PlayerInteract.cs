@@ -164,11 +164,12 @@ public class PlayerInteract : MonoBehaviour
             outline.OutlineMode = Outline.Mode.OutlineAll;
             outline.OutlineColor = Color.blue;
             outline.OutlineWidth = 20f;
+            outline.enabled = true;
         }
         if(toggle == false)
         {
             outline = obj.GetComponent<Outline>();
-            Destroy(outline);
+            outline.enabled = false;
             // foreach (Material m in materials)
             // {
                 // m.DisableKeyword("_EMISSION");
