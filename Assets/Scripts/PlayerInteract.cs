@@ -36,10 +36,10 @@ public class PlayerInteract : MonoBehaviour
         if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UseLayers))
         {
             if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item")
-            || hit.collider.CompareTag("SanityPickUp")|| hit.collider.CompareTag("NPC"))
+            || hit.collider.CompareTag("SanityPickUp"))
             {
                 highlight(hit.collider.gameObject, true);
-                Debug.Log("highlighted"+hit.collider.gameObject.name);
+                // Debug.Log("highlighted"+hit.collider.gameObject.name);
                 lastObject = hit.collider.gameObject;
                 
             }
@@ -80,20 +80,6 @@ public class PlayerInteract : MonoBehaviour
                     door.Open(playerObj.transform.position);
                 }
             }
-
-            // for if it collides with a NPC
-            else if (hit.collider.TryGetComponent<NPCInteractable>(out NPCInteractable npc))
-        {
-            // If the OldLady component is found, call the Update method in the NPCInteractable script
-              
-            
-                     npc.Start(); // Assuming UpdateNPCInteraction() is the method in NPCInteractable for interaction
-                
-        }
-
-
-
-
             else if (hit.collider.TryGetComponent<ItemInfo>(out ItemInfo itemInfo))
             {
                 // Get the ItemInfo component from the hit object and interact with it
@@ -167,7 +153,7 @@ public class PlayerInteract : MonoBehaviour
                 m.SetColor("_EmissionColor", Color.gray);
                 m.SetFloat("_EmissionBrightness", 0.1f);
             }
-            Debug.Log("highlighted" + obj.name);
+            // Debug.Log("highlighted" + obj.name);
         }
         if(toggle == false)
         {
@@ -175,7 +161,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 m.DisableKeyword("_EMISSION");
             }
-            Debug.Log("unhighlighted" + obj.name);
+            // Debug.Log("unhighlighted" + obj.name);
         }
     }
 

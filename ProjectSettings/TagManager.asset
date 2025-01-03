@@ -13,7 +13,6 @@ TagManager:
   - KeyItem
   - AlwaysLocked
   - CanBeUnlocked
-  - NPC
   layers:
   - Default
   - TransparentFX

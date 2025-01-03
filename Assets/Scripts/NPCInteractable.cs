@@ -11,7 +11,7 @@ public class NPCInteractable : MonoBehaviour
 
     public int index = 0;  // Index to keep track of the current dialogue line
     
-    public void Start()
+    void Start()
     {
         textComponent.text = string.Empty;
         // StartDialogue();
