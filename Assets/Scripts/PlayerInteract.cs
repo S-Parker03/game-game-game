@@ -36,7 +36,7 @@ public class PlayerInteract : MonoBehaviour
         if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UseLayers))
         {
             if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item")
-            || hit.collider.CompareTag("SanityPickUp"))
+            || hit.collider.CompareTag("SanityPickUp") || hit.collider.CompareTag("NPC"))
             {
                 highlight(hit.collider.gameObject, true);
                 // Debug.Log("highlighted"+hit.collider.gameObject.name);
@@ -80,6 +80,16 @@ public class PlayerInteract : MonoBehaviour
                     door.Open(playerObj.transform.position);
                 }
             }
+
+            else if (hit.collider.TryGetComponent<NPCInteractable>(out NPCInteractable npc))
+            {
+                if (hit.collider != null)
+                {
+                    Debug.Log($"Hit object: {hit.collider.name}");
+                    npc.StartDialogue();
+                }
+            }
+
             else if (hit.collider.TryGetComponent<ItemInfo>(out ItemInfo itemInfo))
             {
                 // Get the ItemInfo component from the hit object and interact with it

@@ -1,4 +1,3 @@
-
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -9,62 +8,65 @@ public class NPCInteractable : MonoBehaviour
     public string[] lines; // Array to hold the lines of dialogue
     public float textSpeed; // Speed at which characters are typed out
 
-    public int index = 0;  // Index to keep track of the current dialogue line
-    
+    private int index = 0; // Index to keep track of the current dialogue line
+    private bool isDialogueActive = false; // Flag to check if dialogue has started
+    private bool isTyping = false; // Flag to check if typing is in progress
+
     void Start()
     {
         textComponent.text = string.Empty;
-        // StartDialogue();
-    }
-
-   
-    public void Update()
-    { //// Check for mouse button click (left mouse button)
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (textComponent.text == lines[index])
-            {
-                NextLine(); // Go to the next line of dialogue
-            }
-            else
-            {
-                StopAllCoroutines();
-                textComponent.text = lines[index];
-            }
-            
-        }
     }
 
     public void StartDialogue()
     {
-        Debug.Log("Interact!"); //for debugging
-        index = 0;
-        StartCoroutine(TypeLine()); // Start the typing coroutine
-
+        if (!isDialogueActive)
+        {
+            // Start dialogue if it hasn't started yet
+            Debug.Log("Interact!"); // For debugging
+            isDialogueActive = true;
+            index = 0;
+            textComponent.text = string.Empty;
+            StartCoroutine(TypeLine());
+        }
+        else if (!isTyping && index < lines.Length) 
+        {
+            // Continue to the next line if not typing and dialogue is active
+            NextLine();
+        }
     }
 
     IEnumerator TypeLine()
-    { // Type out each character of the current line
+    {
+        isTyping = true;
+        textComponent.text = string.Empty;
+
+        // Type out each character of the current line
         foreach (char c in lines[index].ToCharArray())
         {
-            textComponent.text += c;  // Append the character to the text component
-            yield return new WaitForSeconds(textSpeed); // Wait for  specified time before typing the next character
-            
+            textComponent.text += c; // Append the character to the text component
+            yield return new WaitForSeconds(textSpeed); // Wait for specified time before typing the next character
         }
+
+        isTyping = false;
     }
 
     public void NextLine()
-    { // Check if there are more lines to display
-        if (index < lines.Length -1)
+    {
+        if (index < lines.Length - 1)
         {
             index++;
-            textComponent.text = string.Empty; // Clear the text for the new line
-            StartCoroutine(TypeLine()); // Start typing the next line
+            StartCoroutine(TypeLine());
         }
         else
         {
-            gameObject.SetActive(false); // Deactivate the NPC object if there are no more lines
+            EndDialogue();
         }
     }
-}
 
+    private void EndDialogue()
+    {
+        isDialogueActive = false;
+        textComponent.text = string.Empty;
+        Debug.Log("Dialogue ended!");
+    }
+}
