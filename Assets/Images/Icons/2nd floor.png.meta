@@ -141,18 +141,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 2nd floor_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 28
+        width: 834
+        height: 863
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ce4269283d5d034b8c7ae51f880e32a
+      internalID: 1400856036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4c86f5d5345652943b48f69ddcb7625b
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      2nd floor_0: 1400856036
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

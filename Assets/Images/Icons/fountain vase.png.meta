@@ -141,18 +141,40 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: fountain vase_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 938
+        height: 938
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28febd87cdd159145aa6e56c96789a0c
+      internalID: 1809526470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1a350c8dce7301745903d4efc9e88678
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fountain vase_0: 1809526470
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -178,17 +178,17 @@ public class PlayerController : MonoBehaviour
     }
 
     //method to handle collision with healing items and key items
-    void OnTriggerEnter(Collider other) 
-    {
-        if(other.gameObject.tag == "SanityPickUp" && sanity < maxSanity){
-            //find Dependecy value and calculate dependency as a value netween 0 and 1
-            GameObject.Find("Player").GetComponent<Dependency>().changeDependency(10f);
-            float dependency = GameObject.Find("Player").GetComponent<Dependency>().DependencyPercent/100;
-            other.gameObject.SetActive(false);
-            //heal by 2*(1-dependency)
-            ChangeSanity((int)Math.Round(2*(1-dependency)));
-        }
-    }
+    // void OnTriggerEnter(Collider other) 
+    // {
+    //     if(other.gameObject.tag == "SanityPickUp" && sanity < maxSanity){
+    //         //find Dependecy value and calculate dependency as a value netween 0 and 1
+    //         GameObject.Find("Player").GetComponent<Dependency>().changeDependency(10f);
+    //         float dependency = GameObject.Find("Player").GetComponent<Dependency>().DependencyPercent/100;
+    //         other.gameObject.SetActive(false);
+    //         //heal by 2*(1-dependency)
+    //         ChangeSanity((int)Math.Round(2*(1-dependency)));
+    //     }
+    // }
 
     // change sanity value as enemies collide with player
     public void ChangeSanity(int value){

@@ -33,29 +33,25 @@ public class PlayerInteract : MonoBehaviour
     {
         Debug.DrawLine(cam4ray.position, cam4ray.position + cam4ray.forward * MaxUseDistance, Color.red);
         // code to highlight an interactable object (item, npc or door) when the player is in range
-        if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UseLayers))
+        if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance))
         {
-            if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item")
-            || hit.collider.CompareTag("SanityPickUp"))
-            {
-                highlight(hit.collider.gameObject, true);
-                // Debug.Log("highlighted"+hit.collider.gameObject.name);
-                lastObject = hit.collider.gameObject;
-                
-            }
-        }
-        else
-        {
-            try
+            if (lastObject != null && lastObject != hit.collider.gameObject)
             {
                 highlight(lastObject, false);
-            }
-            catch (Exception)
+            }    
+            if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item")
+            || hit.collider.CompareTag("SanityPickUp") || hit.collider.CompareTag("NPC")) 
             {
-                // Debug.Log("No object to unhighlight");
-            }
+                highlight(hit.collider.gameObject, true);
+                lastObject = hit.collider.gameObject;
+                // Debug.Log("highlighted"+hit.collider.gameObject.name);
                 
-        }    
+                
+            }
+
+            
+        }
+        
         
 
     }
@@ -137,30 +133,47 @@ public class PlayerInteract : MonoBehaviour
 
     public void highlight(GameObject obj, bool toggle)
     {
-        List<Material> materials = new List<Material>();
-        Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
+        Outline outline;
+        // List<Material> materials = new List<Material>();
+        // Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
         
-        foreach (Renderer r in renderers)
-        {
-            materials.AddRange(new List<Material>(r.materials));
-        }
+        // foreach (Renderer r in renderers)
+        // {
+        //     materials.AddRange(new List<Material>(r.materials));
+        // }
 
         if(toggle == true)
         {
-            foreach (Material m in materials)
-            {
-                m.EnableKeyword("_EMISSION");
-                m.SetColor("_EmissionColor", Color.gray);
-                m.SetFloat("_EmissionBrightness", 0.1f);
-            }
+            
+            // foreach (Material m in materials)
+            // {
+            //     m.EnableKeyword("_EMISSION");
+            //     m.SetColor("_EmissionColor", Color.gray);
+            //     m.SetFloat("_EmissionBrightness", 0.1f);
+            // }
             // Debug.Log("highlighted" + obj.name);
+            if (obj.GetComponent<Outline>() == null )
+            {
+                outline = obj.AddComponent<Outline>();
+            }
+            else
+            {
+                outline = obj.GetComponent<Outline>();
+            }
+
+            outline.OutlineMode = Outline.Mode.OutlineAll;
+            outline.OutlineColor = Color.blue;
+            outline.OutlineWidth = 20f;
         }
         if(toggle == false)
         {
-            foreach (Material m in materials)
-            {
-                m.DisableKeyword("_EMISSION");
-            }
+            outline = obj.GetComponent<Outline>();
+            Destroy(outline);
+            // foreach (Material m in materials)
+            // {
+                // m.DisableKeyword("_EMISSION");
+                
+            // }
             // Debug.Log("unhighlighted" + obj.name);
         }
     }
