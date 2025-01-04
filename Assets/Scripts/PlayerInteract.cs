@@ -162,7 +162,7 @@ public class PlayerInteract : MonoBehaviour
             }
 
             outline.OutlineMode = Outline.Mode.OutlineAll;
-            outline.OutlineColor = Color.blue;
+            outline.OutlineColor = new Color(175f / 255f, 0f, 0f);
             outline.OutlineWidth = 20f;
             outline.enabled = true;
         }

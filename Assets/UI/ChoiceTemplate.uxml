@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Dialogue.uss?fileID=7433441132597879392&amp;guid=3a0ac2c27256ace4a85c4b2b5bab61b0&amp;type=3#Dialogue" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:Label tabindex="-1" text="Make a choice" display-tooltip-when-elided="true" name="ChoiceText" style="color: rgb(255, 255, 255); font-size: 20px;" />
+        <ui:Button text="Choice A" display-tooltip-when-elided="true" name="Decision" class="Decision" style="background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); color: rgb(255, 255, 255); font-size: 16px;" />
+        <ui:Button text="Choice B" display-tooltip-when-elided="true" name="Decision" class="Decision" style="background-color: rgba(255, 255, 255, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); color: rgb(255, 255, 255); font-size: 16px;" />
+    </ui:VisualElement>
+</ui:UXML>

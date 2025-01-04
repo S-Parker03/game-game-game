@@ -1,0 +1,3 @@
+.Decision:hover {
+    text-color: rgb(125, 0, 0);
+}

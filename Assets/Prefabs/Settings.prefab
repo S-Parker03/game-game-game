@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2151770362460098381
+--- !u!1 &136908917781426002
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 667787173099629090}
-  - component: {fileID: 3418845878704624434}
-  - component: {fileID: 2032079982572310149}
-  m_Layer: 5
-  m_Name: Inventory
+  - component: {fileID: 3339076616559528442}
+  - component: {fileID: 7323917268089651050}
+  - component: {fileID: 7986912976001672021}
+  m_Layer: 0
+  m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &667787173099629090
+--- !u!4 &3339076616559528442
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151770362460098381}
+  m_GameObject: {fileID: 136908917781426002}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.859494, y: 2.7969997, z: -11.945707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3418845878704624434
+--- !u!114 &7323917268089651050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151770362460098381}
+  m_GameObject: {fileID: 136908917781426002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
@@ -47,20 +47,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 49ccd88336234814c8cce337629e98f2, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: e3d6b517f3554dd439cf2ecee418837a, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 23d28ecd29c8ceb4785b0f49786913c1, type: 3}
   m_SortingOrder: 0
---- !u!114 &2032079982572310149
+--- !u!114 &7986912976001672021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151770362460098381}
+  m_GameObject: {fileID: 136908917781426002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34116694a509b4747bd2cfb21fa06f40, type: 3}
+  m_Script: {fileID: 11500000, guid: bc5aa00b76c2af74ab7e5854e5a25e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Inventory: {fileID: 0}
-  currentPage: 0
-  guiNeedsUpdating: 0
+  settings: {fileID: 0}
+  settingsUI: {fileID: 0}
+  mainMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  volumePercent: 0
+  brightnessPercent: 0
+  torchRadiusPercent: 0
+  sensitivityPercent: 0
+  previousMenu: 
