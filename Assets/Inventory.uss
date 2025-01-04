@@ -129,25 +129,16 @@
     flex-grow: 1;
 }
 
-.slotContainer:hover {
-    border-color: rgb(125, 0, 0);
-    border-width: 5px;
-}
-
-.CloseButton:hover {
-    border-color: rgb(125, 0, 0);
-}
-
 .SettingsIcon:hover {
-    background-image: url('project://database/Assets/UI/Images/openEye.png?fileID=2800000&guid=d98940847ce09bd41baf51c0c401f191&type=3#openEye');
+    background-image: url('project://database/Assets/UI/Images/open-eye-glow.png');
 }
 
 .QuitIcon:hover {
-    background-image: url('project://database/Assets/UI/Images/exit2.png?fileID=2800000&guid=598606f92b03e2845a2ed38602514f03&type=3#exit2');
+    background-image: url('project://database/Assets/UI/Images/exit-glow.png');
 }
 
 .CloseIcon:hover {
-    background-image: url('project://database/Assets/UI/Images/x2.png');
+    background-image: url('project://database/Assets/UI/Images/x-glow.png');
 }
 
 .CloseButton {

@@ -84,6 +84,7 @@ public class SettingsManager : MonoBehaviour
         //Close Menu
         Button closeButton = settingsRoot.Q<Button>("CloseButton");
         closeButton.RegisterCallback<ClickEvent>(evt => {
+            Debug.Log("Close Button Clicked");
             settingsRoot.style.display = DisplayStyle.None;
             if (previousMenu == "MainMenu")
             {
@@ -98,17 +99,15 @@ public class SettingsManager : MonoBehaviour
         });
     }
 
-    void OnPause()
-    {
-        settingsRoot.style.display = DisplayStyle.None;
-        pauseMenu.GetComponent<InventoryController>().guiNeedsUpdating = true;
-        pauseMenu.SetActive(true);
-    }
 
     // Update is called once per frame
-    void Update()
+    void OnGUI()
     {
-        
+        if(settingsUI.rootVisualElement.style.display == DisplayStyle.None)
+        {
+            return;
+        }
+        settingsUI.rootVisualElement.style.display = DisplayStyle.Flex;
     }
 
     public void ApplySettings()
