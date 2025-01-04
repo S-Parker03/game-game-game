@@ -32,6 +32,15 @@ public class MenuController : MonoBehaviour
         
     }
 
+    void OnGUI()
+    {
+        if (mainMenu.rootVisualElement.style.display == DisplayStyle.Flex)
+        {
+            mainMenu.rootVisualElement.style.display = DisplayStyle.None;
+            mainMenu.rootVisualElement.style.display = DisplayStyle.Flex;
+        }
+    }
+
     public void OpenMenu(){
         Debug.Log("Menu Clicked");
         settings.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.None;
@@ -41,11 +50,13 @@ public class MenuController : MonoBehaviour
         Button quitGameButton = mainMenu.rootVisualElement.Q<Button>("QuitButton");
         startGameButton.RegisterCallback<ClickEvent>(StartGame);
         settingsButton.RegisterCallback<ClickEvent>(evt => {
+            Debug.Log("Settings Button Clicked");
             settings.GetComponent<SettingsManager>().previousMenu =  "MainMenu";
             settings.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
             mainMenu.rootVisualElement.style.display = DisplayStyle.None;
         });
         quitGameButton.RegisterCallback<ClickEvent>(evt => {
+            Debug.Log("Quit Button Clicked");
             Application.Quit();
         });
 
@@ -53,6 +64,7 @@ public class MenuController : MonoBehaviour
 
     private void StartGame(ClickEvent evt)
     {
+        Debug.Log("Start Button Clicked");
         mainMenu.rootVisualElement.style.display = DisplayStyle.None;
 
         player = GameObject.Find("Player");
