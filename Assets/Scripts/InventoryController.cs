@@ -100,7 +100,6 @@ public class InventoryController : MonoBehaviour
             });
             menuButton.RegisterCallback<ClickEvent>(evt => {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                
             });
             
 

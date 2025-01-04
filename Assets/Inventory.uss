@@ -134,20 +134,20 @@
     border-width: 5px;
 }
 
-.QuitButton:hover {
-    border-color: rgb(125, 0, 0);
-}
-
 .CloseButton:hover {
     border-color: rgb(125, 0, 0);
 }
 
-.SettingsButton:hover {
-    border-color: rgb(125, 0, 0);
+.SettingsIcon:hover {
+    background-image: url('project://database/Assets/UI/Images/openEye.png?fileID=2800000&guid=d98940847ce09bd41baf51c0c401f191&type=3#openEye');
 }
 
-.SettingsIcon:hover {
-    background-image: url('project://database/Assets/UI/Images/openEye.png');
+.QuitIcon:hover {
+    background-image: url('project://database/Assets/UI/Images/exit2.png?fileID=2800000&guid=598606f92b03e2845a2ed38602514f03&type=3#exit2');
+}
+
+.CloseIcon:hover {
+    background-image: url('project://database/Assets/UI/Images/x2.png');
 }
 
 .CloseButton {
@@ -230,5 +230,17 @@
 .SettingsIcon {
     flex-grow: 1;
     background-image: url('project://database/Assets/UI/Images/closed%20eye.png?fileID=2800000&guid=095c30c4457614e468f4dfa6288f47bc&type=3#closed eye');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.QuitIcon {
+    flex-grow: 1;
+    background-image: url('project://database/Assets/UI/Images/exit.png?fileID=2800000&guid=45c13d936dca62a4e8908fa929c7ef34&type=3#exit');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.CloseIcon {
+    flex-grow: 1;
+    background-image: url('project://database/Assets/UI/Images/x.png?fileID=2800000&guid=1c2f9354ee1619e4baa8eb8d37eef7f5&type=3#x');
     -unity-background-scale-mode: scale-to-fit;
 }
