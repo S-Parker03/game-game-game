@@ -60,7 +60,7 @@ public class PlayerInteract : MonoBehaviour
     public void OnUse()
     {
         // Use Raycast to detect how far away the player's front is from an object
-        if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UseLayers))
+        if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance))
         {
             Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
             // Get Door collider component and see if it's been hit

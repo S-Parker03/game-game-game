@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class Pause : MonoBehaviour
@@ -67,6 +68,8 @@ public class Pause : MonoBehaviour
         }
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<PlayerInteract>().enabled = false;
+        player.GetComponent<PlayerInput>().enabled = false;
         player.GetComponent<Dependency>().enabled = false;
         // enemy.GetComponent<EnemyController>().enabled = false;
         
@@ -82,6 +85,8 @@ public class Pause : MonoBehaviour
         
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         player.GetComponent<PlayerController>().enabled = true;
+        player.GetComponent<PlayerInteract>().enabled = true;
+        player.GetComponent<PlayerInput>().enabled = true;
         player.GetComponent<Dependency>().enabled = true;
         // enemy.GetComponent<EnemyController>().enabled = true;
         
