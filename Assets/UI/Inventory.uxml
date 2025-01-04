@@ -10,7 +10,7 @@
                 <ui:VisualElement name="SettingsIcon" class="SettingsIcon" />
             </ui:Button>
             <ui:Button display-tooltip-when-elided="true" name="QuitButton" class="QuitButton">
-                <ui:VisualElement name="QuitIcon" class="QuitIcon" />
+                <ui:VisualElement name="QuitIcon" class="QuitIcon" style="-unity-background-scale-mode: stretch-to-fill;" />
             </ui:Button>
             <ui:Button display-tooltip-when-elided="true" name="CloseButton" class="CloseButton">
                 <ui:VisualElement name="CloseIcon" class="CloseIcon" />
