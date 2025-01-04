@@ -62,3 +62,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory: {fileID: 0}
+  currentPage: 0
+  guiNeedsUpdating: 0

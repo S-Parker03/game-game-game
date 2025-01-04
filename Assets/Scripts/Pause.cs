@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
   
 
@@ -18,6 +19,10 @@ public class Pause : MonoBehaviour
     public GameObject UI;
 
     public GameObject HUD;
+
+    GameObject settings;
+
+    GameObject mainMenu;
 
     public bool paused;
 
@@ -32,7 +37,10 @@ public class Pause : MonoBehaviour
         playerControls.Enable();  // Enable the input controls
         paused = false;
         player = GameObject.Find("Player");
+        settings = GameObject.Find("Settings");
+        mainMenu = GameObject.Find("MainMenu");
         UI.SetActive(false);
+        
 
         // enemy = GameObject.Find("Monster");
 
@@ -72,16 +80,20 @@ public class Pause : MonoBehaviour
     {
         //check if the player presses the escape key, if they do pause or unpause the game
         if(!paused){
+            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
             pauseGame();
             UI.GetComponent<InventoryController>().guiNeedsUpdating = true;
             UI.SetActive(true);
-            
             paused = true;
+            }  
         }else if (paused){
-            resumeGame();
-            UI.SetActive(false);
-            
-            paused = false;
+            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
+                resumeGame();
+                UI.SetActive(false);
+                
+                paused = false;
+                
+            }
         }          
     }
     //function to pause the game
@@ -91,6 +103,8 @@ public class Pause : MonoBehaviour
         }
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<PlayerInteract>().enabled = false;
+        player.GetComponent<PlayerInput>().enabled = false;
         player.GetComponent<Dependency>().enabled = false;
         UnityEngine.Cursor.visible = true; // so the cursor is visible when the game is paused
 
@@ -108,6 +122,8 @@ public class Pause : MonoBehaviour
         
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         player.GetComponent<PlayerController>().enabled = true;
+        player.GetComponent<PlayerInteract>().enabled = true;
+        player.GetComponent<PlayerInput>().enabled = true;
         player.GetComponent<Dependency>().enabled = true;
         // enemy.GetComponent<EnemyController>().enabled = true;
         

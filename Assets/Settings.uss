@@ -1,0 +1,28 @@
+.unity-base-text-field {
+    width: 15%;
+    height: 50%;
+    -unity-text-align: middle-left;
+    justify-content: flex-start;
+    align-self: center;
+    color: rgb(125, 0, 0);
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    margin-top: 0;
+    background: none;
+    -unity-background-image-tint-color: rgba(27, 27, 27, 0);
+    -unity-font-definition: url('project://database/Assets/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=dadd9d90725de174fa57c6ab69cbebb6&type=3#NotInter-Regular');
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-slice-scale: 0;
+    opacity: 1;
+    display: flex;
+    visibility: visible;
+    overflow: visible;
+}
+
+.setting-slider {
+}
+
+.unity-base-slider__input {
+}

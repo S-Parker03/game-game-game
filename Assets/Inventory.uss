@@ -4,9 +4,12 @@
     justify-content: flex-start;
     border-top-width: 5px;
     flex-direction: row;
-    max-width: 1160px;
-    height: 100%;
-    max-height: 100%;
+    max-width: 100%;
+    height: 90%;
+    max-height: 90%;
+    width: 100%;
+    min-width: 100%;
+    min-height: 90%;
 }
 
 .inactive-page-button {
@@ -14,15 +17,15 @@
     width: 50%;
     max-height: 100%;
     height: 100%;
-    border-left-color: rgb(255, 197, 0);
-    border-right-color: rgb(255, 197, 0);
-    border-top-color: rgb(255, 197, 0);
-    border-bottom-color: rgb(255, 197, 0);
+    border-left-color: rgb(125, 0, 0);
+    border-right-color: rgb(125, 0, 0);
+    border-top-color: rgb(125, 0, 0);
+    border-bottom-color: rgb(125, 0, 0);
     border-top-width: 5px;
     border-right-width: 5px;
     border-bottom-width: 5px;
     border-left-width: 5px;
-    background-color: rgb(255, 197, 0);
+    background-color: rgb(125, 0, 0);
     margin-top: 0;
     margin-right: 0;
     margin-bottom: 0;
@@ -41,7 +44,7 @@
     align-self: flex-start;
     border-left-color: rgba(255, 197, 0, 0);
     border-right-color: rgba(255, 197, 0, 0);
-    border-top-color: rgb(255, 197, 0);
+    border-top-color: rgb(125, 0, 0);
     border-bottom-color: rgba(255, 197, 0, 0);
     max-height: 100%;
     border-top-width: 0;
@@ -60,9 +63,9 @@
     padding-left: 0;
     background-color: rgba(0, 0, 0, 0.54);
     align-self: flex-start;
-    border-left-color: rgb(255, 197, 0);
+    border-left-color: rgb(125, 0, 0);
     border-right-color: rgba(255, 197, 0, 0);
-    border-top-color: rgb(255, 197, 0);
+    border-top-color: rgb(125, 0, 0);
     border-bottom-color: rgba(255, 197, 0, 0);
     max-height: 100%;
     border-top-width: 5px;
@@ -76,15 +79,13 @@
     flex-direction: row;
     justify-content: space-around;
     border-bottom-width: 0;
-    border-bottom-color: rgb(255, 197, 0);
+    border-bottom-color: rgb(125, 0, 0);
     background-color: rgba(255, 197, 0, 0);
     align-items: auto;
 }
 
 .unity-scroller {
 }
-
-
 
 .Header {
     -unity-slice-scale: 0;
@@ -94,21 +95,17 @@
 
 .item-image {
     flex-grow: 1;
-    margin-top: 2%;
-    margin-right: 2%;
-    margin-bottom: 2%;
-    margin-left: 2%;
     align-self: center;
     border-top-width: 2px;
     border-right-width: 2px;
     border-bottom-width: 2px;
     border-left-width: 2px;
-    border-left-color: rgb(255, 197, 0);
-    border-right-color: rgb(255, 197, 0);
-    border-top-color: rgb(255, 197, 0);
-    border-bottom-color: rgb(255, 197, 0);
-    width: 150px;
-    height: 150px;
+    border-left-color: rgb(125, 0, 0);
+    border-right-color: rgb(125, 0, 0);
+    border-top-color: rgb(125, 0, 0);
+    border-bottom-color: rgb(125, 0, 0);
+    width: 128;
+    height: 128;
 }
 
 .slotContainer {
@@ -119,25 +116,131 @@
     border-right-color: rgb(48, 48, 48);
     border-top-color: rgb(48, 48, 48);
     border-bottom-color: rgb(48, 48, 48);
-    background-color: rgb(9, 19, 21);
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    background-color: rgb(0, 0, 0);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .slotIcon {
-    padding: 15px;
+    padding: 0;
     flex-shrink: 0;
     flex-grow: 1;
 }
 
-.slotContainer:hover{
-   border-color: rgb(255, 197, 0);
-   border-width: 5px;
+.slotContainer:hover {
+    border-color: rgb(125, 0, 0);
+    border-width: 5px;
 }
 
+.CloseButton:hover {
+    border-color: rgb(125, 0, 0);
+}
 
+.SettingsIcon:hover {
+    background-image: url('project://database/Assets/UI/Images/openEye.png?fileID=2800000&guid=d98940847ce09bd41baf51c0c401f191&type=3#openEye');
+}
 
+.QuitIcon:hover {
+    background-image: url('project://database/Assets/UI/Images/exit2.png?fileID=2800000&guid=598606f92b03e2845a2ed38602514f03&type=3#exit2');
+}
 
-    
+.CloseIcon:hover {
+    background-image: url('project://database/Assets/UI/Images/x2.png');
+}
+
+.CloseButton {
+    background-color: rgb(0, 0, 0);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    width: 33%;
+    max-width: 33%;
+    min-width: 30%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+    padding-left: 3%;
+    background-image: none;
+}
+
+.QuitButton {
+    background-color: rgb(0, 0, 0);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    width: 34%;
+    max-width: 34%;
+    min-width: 30%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+    padding-left: 3%;
+    background-image: none;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.SettingsButton {
+    background-color: rgb(0, 0, 0);
+    width: 33%;
+    height: 100%;
+    max-width: 33%;
+    min-width: 30%;
+    max-height: 100%;
+    min-height: 100%;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    background-image: none;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 3%;
+    padding-right: 3%;
+    padding-bottom: 3%;
+    padding-left: 3%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.SettingsIcon {
+    flex-grow: 1;
+    background-image: url('project://database/Assets/UI/Images/closed%20eye.png?fileID=2800000&guid=095c30c4457614e468f4dfa6288f47bc&type=3#closed eye');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.QuitIcon {
+    flex-grow: 1;
+    background-image: url('project://database/Assets/UI/Images/exit.png?fileID=2800000&guid=45c13d936dca62a4e8908fa929c7ef34&type=3#exit');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.CloseIcon {
+    flex-grow: 1;
+    background-image: url('project://database/Assets/UI/Images/x.png?fileID=2800000&guid=1c2f9354ee1619e4baa8eb8d37eef7f5&type=3#x');
+    -unity-background-scale-mode: scale-to-fit;
+}
