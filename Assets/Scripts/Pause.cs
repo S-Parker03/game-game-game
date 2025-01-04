@@ -17,6 +17,10 @@ public class Pause : MonoBehaviour
 
     public GameObject HUD;
 
+    GameObject settings;
+
+    GameObject mainMenu;
+
     public bool paused;
 
     public bool gameOver;
@@ -25,7 +29,10 @@ public class Pause : MonoBehaviour
     {
         paused = false;
         player = GameObject.Find("Player");
+        settings = GameObject.Find("Settings");
+        mainMenu = GameObject.Find("MainMenu");
         UI.SetActive(false);
+        
 
         // enemy = GameObject.Find("Monster");
     
@@ -37,16 +44,20 @@ public class Pause : MonoBehaviour
     {
         //check if the player presses the escape key, if they do pause or unpause the game
         if(!paused){
+            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
             pauseGame();
             UI.GetComponent<InventoryController>().guiNeedsUpdating = true;
             UI.SetActive(true);
-            
             paused = true;
+            }  
         }else if (paused){
-            resumeGame();
-            UI.SetActive(false);
-            
-            paused = false;
+            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
+                resumeGame();
+                UI.SetActive(false);
+                
+                paused = false;
+                
+            }
         }          
     }
     //function to pause the game

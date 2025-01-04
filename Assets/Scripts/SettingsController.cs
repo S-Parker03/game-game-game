@@ -98,9 +98,11 @@ public class SettingsManager : MonoBehaviour
         });
     }
 
-    void OnGUI()
+    void OnPause()
     {
-        
+        settingsRoot.style.display = DisplayStyle.None;
+        pauseMenu.GetComponent<InventoryController>().guiNeedsUpdating = true;
+        pauseMenu.SetActive(true);
     }
 
     // Update is called once per frame
