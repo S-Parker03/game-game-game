@@ -15,17 +15,32 @@ public class PlayerInteract : MonoBehaviour
         //Variables to do with Door Interactions\\
     public float MaxUseDistance = 20f;
     public LayerMask UseLayers;
+    // public LayerMask UILayers;
     RaycastHit hit;
     private GameObject playerObj;
 
     private GameObject lastObject = null;
+    private Pause pauseScript; // Reference to the Pause script
+
+
 
 
 
     void Start()
     {
+        
 
         playerObj = GameObject.FindGameObjectWithTag("Player");
+
+        pauseScript = GetComponent<Pause>(); // Get the Pause script attached to the same GameObject
+        if (pauseScript == null)
+        {
+            Debug.LogError("Pause script not found in the scene.");
+        }
+        else
+        {
+            Debug.Log("Pause Script is found");
+        }
 
     }
 
@@ -44,6 +59,16 @@ public class PlayerInteract : MonoBehaviour
                 
             }
         }
+        // else if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UILayers))
+        // {
+        //     if (hit.collider.CompareTag("NPC"))
+        //     {
+        //         highlight(hit.collider.gameObject, true);
+        //         // Debug.Log("highlighted"+hit.collider.gameObject.name);
+        //         lastObject = hit.collider.gameObject;
+                
+        //     }
+        // }
         else
         {
             try
@@ -63,6 +88,7 @@ public class PlayerInteract : MonoBehaviour
     // Method to use the binding set up in the "Use" action in the input system
     public void OnUse()
     {
+        
         // Use Raycast to detect how far away the player's front is from an object
         if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UseLayers))
         {
@@ -81,12 +107,16 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-            else if (hit.collider.TryGetComponent<NPCInteractable>(out NPCInteractable npc))
+            else if (hit.collider.TryGetComponent<UIDialogues>(out UIDialogues dialogue))
             {
                 if (hit.collider != null)
                 {
                     Debug.Log($"Hit object: {hit.collider.name}");
-                    npc.StartDialogue();
+                    pauseScript.pauseGame();
+                    // Debug.Log("The game is paused");
+                    dialogue.StartDialogue();
+
+                    // pauseScript.resumeGame();
                 }
             }
 
@@ -144,6 +174,32 @@ public class PlayerInteract : MonoBehaviour
             }
         }
     }
+
+    // public void OnInteract()
+    // {
+    // if (Input.GetMouseButtonDown(0)){
+
+    //     if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UILayers))
+    //     {
+    //         Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
+
+    //         // Check for UIDialogues component
+    //         if (hit.collider.TryGetComponent<UIDialogues>(out UIDialogues dialogue))
+    //         {
+    //             if (dialogue != null)
+    //             {
+    //                 Debug.Log($"Hit object: {hit.collider.name}");
+    //                 pauseScript.pauseGame();
+    //                 Debug.Log("The game is paused");
+    //                 // dialogue.StartDialogue();
+    //                 // Debug.Log("Started Dialogue via Mouse presss.");
+    //             }
+    //         }
+    //     }
+    // }
+
+    // }
+
 
     public void highlight(GameObject obj, bool toggle)
     {

@@ -7,6 +7,8 @@ using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
+  
+
 
 public class Pause : MonoBehaviour
 {
@@ -20,16 +22,49 @@ public class Pause : MonoBehaviour
     public bool paused;
 
     public bool gameOver;
+    public UIDialogues uiDialogues; // Reference to the UIDialogues script
+    public @PlayerActionControls playerControls; 
     // Start is called before the first frame update
     void Start()
     {
+        playerControls = new @PlayerActionControls();  // Initialize input controls
+        Debug.Log("player controls is initialised properly");
+        playerControls.Enable();  // Enable the input controls
         paused = false;
         player = GameObject.Find("Player");
         UI.SetActive(false);
 
         // enemy = GameObject.Find("Monster");
+
+        if (uiDialogues == null)
+        {
+            uiDialogues = FindObjectOfType<UIDialogues>();
+        }
+
+        if (uiDialogues == null)
+        {
+            Debug.LogError("UIDialogues is not assigned or found in the scene!");
+        }
     
         
+    }
+        void Update()
+    {
+        // Check for mouse press while the game is paused
+        if (paused==true && Input.GetMouseButtonDown(0)) {
+
+            if (uiDialogues != null)
+        {
+            uiDialogues.gameObject.SetActive(true);
+            uiDialogues.StartDialogue();
+            Debug.Log("Dialogue started");
+        }
+        else
+        {
+            Debug.LogError("uiDialogues is not assigned.");
+        }
+
+        }
     }
 
     // Update is called once per frame
@@ -57,6 +92,8 @@ public class Pause : MonoBehaviour
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<Dependency>().enabled = false;
+        UnityEngine.Cursor.visible = true; // so the cursor is visible when the game is paused
+
         // enemy.GetComponent<EnemyController>().enabled = false;
         
         

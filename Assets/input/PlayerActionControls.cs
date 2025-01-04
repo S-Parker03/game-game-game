@@ -107,6 +107,15 @@ public partial class @PlayerActionControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""203e16f2-d8d9-4a99-a75b-9ffc4b8c9196"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -393,6 +402,17 @@ public partial class @PlayerActionControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""LowerSanity"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61161777-1269-4585-9947-722ed1b7e237"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -989,6 +1009,7 @@ public partial class @PlayerActionControls: IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_KillYourSelf = m_Player.FindAction("KillYourSelf", throwIfNotFound: true);
         m_Player_LowerSanity = m_Player.FindAction("LowerSanity", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1071,6 +1092,7 @@ public partial class @PlayerActionControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_KillYourSelf;
     private readonly InputAction m_Player_LowerSanity;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @PlayerActionControls m_Wrapper;
@@ -1084,6 +1106,7 @@ public partial class @PlayerActionControls: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @KillYourSelf => m_Wrapper.m_Player_KillYourSelf;
         public InputAction @LowerSanity => m_Wrapper.m_Player_LowerSanity;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1120,6 +1143,9 @@ public partial class @PlayerActionControls: IInputActionCollection2, IDisposable
             @LowerSanity.started += instance.OnLowerSanity;
             @LowerSanity.performed += instance.OnLowerSanity;
             @LowerSanity.canceled += instance.OnLowerSanity;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1151,6 +1177,9 @@ public partial class @PlayerActionControls: IInputActionCollection2, IDisposable
             @LowerSanity.started -= instance.OnLowerSanity;
             @LowerSanity.performed -= instance.OnLowerSanity;
             @LowerSanity.canceled -= instance.OnLowerSanity;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1342,6 +1371,7 @@ public partial class @PlayerActionControls: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnKillYourSelf(InputAction.CallbackContext context);
         void OnLowerSanity(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
