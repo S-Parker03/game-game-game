@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour
     // finds player object and sets game over screen to false
         player = GameObject.FindGameObjectWithTag("Player");
         GameOver.SetActive(false);
-        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
         // player.SetActive(false);
         
         pause.pauseGame();
@@ -36,12 +37,13 @@ public class GameController : MonoBehaviour
 
     // function RestartGame to be triggered when restart button is clicked
     public void RestartGame() {
+        player = GameObject.FindGameObjectWithTag("Player");
         GameOver.SetActive(false);
         // resume function from pause script
         pause.resumeGame();
         //sets sanity to 5 to avoid being stuck in game over screen
         player.GetComponent<PlayerController>().ChangeSanity(5);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 
     }

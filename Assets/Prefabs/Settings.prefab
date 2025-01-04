@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3339076616559528442}
   - component: {fileID: 7323917268089651050}
+  - component: {fileID: 7986912976001672021}
   m_Layer: 0
   m_Name: Settings
   m_TagString: Untagged
@@ -48,3 +49,24 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 23d28ecd29c8ceb4785b0f49786913c1, type: 3}
   m_SortingOrder: 0
+--- !u!114 &7986912976001672021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136908917781426002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5aa00b76c2af74ab7e5854e5a25e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 0}
+  settingsUI: {fileID: 0}
+  mainMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  volumePercent: 0
+  brightnessPercent: 0
+  torchRadiusPercent: 0
+  sensitivityPercent: 0
+  previousMenu: 

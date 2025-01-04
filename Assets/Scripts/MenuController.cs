@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class MenuController : MonoBehaviour
         Button quitGameButton = mainMenu.rootVisualElement.Q<Button>("QuitButton");
         startGameButton.RegisterCallback<ClickEvent>(StartGame);
         settingsButton.RegisterCallback<ClickEvent>(evt => {
+            settings.GetComponent<SettingsManager>().previousMenu =  "MainMenu";
             settings.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
             mainMenu.rootVisualElement.style.display = DisplayStyle.None;
         });
@@ -51,12 +53,14 @@ public class MenuController : MonoBehaviour
 
     private void StartGame(ClickEvent evt)
     {
+        mainMenu.rootVisualElement.style.display = DisplayStyle.None;
+
         player = GameObject.Find("Player");
         pause = player.GetComponent<Pause>();
         mainMenu = GetComponent<UIDocument>();
-        pause.resumeGame();
-        mainMenu.rootVisualElement.style.display = DisplayStyle.None;
+        
         settings.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.None;
+        pause.resumeGame();
     }
 
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using ItemType = ItemInfo.ItemType;
+using UnityEngine.SceneManagement;
 
 public class InventoryController : MonoBehaviour
 {
@@ -93,12 +94,13 @@ public class InventoryController : MonoBehaviour
             });
             settingsButton.RegisterCallback<ClickEvent>(evt => {
                 Debug.Log("settings clicked");
+                settingsObj.GetComponent<SettingsManager>().previousMenu =  "Inventory";
                 settingsObj.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
                 inventoryObject.SetActive(false);
             });
             menuButton.RegisterCallback<ClickEvent>(evt => {
-                inventoryObject.SetActive(false);
-                menuObj.GetComponent<MenuController>().OpenMenu();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                
             });
             
 
