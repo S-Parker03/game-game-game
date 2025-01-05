@@ -1,0 +1,39 @@
+.EndingImage {
+    flex-grow: 1;
+    width: 50%;
+    min-width: auto;
+    min-height: auto;
+    background-image: url('project://database/Assets/UI/Images/Bad%20Ending%20Screen.png?fileID=2800000&guid=195285a35d166a741b2c9e74ceff7a33&type=3#Bad Ending Screen');
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column-reverse;
+}
+
+.MenuButton {
+    flex-direction: column;
+    justify-content: flex-start;
+    background-image: url('project://database/Assets/UI/Images/exit.png?fileID=2800000&guid=45c13d936dca62a4e8908fa929c7ef34&type=3#exit');
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: rgba(188, 188, 188, 0);
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 15%;
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    min-width: 40%;
+}
+
+.MenuButton:hover {
+    background-image: url('project://database/Assets/UI/Images/exit-glow.png?fileID=2800000&guid=f9f47cf30b3841244a86c177c4ec699d&type=3#exit-glow');
+    --unity-background-scale-mode: stretch-to-fill;
+    -unity-background-scale-mode: stretch-to-fill;
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 30%;
+    margin-left: 30%;
+    width: 40%;
+    max-width: none;
+}

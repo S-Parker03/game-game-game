@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/GameEnd.uss?fileID=7433441132597879392&amp;guid=5c1fdea3a6261ac428a14fe810352254&amp;type=3#GameEnd" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; width: 100%; height: 100%; background-image: none; -unity-background-scale-mode: scale-to-fit; background-color: rgba(0, 0, 0, 0.59);">
+        <ui:VisualElement name="EndingImage" class="EndingImage" style="background-image: url(&apos;project://database/Assets/UI/Images/Neutral-Ending.png?fileID=2800000&amp;guid=f0916d1cb4641994496a80c2829ce765&amp;type=3#Neutral-Ending&apos;);">
+            <ui:Button text="Button" display-tooltip-when-elided="true" name="MenuButton" class="MenuButton" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
