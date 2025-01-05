@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
                             if(agent.speed < 1){
                                 agent.speed = 6;
                                 agent.acceleration = 8;
-                                agent.angularSpeed = 120;
+                                agent.angularSpeed = 10;
                             }
                         }
                     }
@@ -132,7 +132,11 @@ public class EnemyController : MonoBehaviour
         if (style == AttackStyle.KickOut){
             player.GetComponent<PlayerController>().ChangeSanity(-1);
             player.transform.position = new Vector3(0.0478f, 0.71122f, -5.641247f);
+            agent.speed = 0.75f;
+            agent.acceleration = 0.75f;
+            agent.angularSpeed = 1;
             Mode = "Patrol";
+            agent.SetDestination(patrolPoints[1]);
         }
         else if(style == AttackStyle.Hurt){
             player.GetComponent<PlayerController>().ChangeSanity(-1);
