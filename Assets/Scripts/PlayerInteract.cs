@@ -16,36 +16,39 @@ public class PlayerInteract : MonoBehaviour
         //Variables to do with Door Interactions\\
     public float MaxUseDistance = 20f;
     public LayerMask UseLayers;
-    // public LayerMask UILayers;
     RaycastHit hit;
     private GameObject playerObj;
 
     private GameObject lastObject = null;
-    private Pause pauseScript; // Reference to the Pause script
-
-
 
     [SerializeField]private AudioClip SanityPickUpSound;
 
     [SerializeField]private AudioClip ItemPickUpSound;
 
+    private Pause pauseScript; // Reference to the Pause script
 
+    private DialogueManager dialogueManager; // Reference to the DialogueManager script
+
+    [SerializeField] private TextAsset OldLadyInkJson;// The ink file to load
+    [SerializeField] private TextAsset VaseGuyInkJson;// The ink file to load
+    [SerializeField] private TextAsset CreepyGuyInkJson;// The ink file to load
+    [SerializeField] private TextAsset YellowKingInkJson;// The ink file to load
+    [SerializeField] private TextAsset AngelGhostInkJson;// The ink file to load
+    [SerializeField] private TextAsset FountainInkJson;// The ink file to load
 
     void Start()
     {
-        
 
         playerObj = GameObject.FindGameObjectWithTag("Player");
 
-        pauseScript = GetComponent<Pause>(); // Get the Pause script attached to the same GameObject
+        pauseScript = UnityEngine.Object.FindFirstObjectByType<Pause>();
+
         if (pauseScript == null)
         {
             Debug.LogError("Pause script not found in the scene.");
         }
-        else
-        {
-            Debug.Log("Pause Script is found");
-        }
+
+
 
     }
 
@@ -79,10 +82,10 @@ public class PlayerInteract : MonoBehaviour
     // Method to use the binding set up in the "Use" action in the input system
     public void OnUse()
     {
-        
         // Use Raycast to detect how far away the player's front is from an object
         if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance))
         {
+            Debug.Log("Raycast hit: " + hit.collider.name);
             Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
             // Get Door collider component and see if it's been hit
             if (hit.collider.TryGetComponent<Door>(out Door door))
@@ -98,18 +101,69 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-            else if (hit.collider.TryGetComponent<UIDialogues>(out UIDialogues dialogue))
-            {
-                if (hit.collider != null)
-                {
-                    Debug.Log($"Hit object: {hit.collider.name}");
-                    pauseScript.pauseGame();
-                    // Debug.Log("The game is paused");
-                    dialogue.StartDialogue();
+           else if (hit.collider.CompareTag("NPC"))
+{
+    Debug.Log("NPC detected: " + hit.collider.gameObject.name);
 
-                    // pauseScript.resumeGame();
+    if (pauseScript != null)
+    {
+        pauseScript.pauseGame();
+
+        // Call StartDialogue from the singleton DialogueManager with the NPC's specific Ink JSON
+        if (DialogueManager.instance != null)
+        {
+           string npcName = hit.collider.gameObject.name;
+           Debug.Log("NPC name: " + npcName);
+
+                        if (npcName == "old lady")
+                        {
+                            DialogueManager.instance.StartDialogue(OldLadyInkJson);
+                        }
+                        else if (npcName == "VaseGuy")
+                        {
+                            DialogueManager.instance.StartDialogue(VaseGuyInkJson);
+                        }
+                        else if (npcName == "CreepyGuy")
+                        {
+                            DialogueManager.instance.StartDialogue(CreepyGuyInkJson);
+                        }
+                        else if (npcName == "YellowKing")
+                        {
+                            DialogueManager.instance.StartDialogue(YellowKingInkJson);
+                        }
+                        else if (npcName == "AngelGhost")
+                        {
+                            DialogueManager.instance.StartDialogue(AngelGhostInkJson);
+                        }
+                        else if (npcName == "Fountain")
+                        {
+                            DialogueManager.instance.StartDialogue(FountainInkJson);
+                        }
+                        else if (npcName == "VaseGuy")
+                        {
+                            DialogueManager.instance.StartDialogue(VaseGuyInkJson);
+                        }
+                        // Add more else if statements for other NPCs
+                        else
+                        {
+                            Debug.LogError("No Ink JSON assigned for this NPC.");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("DialogueManager instance is not assigned.");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Pause script is not assigned.");
                 }
             }
+            
+
+           
+
+
 
             else if (hit.collider.TryGetComponent<ItemInfo>(out ItemInfo itemInfo))
             {
@@ -152,7 +206,7 @@ public class PlayerInteract : MonoBehaviour
                         if (playerObj.GetComponent<Dependency>().DependencyPercent < 50)
                         {
                             playerObj.GetComponent<PlayerController>().ChangeSanity(1);
-                            playerObj.GetComponent<Dependency>().changeDependency(20f);
+                            playerObj.GetComponent<Dependency>().changeDependency(10f);
                             SoundManager.instance.PlaySanityPickUpClip(SanityPickUpSound, transform, 1f); // sound for sanity pickup
                             Destroy(hit.collider.gameObject);
                         }
@@ -170,32 +224,6 @@ public class PlayerInteract : MonoBehaviour
             }
         }
     }
-
-    // public void OnInteract()
-    // {
-    // if (Input.GetMouseButtonDown(0)){
-
-    //     if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance, UILayers))
-    //     {
-    //         Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
-
-    //         // Check for UIDialogues component
-    //         if (hit.collider.TryGetComponent<UIDialogues>(out UIDialogues dialogue))
-    //         {
-    //             if (dialogue != null)
-    //             {
-    //                 Debug.Log($"Hit object: {hit.collider.name}");
-    //                 pauseScript.pauseGame();
-    //                 Debug.Log("The game is paused");
-    //                 // dialogue.StartDialogue();
-    //                 // Debug.Log("Started Dialogue via Mouse presss.");
-    //             }
-    //         }
-    //     }
-    // }
-
-    // }
-
 
     public void highlight(GameObject obj, bool toggle)
     {
@@ -245,5 +273,6 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-
 }
+
+ 
