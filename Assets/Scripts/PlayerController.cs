@@ -170,6 +170,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void Update(){
+        //multiply torch radius and sensitivity by their percentages from settings controller
+        Light torch = GameObject.Find("Torch").GetComponent<Light>();
+        Light torchAmbience = GameObject.Find("Torch Ambience").GetComponent<Light>();
+        SettingsManager settings = GameObject.Find("Settings").GetComponent<SettingsManager>();
+        float spotAngleMult = settings.torchRadiusPercent/100.0f;
+        torch.spotAngle = 160.0f * spotAngleMult;
+        torchAmbience.spotAngle = 250.0f * spotAngleMult;
+        sensitivity = settings.sensitivityPercent/200.0f + 0.05f;
+
+        AdjustBrightness(settings.brightnessPercent / 400.0f);
+        
+    }
+    //function to adjust brightness of the game
+    public void AdjustBrightness(float brightness){
+        RenderSettings.ambientLight = new Color(brightness, brightness, brightness, 1.0f);
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Grounded")

@@ -26,7 +26,7 @@ public class SettingsManager : MonoBehaviour
     {
         sensitivityPercent = 50;
         volumePercent = 50;
-        brightnessPercent = 50;
+        brightnessPercent = 0;
         torchRadiusPercent = 50;
 
         settings = GameObject.Find("Settings");

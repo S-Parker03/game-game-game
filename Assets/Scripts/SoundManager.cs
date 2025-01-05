@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Palmmedia.ReportGenerator.Core;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SoundManager : MonoBehaviour
 {
     // using the singleton - so there is now going to be only 1 sound manager in the entire game
     // public instance so other scripts can access it 
     public static SoundManager instance;
+
+    public float volumeMultiplier = 1f;
 
     // gameObject that has the audio clips (better than directly giving a audioSource to the sound manager)
     // for each sound effect, a game object is created and the audio clip is assgined to it
@@ -41,6 +45,15 @@ public class SoundManager : MonoBehaviour
             instance = this;
             Debug.Log("SoundManager instance intiated");
         }
+
+        
+    }
+
+    void Update()
+    {
+        SettingsManager settings = GameObject.Find("Settings").GetComponent<SettingsManager>();
+        // testing the sound manager
+        volumeMultiplier = settings.volumePercent / 100.0f;
     }
 
     // function to play the sound of the door opening
@@ -65,7 +78,7 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = audioClip;
 
         // assign volume to it
-        audioSource.volume = volume;
+        audioSource.volume = volume*volumeMultiplier;
 
         // play sound
         audioSource.Play();
@@ -86,7 +99,7 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource audioSource = Instantiate(SoundDoorCloseObject, spawnTransform.position,Quaternion.identity);
         audioSource.clip = audioClip;
-        audioSource.volume = volume;
+        audioSource.volume = volume*volumeMultiplier;
         audioSource.Play();
         float clipLength =audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
@@ -97,7 +110,7 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource audioSource = Instantiate(SoundFootstepsObject, spawnTransform.position,Quaternion.identity);
         audioSource.clip = audioClip;
-        audioSource.volume = volume;
+        audioSource.volume = volume*volumeMultiplier;
         if (!audioSource.isPlaying)
         { 
             audioSource.Play();
@@ -110,7 +123,7 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource audioSource = Instantiate(SoundSanityPickUpObject, spawnTransform.position,Quaternion.identity);
         audioSource.clip = audioClip;
-        audioSource.volume = volume;
+        audioSource.volume = volume*volumeMultiplier;
         audioSource.Play();
         float clipLength =audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
@@ -120,7 +133,7 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource audioSource = Instantiate(SoundItemPickUpObject, spawnTransform.position,Quaternion.identity);
         audioSource.clip = audioClip;
-        audioSource.volume = volume;
+        audioSource.volume = volume*volumeMultiplier;
         audioSource.Play();
         float clipLength =audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
@@ -130,7 +143,7 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource audioSource = Instantiate(SoundDamageObject, spawnTransform.position,Quaternion.identity);
         audioSource.clip = audioClip;
-        audioSource.volume = volume;
+        audioSource.volume = volume*volumeMultiplier;
         audioSource.Play();
         float clipLength =audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
