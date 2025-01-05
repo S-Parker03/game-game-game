@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6288723753823167204
 Transform:
   m_ObjectHideFlags: 0
@@ -276,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5577536199396779167
 Transform:
   m_ObjectHideFlags: 0
@@ -704,6 +704,8 @@ MonoBehaviour:
   cam: {fileID: 6475089998833604221}
   mouseRotate: {x: 0, y: 0}
   jumpForce: 10
+  FootstepsSound: {fileID: 8300000, guid: 2edca0320c87273468ae728cd76f8e10, type: 3}
+  DamageSound: {fileID: 8300000, guid: 865c099f4715ead4b889370aaa467429, type: 3}
 --- !u!114 &7843257410242430209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +735,8 @@ MonoBehaviour:
   UseLayers:
     serializedVersion: 2
     m_Bits: 64
+  SanityPickUpSound: {fileID: 8300000, guid: a6d47aab4838b7f45acd80919764490b, type: 3}
+  ItemPickUpSound: {fileID: 8300000, guid: 1b2bf157223051944b775813ce4b6b83, type: 3}
 --- !u!114 &7985136516806147276
 MonoBehaviour:
   m_ObjectHideFlags: 0

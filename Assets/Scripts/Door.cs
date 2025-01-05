@@ -29,6 +29,7 @@ public class Door : MonoBehaviour
     // private float DelayOpening=0;
     [SerializeField]private AudioClip doorCloseSound;
     // private float DelayClosing=0;
+    
 
     // Awake is called when the script instance is being loaded
     private void Awake()

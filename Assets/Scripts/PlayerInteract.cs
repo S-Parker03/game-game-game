@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 
+
 // class for checking if the NPC is in range of the player and if key E is pressed
 public class PlayerInteract : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class PlayerInteract : MonoBehaviour
     private Pause pauseScript; // Reference to the Pause script
 
 
+
+    [SerializeField]private AudioClip SanityPickUpSound;
+
+    [SerializeField]private AudioClip ItemPickUpSound;
 
 
 
@@ -111,6 +116,9 @@ public class PlayerInteract : MonoBehaviour
                 // Get the ItemInfo component from the hit object and interact with it
                 if (itemInfo != null)
                 {
+                    //sound for item pickup
+                    SoundManager.instance.PlayItemPickUpClip(ItemPickUpSound, transform, 1f);
+
                     GameObject player = GameObject.FindGameObjectWithTag("Player");
                     GameObject inventoryUI = GameObject.Find("Inventory");
                     if (player != null)
@@ -138,12 +146,14 @@ public class PlayerInteract : MonoBehaviour
             else if (hit.collider.CompareTag("SanityPickUp")){
                 if (playerObj != null)
                 {
+
                     if (playerObj.GetComponent<PlayerController>().Sanity < 5)
                     {
                         if (playerObj.GetComponent<Dependency>().DependencyPercent < 50)
                         {
                             playerObj.GetComponent<PlayerController>().ChangeSanity(1);
-                            playerObj.GetComponent<Dependency>().changeDependency(10f);
+                            playerObj.GetComponent<Dependency>().changeDependency(20f);
+                            SoundManager.instance.PlaySanityPickUpClip(SanityPickUpSound, transform, 1f); // sound for sanity pickup
                             Destroy(hit.collider.gameObject);
                         }
                         else

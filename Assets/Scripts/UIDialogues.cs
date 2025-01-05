@@ -14,100 +14,102 @@ public class UIDialogues : MonoBehaviour
     private bool isDialogueActive = false; // Flag to check if dialogue has started
     private bool isTyping = false; // Flag to check if typing is in progress
 
-    private Pause pauseScript;
+    public Pause pauseScript;
     private VisualElement root;
 
-    private GameObject playerObj;
+//     GameObject player;
 
-    void Start()
-    {
-        var root = DialogueBox.rootVisualElement;
+//     void Start()
+//     {
+//         player = GameObject.FindGameObjectWithTag("Player");
+//         var root = DialogueBox.rootVisualElement;
     
-    if (root == null)
-    {
-        Debug.LogError("Root VisualElement is null. Make sure the UIDocument is properly assigned.");
-        return;
-    }
+//     if (root == null)
+//     {
+//         Debug.LogError("Root VisualElement is null. Make sure the UIDocument is properly assigned.");
+//         return;
+//     }
 
-    // Find the Label by its name (ensure the name in the UI Builder is correct)
-    DialogueLabel = root.Q<Label>("DialogueLabel");
+//     // Find the Label by its name (ensure the name in the UI Builder is correct)
+//     DialogueLabel = root.Q<Label>("DialogueLabel");
 
-    if (DialogueLabel == null)
-    {
-        Debug.LogError("DialogueLabel not found. Check the UI Builder for the correct name.");
-    }
-    else
-    {
-        DialogueLabel.text = string.Empty; // Ensure the label starts empty
-        Debug.Log("Both root Visual element and rootvisual element were found");
-    }
+//     if (DialogueLabel == null)
+//     {
+//         Debug.LogError("DialogueLabel not found. Check the UI Builder for the correct name.");
+//     }
+//     else
+//     {
+//         DialogueLabel.text = string.Empty; // Ensure the label starts empty
+//         Debug.Log("Both root Visual element and rootvisual element were found");
+//     }
 
-    playerObj = GameObject.FindGameObjectWithTag("Player");
+//     playerObj = GameObject.FindGameObjectWithTag("Player");
 
-    // Pause pauseScript = FindObjectOfType<Pause>(); 
-    pauseScript = GetComponent<Pause>(); // Get the Pause script attached to the same GameObject
-        if (pauseScript == null)
-        {
-            Debug.LogError("Pause script not found in the scene.");
-        }
-        else
-        {
-            Debug.Log("Pause Script is found");
-        }
-    }
+//     // Pause pauseScript = FindObjectOfType<Pause>(); 
+//     // pauseScript = GetComponent<Pause>(); // Get the Pause script attached to the same GameObject
+//     //     if (pauseScript == null)
+//     //     {
+//     //         Debug.LogError("Pause script not found in the scene.");
+//     //     }
+//     //     else
+//     //     {
+//     //         Debug.Log("Pause Script is found");
+//     //     }
+//     // }
 
-    public void StartDialogue()
-    {
+//     void StartDialogue()
+//     {
         
-        if (!isDialogueActive)
-        {
-            // Start dialogue if it hasn't started yet
-            Debug.Log("Interact!"); // For debugging
-            isDialogueActive = true;
-            index = 0;
-            DialogueLabel.text = string.Empty;
-            StartCoroutine(TypeLine());
-        }
-        else if (!isTyping && index < lines.Length)
-        {
-            // Continue to the next line if not typing and dialogue is active
-            NextLine();
-        }
-    }
+//         if (!isDialogueActive)
+//         {
+//             // Start dialogue if it hasn't started yet
+//             Debug.Log("Interact!"); // For debugging
+//             isDialogueActive = true;
+//             index = 0;
+//             DialogueLabel.text = string.Empty;
+//             StartCoroutine(TypeLine());
+//         }
+//         else if (!isTyping && index < lines.Length)
+//         {
+//             // Continue to the next line if not typing and dialogue is active
+//             NextLine();
+//         }
+//     }
 
-    IEnumerator TypeLine()
-    {
-        isTyping = true;
-        DialogueLabel.text = string.Empty;
+//     IEnumerator TypeLine()
+//     {
+//         isTyping = true;
+//         DialogueLabel.text = string.Empty;
 
-        // Type out each character of the current line
-        foreach (char c in lines[index].ToCharArray())
-        {
-            DialogueLabel.text += c; // Append the character to the Label text
-            yield return new WaitForSecondsRealtime(textSpeed); // Wait for specified time before typing the next character
-        }
+//         // Type out each character of the current line
+//         foreach (char c in lines[index].ToCharArray())
+//         {
+//             DialogueLabel.text += c; // Append the character to the Label text
+//             yield return new WaitForSecondsRealtime(textSpeed); // Wait for specified time before typing the next character
+//         }
 
-        isTyping = false;
-    }
+//         isTyping = false;
+//     }
 
-    public void NextLine()
-    {
-        if (index < lines.Length - 1)
-        {
-            index++;
-            StartCoroutine(TypeLine());
-        }
-        else
-        {
-            EndDialogue();
-        }
-    }
+//     void NextLine()
+//     {
+//         if (index < lines.Length - 1)
+//         {
+//             index++;
+//             StartCoroutine(TypeLine());
+//         }
+//         else
+//         {
+//             EndDialogue();
+//         }
+//     }
 
-    private void EndDialogue()
-    {
-        isDialogueActive = false;
-        DialogueLabel.text = string.Empty;
-        Debug.Log("Dialogue ended!");
-        pauseScript.resumeGame();
-    }
+//     void EndDialogue()
+//     {
+//         isDialogueActive = false;
+//         DialogueLabel.text = string.Empty;
+//         Debug.Log("Dialogue ended!");
+//         // pauseScript.resumeGame();
+//     }
+// }
 }

@@ -24,6 +24,10 @@ public class Pause : MonoBehaviour
 
     GameObject mainMenu;
 
+    public GameObject dependencySlider;
+
+    public GameObject sanityDial;
+
     public bool paused;
 
     public bool gameOver;
@@ -40,8 +44,8 @@ public class Pause : MonoBehaviour
         settings = GameObject.Find("Settings");
         mainMenu = GameObject.Find("MainMenu");
         UI.SetActive(false);
-        
-
+        dependencySlider.SetActive(false);
+        sanityDial.SetActive(false);
         // enemy = GameObject.Find("Monster");
 
         if (uiDialogues == null)
@@ -125,6 +129,8 @@ public class Pause : MonoBehaviour
         player.GetComponent<PlayerInteract>().enabled = true;
         player.GetComponent<PlayerInput>().enabled = true;
         player.GetComponent<Dependency>().enabled = true;
+        dependencySlider.SetActive(true);
+        sanityDial.SetActive(true);
         // enemy.GetComponent<EnemyController>().enabled = true;
         
         Time.timeScale = 1;

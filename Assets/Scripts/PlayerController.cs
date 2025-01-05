@@ -7,6 +7,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
+using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +19,11 @@ public class PlayerController : MonoBehaviour
     private int sanity;
     int maxSanity = 5;
     public int Sanity => sanity;
+
+    public Slider sanitySlider;
+
+    PostProcessVolume volume;
+
     //----------------------------\\
 
     // Variables for character movement \\
@@ -58,6 +66,10 @@ public class PlayerController : MonoBehaviour
 
     // Pick up variables
 
+    //variables for sound 
+    [SerializeField] private AudioClip FootstepsSound;
+    [SerializeField] private AudioClip DamageSound;
+
     //run once at start
     void Awake()
     {
@@ -83,6 +95,7 @@ public class PlayerController : MonoBehaviour
         
 
         playerbody = gameObject.GetComponent<Rigidbody>();
+        volume = cam.GetComponent<PostProcessVolume>();
 
         // playerCollider = GameObject.FindGameObjectWithTag("GroundCollider");
     }
@@ -113,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue value) {
         moveValue = value.Get<Vector2>();
+        SoundManager.instance.PlayFootstepsClip(FootstepsSound, transform, 1f);
     }
 
     void OnLook(InputValue value) {
@@ -162,7 +176,27 @@ public class PlayerController : MonoBehaviour
             playerbody.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
             isGrounded = false;
         }
+        sanitySlider.value = Sanity;
+        SanityEffects();
 
+    }
+
+    void Update(){
+        //multiply torch radius and sensitivity by their percentages from settings controller
+        Light torch = GameObject.Find("Torch").GetComponent<Light>();
+        Light torchAmbience = GameObject.Find("Torch Ambience").GetComponent<Light>();
+        SettingsManager settings = GameObject.Find("Settings").GetComponent<SettingsManager>();
+        float spotAngleMult = settings.torchRadiusPercent/100.0f;
+        torch.spotAngle = 160.0f * spotAngleMult;
+        torchAmbience.spotAngle = 250.0f * spotAngleMult;
+        sensitivity = settings.sensitivityPercent/200.0f + 0.05f;
+
+        AdjustBrightness(settings.brightnessPercent / 400.0f);
+        
+    }
+    //function to adjust brightness of the game
+    public void AdjustBrightness(float brightness){
+        RenderSettings.ambientLight = new Color(brightness, brightness, brightness, 1.0f);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -202,7 +236,23 @@ public class PlayerController : MonoBehaviour
 
     void OnLowerSanity(){
         ChangeSanity(-1);
+        // sound for damage
+        SoundManager.instance.PlayDamageClip(DamageSound, transform, 1f);
     }
+    
+    // Sanity camera effects
+    void SanityEffects(){
+        if (volume.profile.TryGetSettings<Vignette>(out Vignette vignette))
+        {
+            float effects_value = Sanity;
 
+            // (hue - min1)/(max1 - min1)
+            effects_value = (effects_value - 0) / (5 - 0);
+            // hue * (max2 - min 2) + min2
+            effects_value = effects_value * (0 - 1) + 1;
+            vignette.intensity.value = effects_value;
+            vignette.smoothness.value = effects_value;
+        }
+    }
 
 }
