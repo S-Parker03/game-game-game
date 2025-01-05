@@ -38,3 +38,5 @@ PlayerController.cs - script - Adapted parts of camera rotation and angle clampi
 Complete darkness for camera - https://www.youtube.com/watch?v=MDwVMaJ4mFc&t=50s 
 Laudanum label: https://cantonasylumforinsaneindians.com/history_blog/tag/laudanum/
 
+old wedding photo : https://pixabay.com/photos/photography-old-photo-taking-photos-1503121/
+
