@@ -1005,9 +1005,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5579488765015726137}
+  - component: {fileID: 2635068456908301277}
   m_Layer: 0
   m_Name: Newspaper
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1046,6 +1047,25 @@ Transform:
   - {fileID: 2264412373980034255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2635068456908301277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5902196846680219191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: 
+  itemDescription: 
+  itemImage: {fileID: 21300000, guid: f808fed0feb1eed44a779df1797ab186, type: 3}
+  itemType: 0
+  itemID: 
+  pickupObject: {fileID: 0}
 --- !u!1 &6446466470990196978
 GameObject:
   m_ObjectHideFlags: 0
