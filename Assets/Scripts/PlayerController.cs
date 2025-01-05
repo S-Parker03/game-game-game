@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour
 
     // Pick up variables
 
+    //variables for sound 
+    [SerializeField] private AudioClip FootstepsSound;
+    [SerializeField] private AudioClip DamageSound;
+
     //run once at start
     void Awake()
     {
@@ -113,6 +117,7 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue value) {
         moveValue = value.Get<Vector2>();
+        SoundManager.instance.PlayFootstepsClip(FootstepsSound, transform, 1f);
     }
 
     void OnLook(InputValue value) {
@@ -202,6 +207,8 @@ public class PlayerController : MonoBehaviour
 
     void OnLowerSanity(){
         ChangeSanity(-1);
+        // sound for damage
+        SoundManager.instance.PlayDamageClip(DamageSound, transform, 1f);
     }
 
 

@@ -15,6 +15,16 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource SoundDoorOpenObject;
     [SerializeField] private AudioSource SoundDoorCloseObject;
 
+    [SerializeField] private AudioSource SoundFootstepsObject;
+
+    [SerializeField] private AudioSource SoundBeginningObject;
+
+    [SerializeField] private AudioSource SoundSanityPickUpObject;
+
+    [SerializeField] private AudioSource SoundItemPickUpObject;
+
+    [SerializeField] private AudioSource SoundDamageObject;
+
     // CODE STRUCTURE
     // Awake method - instalises the soundmanager instance, if it is null
     // Doop Open method accepts the audioclip, transform of the gameobject(reset rn) and volume (rn 1f)
@@ -82,5 +92,47 @@ public class SoundManager : MonoBehaviour
         Destroy(audioSource.gameObject, clipLength);
     }    
 
+        //sound for footsteps 
+        public void PlayFootstepsClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        AudioSource audioSource = Instantiate(SoundFootstepsObject, spawnTransform.position,Quaternion.identity);
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        if (!audioSource.isPlaying)
+        { 
+            audioSource.Play();
+            float clipLength =audioSource.clip.length;
+            Destroy(audioSource.gameObject, clipLength);
+        }
+    }    
 
+     public void PlaySanityPickUpClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        AudioSource audioSource = Instantiate(SoundSanityPickUpObject, spawnTransform.position,Quaternion.identity);
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.Play();
+        float clipLength =audioSource.clip.length;
+        Destroy(audioSource.gameObject, clipLength);
+    }    
+
+    public void PlayItemPickUpClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        AudioSource audioSource = Instantiate(SoundItemPickUpObject, spawnTransform.position,Quaternion.identity);
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.Play();
+        float clipLength =audioSource.clip.length;
+        Destroy(audioSource.gameObject, clipLength);
+    }    
+
+    public void PlayDamageClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        AudioSource audioSource = Instantiate(SoundDamageObject, spawnTransform.position,Quaternion.identity);
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.Play();
+        float clipLength =audioSource.clip.length;
+        Destroy(audioSource.gameObject, clipLength);
+    }    
 }
