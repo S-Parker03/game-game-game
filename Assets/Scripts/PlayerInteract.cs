@@ -122,7 +122,7 @@ public class PlayerInteract : MonoBehaviour
                         if (playerObj.GetComponent<Dependency>().DependencyPercent < 50)
                         {
                             playerObj.GetComponent<PlayerController>().ChangeSanity(1);
-                            playerObj.GetComponent<Dependency>().changeDependency(10f);
+                            playerObj.GetComponent<Dependency>().changeDependency(20f);
                             SoundManager.instance.PlaySanityPickUpClip(SanityPickUpSound, transform, 1f); // sound for sanity pickup
                             Destroy(hit.collider.gameObject);
                         }
