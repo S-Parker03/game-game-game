@@ -116,8 +116,6 @@ public class PlayerInteract : MonoBehaviour
             else if (hit.collider.CompareTag("SanityPickUp")){
                 if (playerObj != null)
                 {
-                    // sound for sanity pickup
-                    SoundManager.instance.PlaySanityPickUpClip(SanityPickUpSound, transform, 1f);
 
                     if (playerObj.GetComponent<PlayerController>().Sanity < 5)
                     {
@@ -125,6 +123,7 @@ public class PlayerInteract : MonoBehaviour
                         {
                             playerObj.GetComponent<PlayerController>().ChangeSanity(1);
                             playerObj.GetComponent<Dependency>().changeDependency(10f);
+                            SoundManager.instance.PlaySanityPickUpClip(SanityPickUpSound, transform, 1f); // sound for sanity pickup
                             Destroy(hit.collider.gameObject);
                         }
                         else
