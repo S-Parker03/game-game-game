@@ -2239,15 +2239,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f8ab10328a9d57a478f25bd1623d1df1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.836432
+      value: -14.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f8ab10328a9d57a478f25bd1623d1df1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.2
+      value: 19.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f8ab10328a9d57a478f25bd1623d1df1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.254546
+      value: -2.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f8ab10328a9d57a478f25bd1623d1df1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3835,7 +3835,7 @@ MonoBehaviour:
   sightCone: {fileID: 771895531}
   Mode: Patrol
   patrolPoints: []
-  animator: {fileID: 0}
+  animator: {fileID: 1008703039}
   attackStyle: 0
 --- !u!114 &1008703038
 MonoBehaviour:
@@ -3850,6 +3850,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canSeePlayer: 0
+--- !u!95 &1008703039 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: f8ab10328a9d57a478f25bd1623d1df1, type: 3}
+  m_PrefabInstance: {fileID: 698972953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1017275927
 Mesh:
   m_ObjectHideFlags: 0
