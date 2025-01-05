@@ -7,6 +7,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
+using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +19,11 @@ public class PlayerController : MonoBehaviour
     private int sanity;
     int maxSanity = 5;
     public int Sanity => sanity;
+
+    public Slider sanitySlider;
+
+    PostProcessVolume volume;
+
     //----------------------------\\
 
     // Variables for character movement \\
@@ -87,6 +95,7 @@ public class PlayerController : MonoBehaviour
         
 
         playerbody = gameObject.GetComponent<Rigidbody>();
+        volume = cam.GetComponent<PostProcessVolume>();
 
         // playerCollider = GameObject.FindGameObjectWithTag("GroundCollider");
     }
@@ -167,6 +176,8 @@ public class PlayerController : MonoBehaviour
             playerbody.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
             isGrounded = false;
         }
+        sanitySlider.value = Sanity;
+        SanityEffects();
 
     }
 
@@ -210,6 +221,20 @@ public class PlayerController : MonoBehaviour
         // sound for damage
         SoundManager.instance.PlayDamageClip(DamageSound, transform, 1f);
     }
+    
+    // Sanity camera effects
+    void SanityEffects(){
+        if (volume.profile.TryGetSettings<Vignette>(out Vignette vignette))
+        {
+            float effects_value = Sanity;
 
+            // (hue - min1)/(max1 - min1)
+            effects_value = (effects_value - 0) / (5 - 0);
+            // hue * (max2 - min 2) + min2
+            effects_value = effects_value * (0 - 1) + 1;
+            vignette.intensity.value = effects_value;
+            vignette.smoothness.value = effects_value;
+        }
+    }
 
 }
