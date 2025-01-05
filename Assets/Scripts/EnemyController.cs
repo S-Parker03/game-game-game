@@ -130,13 +130,16 @@ public class EnemyController : MonoBehaviour
     //attack function, eventually with have animaitons etc but for now just decreases sanity.
     private void attackPlayer(AttackStyle style){
         if (style == AttackStyle.KickOut){
+            GameObject creepyGuyDoor = GameObject.Find("Creepy Guy Door");
+            creepyGuyDoor.GetComponent<Door>().Close();
             player.GetComponent<PlayerController>().ChangeSanity(-1);
-            player.transform.position = new Vector3(0.0478f, 0.71122f, -5.641247f);
+            player.transform.position = new Vector3(0.0478f, 0.71122f, -4.641247f);
             agent.speed = 0.75f;
             agent.acceleration = 0.75f;
             agent.angularSpeed = 1;
             Mode = "Patrol";
             agent.SetDestination(patrolPoints[1]);
+            
         }
         else if(style == AttackStyle.Hurt){
             player.GetComponent<PlayerController>().ChangeSanity(-1);
