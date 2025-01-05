@@ -22,6 +22,8 @@ public class Pause : MonoBehaviour
 
     GameObject mainMenu;
 
+    GameObject endScreen;
+
     public GameObject dependencySlider;
 
     public GameObject sanityDial;
@@ -36,6 +38,7 @@ public class Pause : MonoBehaviour
         player = GameObject.Find("Player");
         settings = GameObject.Find("Settings");
         mainMenu = GameObject.Find("MainMenu");
+        endScreen = GameObject.Find("EndScreen");
         UI.SetActive(false);
         dependencySlider.SetActive(false);
         sanityDial.SetActive(false);
@@ -49,14 +52,14 @@ public class Pause : MonoBehaviour
     {
         //check if the player presses the escape key, if they do pause or unpause the game
         if(!paused){
-            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
+            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && endScreen.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
             pauseGame();
             UI.GetComponent<InventoryController>().guiNeedsUpdating = true;
             UI.SetActive(true);
             paused = true;
             }  
         }else if (paused){
-            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
+            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && endScreen.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
                 resumeGame();
                 UI.SetActive(false);
                 
@@ -67,8 +70,8 @@ public class Pause : MonoBehaviour
     }
     //function to pause the game
     public void pauseGame(){
-        foreach( var each in HUD.GetComponentsInChildren<TextMeshProUGUI>()){
-            each.alpha = 0;
+        foreach( Transform child in HUD.transform){
+            child.gameObject.SetActive(false);
         }
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         player.GetComponent<PlayerController>().enabled = false;
@@ -83,8 +86,9 @@ public class Pause : MonoBehaviour
     }
     //function to resume the game
     public void resumeGame(){
-        foreach( var each in HUD.GetComponentsInChildren<TextMeshProUGUI>()){
-            each.alpha = 1;
+        foreach( Transform child in HUD.transform){
+            child.gameObject.SetActive(false);
+
         }
         
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
