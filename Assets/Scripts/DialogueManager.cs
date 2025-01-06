@@ -143,10 +143,15 @@ public void nextDialogue(){
         }
          StartCoroutine(SelectFirstChoice());
         // If there are no choices, continue the dialogue automatically
+            // Automatically hide choice buttons if no choices are present
         if (choices.Count == 0)
         {
-            nextDialogue();
+        foreach (GameObject choice in choiceList)
+        {
+            choice.SetActive(false);
         }
+        nextDialogue(); // Continue the dialogue
+    }
 
        
     }
@@ -171,8 +176,25 @@ public void nextDialogue(){
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         Debug.Log("Choice selected: " + choiceIndex);
-        nextDialogue();
+        // nextDialogue();
+        foreach (GameObject choice in choiceList)
+    {
+        choice.SetActive(false);
     }
+
+    // Continue the dialogue
+    if (currentStory.canContinue)
+    {
+        dialogueText.text = currentStory.Continue(); // Update dialogue text with the next part
+        // DisplayChoices(); // Check if there are more choices to display
+    }
+    else
+    {
+        Debug.Log("Ending dialogue...");
+        EndDialogue(); // End dialogue if no more content
+    }
+}
+    
 
 }
   
