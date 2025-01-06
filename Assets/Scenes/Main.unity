@@ -5584,25 +5584,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2959340598892548656, guid: 55beef53e5bbdbe4a86020d27fe4d36b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4467398304007080781, guid: 55beef53e5bbdbe4a86020d27fe4d36b, type: 3}
       propertyPath: m_Name
       value: Inventory items
-      objectReference: {fileID: 0}
-    - target: {fileID: 5046272360688147890, guid: 55beef53e5bbdbe4a86020d27fe4d36b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9214566251859444833, guid: 55beef53e5bbdbe4a86020d27fe4d36b, type: 3}
-      propertyPath: m_Name
-      value: Vase1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9214566251859444833, guid: 55beef53e5bbdbe4a86020d27fe4d36b, type: 3}
-      propertyPath: m_TagString
-      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

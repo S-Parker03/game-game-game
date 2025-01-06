@@ -67,5 +67,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c877b910b309b84c81bcd4a061762cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1561090794199253736}
   m_SourcePrefab: {fileID: 100100000, guid: 5c877b910b309b84c81bcd4a061762cc, type: 3}
+--- !u!1 &4494634321139529730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c877b910b309b84c81bcd4a061762cc, type: 3}
+  m_PrefabInstance: {fileID: 3648284894074881363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1561090794199253736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494634321139529730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: 'A cold glass eye, a crack runs down the centre like it was struck with
+    a blunt object and it is spattered with blood. '
+  itemDescription: 'A cold glass eye, a crack runs down the centre like it was struck
+    with a blunt object and it is spattered with blood. '
+  itemImage: {fileID: 21300000, guid: 35721222deffa4e4b887ae95459c1676, type: 3}
+  itemType: 0
+  itemID: g_eye
+  pickupObject: {fileID: 0}
