@@ -474,6 +474,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dependency Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 6334563694036513754, guid: 2af990c55907a374fbab5fdfecdb8ed9, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7921516119675691486, guid: 2af990c55907a374fbab5fdfecdb8ed9, type: 3}
       propertyPath: m_Value
       value: 5
@@ -2014,7 +2018,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2088
+  m_Name: pb_Mesh-1872
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3883,7 +3887,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2356
+  m_Name: pb_Mesh-1626
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -7451,7 +7455,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1966
+  m_Name: pb_Mesh-2406
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -8729,7 +8733,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2128
+  m_Name: pb_Mesh-1746
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -11822,6 +11826,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1606373471886736764, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
+      propertyPath: m_Name
+      value: ChoiceNo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913756293256667056, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
+      propertyPath: m_Name
+      value: ChoiceYes
+      objectReference: {fileID: 0}
+    - target: {fileID: 6177707735540009989, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
+      propertyPath: m_text
+      value: Yes
+      objectReference: {fileID: 0}
     - target: {fileID: 6409071307824598478, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -11847,8 +11863,20 @@ PrefabInstance:
       value: DialogueManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6409071307824598478, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409071307824598478, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849064578900306807, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
+      propertyPath: m_Name
+      value: choice1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7457455037017580990, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
+      propertyPath: m_text
+      value: No
       objectReference: {fileID: 0}
     - target: {fileID: 7645532671996737273, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -11876,11 +11904,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7645532671996737273, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7645532671996737273, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938366033192854761, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
+      propertyPath: m_Name
+      value: choice2
       objectReference: {fileID: 0}
     - target: {fileID: 9131707462286526700, guid: 1ba7cf92ad3058b4e8cd719ec98d23dd, type: 3}
       propertyPath: m_Name
