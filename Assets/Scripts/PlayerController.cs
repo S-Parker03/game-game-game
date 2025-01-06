@@ -54,7 +54,9 @@ public class PlayerController : MonoBehaviour
 
     //Variables to do with jumping
     public float jumpForce = 5.0f;
-    bool isGrounded = true;
+    public bool isGrounded = true;
+
+    public AudioSource footsteps;
 
     //------------------------------\\
 
@@ -127,7 +129,11 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue value) {
         moveValue = value.Get<Vector2>();
-        SoundManager.instance.PlayFootstepsClip(FootstepsSound, transform, 1f);
+        if(isGrounded && moveValue.magnitude > 0.1f && !footsteps.isPlaying){
+            footsteps.Play();
+        } else {
+            footsteps.Stop();
+        }
     }
 
     void OnLook(InputValue value) {
