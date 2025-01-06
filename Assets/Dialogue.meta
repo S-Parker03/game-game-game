@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Dialogue.meta
 guid: bad5f6042fe9ce3448c9984d80275fc2
+========
+guid: 19672c59aca1b6744b52e22a791f6926
+>>>>>>>> main:Assets/Prefabs/201-202.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
