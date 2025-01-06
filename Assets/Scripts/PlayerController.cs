@@ -9,6 +9,7 @@ using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using Unity.VisualScripting;
 
 
 public class PlayerController : MonoBehaviour
@@ -53,7 +54,9 @@ public class PlayerController : MonoBehaviour
 
     //Variables to do with jumping
     public float jumpForce = 5.0f;
-    bool isGrounded = true;
+    public bool isGrounded = true;
+
+    public AudioSource footsteps;
 
     //------------------------------\\
 
@@ -126,7 +129,11 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue value) {
         moveValue = value.Get<Vector2>();
-        SoundManager.instance.PlayFootstepsClip(FootstepsSound, transform, 1f);
+        if(isGrounded && moveValue.magnitude > 0.1f && !footsteps.isPlaying){
+            footsteps.Play();
+        } else {
+            footsteps.Stop();
+        }
     }
 
     void OnLook(InputValue value) {
@@ -205,29 +212,24 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
-        if (collision.gameObject.tag == "DeathPlane")
+        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "DeathPlane")
         {
-            ChangeSanity(-9999999);
+            ChangeSanity(-99999);
         }
     }
 
-    //method to handle collision with healing items and key items
-    // void OnTriggerEnter(Collider other) 
-    // {
-    //     if(other.gameObject.tag == "SanityPickUp" && sanity < maxSanity){
-    //         //find Dependecy value and calculate dependency as a value netween 0 and 1
-    //         GameObject.Find("Player").GetComponent<Dependency>().changeDependency(10f);
-    //         float dependency = GameObject.Find("Player").GetComponent<Dependency>().DependencyPercent/100;
-    //         other.gameObject.SetActive(false);
-    //         //heal by 2*(1-dependency)
-    //         ChangeSanity((int)Math.Round(2*(1-dependency)));
-    //     }
-    // }
-
-    // change sanity value as enemies collide with player
+    //function to change sanity
     public void ChangeSanity(int value){
         sanity += value;
         sanity = Math.Clamp(sanity, 0, maxSanity);
+        if(value < 0){
+            SoundManager.instance.PlayDamageClip(DamageSound, transform, 1f);
+        }
     }
 
     void OnKillYourSelf(){
@@ -237,7 +239,6 @@ public class PlayerController : MonoBehaviour
     void OnLowerSanity(){
         ChangeSanity(-1);
         // sound for damage
-        SoundManager.instance.PlayDamageClip(DamageSound, transform, 1f);
     }
     
     // Sanity camera effects

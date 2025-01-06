@@ -31,10 +31,12 @@ Esc - pause game
 Reset button - resets game - player and enemy position, and sanity and dependency counters
 
 
-Resources used for Prototype
+Resources used
 ----------------------------
 Door.cs - script - Adapted from LiamAcademy Rotating and Sliding Doors tutorial on youtube - https://www.youtube.com/watch?v=cPltQK5LlGE 
 PlayerController.cs - script - Adapted parts of camera rotation and angle clamping from - https://gamedev.stackexchange.com/questions/191968/how-do-i-easily-clamp-my-cameras-rotation-when-using-transform-rotate 
 Complete darkness for camera - https://www.youtube.com/watch?v=MDwVMaJ4mFc&t=50s 
 Laudanum label: https://cantonasylumforinsaneindians.com/history_blog/tag/laudanum/
+creepy guy animation and rig: https://www.mixamo.com/#/?page=1&query=zombie+run
+old wedding photo : https://pixabay.com/photos/photography-old-photo-taking-photos-1503121/
 

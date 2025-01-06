@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour
     public List<Vector3> patrolPoints;
 
     private int oldDestination;
+    public Animator animator;
 
     public enum AttackStyle { KickOut, Hurt, Kill };
 
@@ -33,6 +34,7 @@ public class EnemyController : MonoBehaviour
         patrolPoints = new List<Vector3> { new Vector3(-2.8f, 0f, -13.111f), new Vector3(-8.08f, 0f, -7.05f) };
         active = true;
         oldDestination = 0;
+        animator = GetComponent<Animator>();
         if (hasSight){
             sightCone = this.transform.Find("SightCone").gameObject;
         }
@@ -44,8 +46,12 @@ public class EnemyController : MonoBehaviour
         if(active){
             if (Mode == "Chase"){ // Mode is a variable that will be set to "Chase" when the player is in the enemy's line of sight
                 chasePlayer();
+                
             }else if (Mode == "Patrol"){ // Mode is a variable that will be set to "Patrol" when the player is not in the enemy's line of sight
+                animator.SetTrigger("Walk");
+                animator.SetBool("IsRunning", false);
                 if (hasSight && sightCone.GetComponent<SightCone>().canSeePlayer){
+                    Debug.Log("Player in sight");
                     //cast a ray to check if there is an object between player and enemy
                     RaycastHit hit;
                     Vector3 directionToPlayer = player.transform.position - transform.position;
@@ -54,6 +60,7 @@ public class EnemyController : MonoBehaviour
                         if (hit.collider.gameObject == player)
                         {
                             Mode = "Chase";
+                            animator.SetBool("IsRunning", true);
                             if(agent.speed < 1){
                                 agent.speed = 6;
                                 agent.acceleration = 8;
@@ -62,7 +69,7 @@ public class EnemyController : MonoBehaviour
                         }
                     }
                 } else {
-                patrol();
+                    patrol();
                 }
             }
         }
@@ -83,12 +90,13 @@ public class EnemyController : MonoBehaviour
     //using NavMesh to chase the player
     private void chasePlayer(){
         agent.SetDestination(player.transform.position);
-        
+        animator.SetBool("IsRunning", true);
     }
 
     //patrol function, will eventually have a set path but for now just moves the enemy around randomly
     private void patrol(){
-
+        animator.SetTrigger("Walk");
+        animator.SetBool("IsRunning", false);
         if(enemyReachedDestination()){
             setNewDestination();
         } else {

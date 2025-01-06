@@ -44,5 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc6a25890f6d36f47bb57c173a073ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeMultiplier: 1
+  player: {fileID: 0}
   SoundDoorOpenObject: {fileID: 0}
   SoundDoorCloseObject: {fileID: 0}
+  SoundBeginningObject: {fileID: 0}
+  SoundSanityPickUpObject: {fileID: 0}
+  SoundItemPickUpObject: {fileID: 0}
+  SoundDamageObject: {fileID: 0}
+  footsteps: {fileID: 0}

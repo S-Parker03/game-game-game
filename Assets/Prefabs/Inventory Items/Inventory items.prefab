@@ -123,7 +123,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -145,7 +145,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.1324105, y: 1.0278083, z: 0.90601945}
   m_Center: {x: -0.4310744, y: 0.03275317, z: -0.0267952}
@@ -565,6 +565,7 @@ GameObject:
   - component: {fileID: 2304092469056196009}
   - component: {fileID: 8731522682246710727}
   - component: {fileID: 9080348896285178202}
+  - component: {fileID: 1973121608019512135}
   m_Layer: 0
   m_Name: Torus.001
   m_TagString: Untagged
@@ -637,6 +638,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1973121608019512135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928433614508307905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: Vase
+  itemDescription: 
+  itemImage: {fileID: 0}
+  itemType: 0
+  itemID: Vase_2
+  pickupObject: {fileID: 5928433614508307905}
 --- !u!1 &7187357153852502379
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +668,7 @@ GameObject:
   - component: {fileID: 2321721783060135469}
   - component: {fileID: 3838792703816001674}
   - component: {fileID: 8558597035206365899}
+  - component: {fileID: 6353821496143313830}
   m_Layer: 0
   m_Name: Cone
   m_TagString: Untagged
@@ -720,6 +741,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6353821496143313830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7187357153852502379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: 'Vase '
+  itemDescription: 
+  itemImage: {fileID: -826354863, guid: 560a54079f2d3bd4db0f7b585ab90209, type: 3}
+  itemType: 0
+  itemID: vase_3
+  pickupObject: {fileID: 7187357153852502379}
 --- !u!1 &7220387890652825525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,9 +1253,11 @@ GameObject:
   - component: {fileID: 3357086745121972744}
   - component: {fileID: 5875334447849907793}
   - component: {fileID: 3755735186149053289}
+  - component: {fileID: 8400977628546276262}
+  - component: {fileID: 2407734220745356228}
   m_Layer: 0
-  m_Name: Cube.001
-  m_TagString: Untagged
+  m_Name: Vase1
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1285,6 +1327,46 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8400977628546276262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9214566251859444833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: Vase
+  itemDescription: aaaaa
+  itemImage: {fileID: -1367016499, guid: cbbc7c44e146e3b44817652de4255432, type: 3}
+  itemType: 0
+  itemID: vase_1
+  pickupObject: {fileID: 9214566251859444833}
+--- !u!65 &2407734220745356228
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9214566251859444833}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2.2544408, z: 2.2544408}
+  m_Center: {x: 0.000011444092, y: 0.12720162, z: -0.12722832}
 --- !u!1001 &3458784897751293472
 PrefabInstance:
   m_ObjectHideFlags: 0

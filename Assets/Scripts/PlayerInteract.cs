@@ -63,7 +63,7 @@ public class PlayerInteract : MonoBehaviour
                 highlight(lastObject, false);
             }    
             if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item")
-            || hit.collider.CompareTag("SanityPickUp") || hit.collider.CompareTag("NPC")) 
+            || hit.collider.CompareTag("SanityPickUp") || hit.collider.CompareTag("NPC") || hit.collider.CompareTag("CanBeUnlocked")) 
             {
                 highlight(hit.collider.gameObject, true);
                 lastObject = hit.collider.gameObject;
@@ -88,7 +88,7 @@ public class PlayerInteract : MonoBehaviour
             Debug.Log("Raycast hit: " + hit.collider.name);
             Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
             // Get Door collider component and see if it's been hit
-            if (hit.collider.TryGetComponent<Door>(out Door door))
+            if (hit.collider.TryGetComponent<Door>(out Door door) && hit.collider.CompareTag("Door"))
             {
                 // If door is open, then run close method. Otherwise open door with open method
                 if (door.isOpen)
@@ -167,6 +167,7 @@ public class PlayerInteract : MonoBehaviour
 
             else if (hit.collider.TryGetComponent<ItemInfo>(out ItemInfo itemInfo))
             {
+                Debug.Log("Item hit: " + itemInfo.itemName);
                 // Get the ItemInfo component from the hit object and interact with it
                 if (itemInfo != null)
                 {
@@ -221,6 +222,13 @@ public class PlayerInteract : MonoBehaviour
                         Debug.Log("Sanity is full");
                     }
                 }
+            } else if (hit.collider.CompareTag("NPC"))
+            {
+
+            } else if (hit.collider.CompareTag("CanBeUnlocked"))
+            {
+                Debug.Log("Unlocking door");
+                hit.collider.GetComponent<UnlockDoor>().Unlock();
             }
         }
     }

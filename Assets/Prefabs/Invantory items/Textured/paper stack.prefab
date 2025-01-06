@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6278862601345450385
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.54
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.19
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -59.94
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5971410051629635644, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 45c0269fd34ecda43bd8391a579b3eaf, type: 2}
+    - target: {fileID: -5754732837579649886, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 45c0269fd34ecda43bd8391a579b3eaf, type: 2}
+    - target: {fileID: -3856571041627856340, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3bc819167d0ba2645a01bdd495cdf16e, type: 2}
+    - target: {fileID: 919132149155446097, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_Name
+      value: paper stack
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3957458964796011596}
+  m_SourcePrefab: {fileID: 100100000, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+--- !u!1 &6620970490970471616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 69d2f4af835ebb84bbd227e408a93cf4, type: 3}
+  m_PrefabInstance: {fileID: 6278862601345450385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3957458964796011596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620970490970471616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02face6779b1f2e4e8a5da2c19a24f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasItem: 0
+  itemName: 
+  itemDescription: 
+  itemImage: {fileID: 21300000, guid: bb4d7de3194d4fa4697d8b5dcd0a69d2, type: 3}
+  itemType: 1
+  itemID: 
+  pickupObject: {fileID: 0}
