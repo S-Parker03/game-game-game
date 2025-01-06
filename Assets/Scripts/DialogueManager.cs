@@ -97,28 +97,46 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         isdialogueActive = true;
         dialoguePanel.SetActive(true);
+
+        HideChoices(); // Hide the choice buttons at the start of the dialogue
+
         // call the next line of dialogue 
         nextDialogue();
     
     }
 
-
-public void nextDialogue(){
+public void nextDialogue()
+{
     if (currentStory.canContinue)
-        {
-            // If the story can continue, display the next line of dialogue (based on the ink file)
-             Debug.Log("Continuing story...");
-            dialogueText.text = currentStory.Continue();
-            DisplayChoices();
-        }
+    {
+        Debug.Log("Continuing story...");
+        string nextLine = currentStory.Continue();
+        Debug.Log("Next dialogue: " + nextLine);
 
+        if (!string.IsNullOrEmpty(nextLine))
+        {
+            dialogueText.text = nextLine;
+            dialogueText.ForceMeshUpdate(); // Ensure TextMeshPro updates
+            // DisplayChoices();
+        }
         else
         {
-            Debug.Log("Ending dialogue...");
-            EndDialogue();
+            Debug.LogWarning("Next line is empty!");
         }
-        
+        // Delay choice display until all lines are shown
+        if (!currentStory.canContinue) 
+        {
+            DisplayChoices();
+        }
+    }
+    else
+    {
+        Debug.Log("Ending dialogue...");
+        EndDialogue();
+    }
 }
+
+
 // function to end the dialogue
     public void EndDialogue()
     {
@@ -145,33 +163,36 @@ public void nextDialogue(){
         List<Choice> choices = currentStory.currentChoices;
 
         if (choices.Count > choiceList.Length)
-{
-    // to check if the number of choices is greater than the number of choice buttons - UI cannot handle
-    Debug.LogError("there are more choices than the choice buttons");
-    return;
-}
+        {
+            // to check if the number of choices is greater than the number of choice buttons - UI cannot handle
+            Debug.LogError("there are more choices than the choice buttons");
+            return;
+        }   
 
         int index = 0;
         // Loop through each choice and display the text on the button
         foreach (Choice choice in choices)
         {
-            choiceList[index].gameObject.SetActive(true);
+            choiceList[index].gameObject.SetActive(true); // Show the choice button
             choiceTexts[index].text = choice.text;
             index++;
         }
 
+        // Hide the remaining choice buttons
         for (int i = index; i < choiceList.Length; i++)
         {
             choiceList[i].gameObject.SetActive(false);
         }
          StartCoroutine(SelectFirstChoice());
+
         // If there are no choices, continue the dialogue automatically
-            // Automatically hide choice buttons if no choices are present
+        // Automatically hide choice buttons if no choices are present
         if (choices.Count == 0)
         {
         foreach (GameObject choice in choiceList)
         {
             choice.SetActive(false);
+            // nextDialogue();
         }
         nextDialogue(); // Continue the dialogue
     }
@@ -217,8 +238,23 @@ public void nextDialogue(){
         Debug.Log("Ending dialogue...");
         EndDialogue(); // End dialogue if no more content
     }
-}
+
+
+    }
+
+    private void HideChoices()
+    {
+        foreach (GameObject choice in choiceList)
+        {
+            choice.SetActive(false);
+        }
+    }
     
 
 }
   
+
+
+
+
+
