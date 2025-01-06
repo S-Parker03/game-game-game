@@ -3,7 +3,12 @@ guid: 340cbda60d440fe468ca42cff18e315f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {fileID: 4028068593878437098, guid: e7164589ed9f29c47ad87089be078e09, type: 3}
+  - UI: {fileID: 2151770362460098381, guid: 59f62ee869a57414ab05409b1f84f2d1, type: 3}
+  - HUD: {fileID: 7627859176735447279, guid: fe8b46b8971d8dd4ba22b92625590b6f, type: 3}
+  - dependencySlider: {fileID: 2996771714044837899, guid: 2af990c55907a374fbab5fdfecdb8ed9, type: 3}
+  - sanityDial: {fileID: 7048022518920473168, guid: 12125827fc52f4b4883a7d138a0e2fbd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

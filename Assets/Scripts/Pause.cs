@@ -8,6 +8,8 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+  
+
 
 public class Pause : MonoBehaviour
 {
@@ -22,8 +24,6 @@ public class Pause : MonoBehaviour
 
     GameObject mainMenu;
 
-    GameObject endScreen;
-
     public GameObject dependencySlider;
 
     public GameObject sanityDial;
@@ -31,18 +31,23 @@ public class Pause : MonoBehaviour
     public bool paused;
 
     public bool gameOver;
+    public @PlayerActionControls playerControls; 
     // Start is called before the first frame update
     void Start()
     {
+        playerControls = new @PlayerActionControls();  // Initialize input controls
+        Debug.Log("player controls is initialised properly");
+        playerControls.Enable();  // Enable the input controls
         paused = false;
         player = GameObject.Find("Player");
         settings = GameObject.Find("Settings");
         mainMenu = GameObject.Find("MainMenu");
-        endScreen = GameObject.Find("EndScreen");
         UI.SetActive(false);
         dependencySlider.SetActive(false);
         sanityDial.SetActive(false);
         // enemy = GameObject.Find("Monster");
+
+    
     
         
     }
@@ -52,14 +57,14 @@ public class Pause : MonoBehaviour
     {
         //check if the player presses the escape key, if they do pause or unpause the game
         if(!paused){
-            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && endScreen.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
+            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
             pauseGame();
             UI.GetComponent<InventoryController>().guiNeedsUpdating = true;
             UI.SetActive(true);
             paused = true;
             }  
         }else if (paused){
-            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && endScreen.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
+            if (mainMenu.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None) && settings.GetComponent<UIDocument>().rootVisualElement.style.display.Equals(DisplayStyle.None)){
                 resumeGame();
                 UI.SetActive(false);
                 
@@ -70,14 +75,16 @@ public class Pause : MonoBehaviour
     }
     //function to pause the game
     public void pauseGame(){
-        foreach( Transform child in HUD.transform){
-            child.gameObject.SetActive(false);
+        foreach( var each in HUD.GetComponentsInChildren<TextMeshProUGUI>()){
+            each.alpha = 0;
         }
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<PlayerInteract>().enabled = false;
         player.GetComponent<PlayerInput>().enabled = false;
         player.GetComponent<Dependency>().enabled = false;
+        UnityEngine.Cursor.visible = true; // so the cursor is visible when the game is paused
+
         // enemy.GetComponent<EnemyController>().enabled = false;
         
         
@@ -86,9 +93,8 @@ public class Pause : MonoBehaviour
     }
     //function to resume the game
     public void resumeGame(){
-        foreach( Transform child in HUD.transform){
-            child.gameObject.SetActive(false);
-
+        foreach( var each in HUD.GetComponentsInChildren<TextMeshProUGUI>()){
+            each.alpha = 1;
         }
         
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
