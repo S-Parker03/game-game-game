@@ -10,16 +10,22 @@ public class UnlockDoor : MonoBehaviour
     private bool doorUnlocked = false;
     private Transform playerTransform;
 
+    public GameObject player;
+
+    public GameObject lobbyDoor;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+      lobbyDoor = GameObject.Find("Lobby Door");
+      player = GameObject.Find("Player");  
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        playerTransform = player.transform;
     }
 
     public void Unlock()
@@ -32,15 +38,19 @@ public class UnlockDoor : MonoBehaviour
         bool hasAllItems = true;
         foreach (ItemInfo item in requiredItems)
         {
-            if (!item.hasItem)
+            if (!player.GetComponent<Inventory>().hasKeyItem(item.itemID))
             {
                 hasAllItems = false;
                 break;
             }
+            Debug.Log("Item " + item.itemName + " found");
         }
 
         if (hasAllItems)
         {
+            if( door == lobbyDoor){
+                door.SetActive(false);
+            }
             doorUnlocked = true;
             door.tag = "Door";
             door.GetComponent<Door>().Open(playerTransform.position);

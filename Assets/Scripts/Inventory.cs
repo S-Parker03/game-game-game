@@ -68,4 +68,15 @@ public class Inventory : MonoBehaviour
             Debug.Log(item.itemID);
         }
     }
+
+    public bool hasKeyItem(string itemID){
+        foreach (ItemInfo item in KeyItems)
+        {
+            if (item.itemID == itemID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

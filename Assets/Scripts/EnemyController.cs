@@ -46,10 +46,12 @@ public class EnemyController : MonoBehaviour
         if(active){
             if (Mode == "Chase"){ // Mode is a variable that will be set to "Chase" when the player is in the enemy's line of sight
                 chasePlayer();
+                
             }else if (Mode == "Patrol"){ // Mode is a variable that will be set to "Patrol" when the player is not in the enemy's line of sight
                 animator.SetTrigger("Walk");
                 animator.SetBool("IsRunning", false);
                 if (hasSight && sightCone.GetComponent<SightCone>().canSeePlayer){
+                    Debug.Log("Player in sight");
                     //cast a ray to check if there is an object between player and enemy
                     RaycastHit hit;
                     Vector3 directionToPlayer = player.transform.position - transform.position;
@@ -58,6 +60,7 @@ public class EnemyController : MonoBehaviour
                         if (hit.collider.gameObject == player)
                         {
                             Mode = "Chase";
+                            animator.SetBool("IsRunning", true);
                             if(agent.speed < 1){
                                 agent.speed = 6;
                                 agent.acceleration = 8;
@@ -66,7 +69,7 @@ public class EnemyController : MonoBehaviour
                         }
                     }
                 } else {
-                patrol();
+                    patrol();
                 }
             }
         }
