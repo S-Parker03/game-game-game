@@ -108,6 +108,7 @@ public class PlayerInteract : MonoBehaviour
     if (pauseScript != null)
     {
         pauseScript.pauseGame();
+        Debug.Log("Game paused.");
 
         // Call StartDialogue from the singleton DialogueManager with the NPC's specific Ink JSON
         if (DialogueManager.instance != null)
