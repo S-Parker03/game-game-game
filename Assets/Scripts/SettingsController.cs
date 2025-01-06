@@ -29,10 +29,9 @@ public class SettingsManager : MonoBehaviour
         volumePercent = 50;
         brightnessPercent = 0;
         torchRadiusPercent = 50;
-        //find the settings, main menu and pause menu objects
+        //find the settings, main menu
         settings = GameObject.Find("Settings");
         mainMenu = GameObject.Find("MainMenu");
-        pauseMenu = GameObject.Find("Inventory");
         //find the settings UI
         settingsUI = settings.GetComponent<UIDocument>();
         settingsRoot = settingsUI.rootVisualElement;
@@ -100,8 +99,9 @@ public class SettingsManager : MonoBehaviour
             }else if (previousMenu == "Inventory")
             {
                 settingsRoot.style.display = DisplayStyle.None;
-                pauseMenu.GetComponent<InventoryController>().guiNeedsUpdating = true;
                 pauseMenu.SetActive(true);
+                pauseMenu.GetComponent<InventoryController>().guiNeedsUpdating = true;
+                
             }
         });
     }
