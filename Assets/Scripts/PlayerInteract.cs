@@ -45,7 +45,7 @@ public class PlayerInteract : MonoBehaviour
                 highlight(lastObject, false);
             }    
             if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item")
-            || hit.collider.CompareTag("SanityPickUp") || hit.collider.CompareTag("NPC")) 
+            || hit.collider.CompareTag("SanityPickUp") || hit.collider.CompareTag("NPC") || hit.collider.CompareTag("CanBeUnlocked")) 
             {
                 highlight(hit.collider.gameObject, true);
                 lastObject = hit.collider.gameObject;
