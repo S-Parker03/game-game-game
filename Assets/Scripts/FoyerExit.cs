@@ -22,7 +22,8 @@ public class FoyerExit : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            // Load the next scene
-            GameObject.Find("HUD").GetComponent<GameController>().EndGame(GameController.Ending.neutral);        }
+            // Load the end screen for the neutral ending
+            GameObject.Find("HUD").GetComponent<GameController>().EndGame(GameController.Ending.neutral);
+        }
     }
 }

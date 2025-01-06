@@ -43,13 +43,18 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if the enemy is active, it will move
         if(active){
             if (Mode == "Chase"){ // Mode is a variable that will be set to "Chase" when the player is in the enemy's line of sight
+                //if the player is in the enemy's line of sight, chase the player
                 chasePlayer();
                 
             }else if (Mode == "Patrol"){ // Mode is a variable that will be set to "Patrol" when the player is not in the enemy's line of sight
+                
                 animator.SetTrigger("Walk");
                 animator.SetBool("IsRunning", false);
+                
+                //check if the player is in the enemy's line of sight
                 if (hasSight && sightCone.GetComponent<SightCone>().canSeePlayer){
                     Debug.Log("Player in sight");
                     //cast a ray to check if there is an object between player and enemy
@@ -59,6 +64,7 @@ public class EnemyController : MonoBehaviour
                     {
                         if (hit.collider.gameObject == player)
                         {
+                            //if the player is in the enemy's line of sight, chase the player
                             Mode = "Chase";
                             animator.SetBool("IsRunning", true);
                             if(agent.speed < 1){
@@ -69,12 +75,13 @@ public class EnemyController : MonoBehaviour
                         }
                     }
                 } else {
+                    //if the player is not in the enemy's line of sight, patrol
                     patrol();
                 }
             }
         }
+
         //face the enemy the direction it is moving in
-    
         if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
         {
             agent.transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
@@ -93,7 +100,7 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("IsRunning", true);
     }
 
-    //patrol function, will eventually have a set path but for now just moves the enemy around randomly
+    //patrol function, moves the enmey between two patrol points
     private void patrol(){
         animator.SetTrigger("Walk");
         animator.SetBool("IsRunning", false);
@@ -135,8 +142,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //attack function, eventually with have animaitons etc but for now just decreases sanity.
+    //attack function, will be called when the enemy collides with the player
     private void attackPlayer(AttackStyle style){
+        //Attacks the player with one of 3 styles
         if (style == AttackStyle.KickOut){
             GameObject creepyGuyDoor = GameObject.Find("Creepy Guy Door");
             creepyGuyDoor.GetComponent<Door>().Close();

@@ -28,13 +28,21 @@ public class InventorySlot : Button
     // Method to handle the click event
     private void OnClick(ClickEvent evt)
     {
+        // Log the item name and ID to the console
         Debug.Log($"Clicked on item: {ItemName} (ID: {ItemGuid})");
+        // Find the root visual element
         VisualElement m_Root = GameObject.Find("Inventory").GetComponent<UIDocument>().rootVisualElement;
+        // Find the item description element
         VisualElement m_Description = m_Root.Q<VisualElement>("ItemDescription");
+        // Set the text of the item description element to the item description
         m_Description.Q<Label>().text = ItemDescription;
+        // Find the item name element
         VisualElement m_Name = m_Root.Q<VisualElement>("ItemName");
+        // Set the text of the item name element to the item name
         m_Name.Q<Label>().text = ItemName;
+        // Find the item image element
         VisualElement m_Icon = m_Root.Q<VisualElement>("ItemImage");
+        // Set the background image of the item image element to the item sprite
         m_Icon.style.backgroundImage = new StyleBackground(Icon.sprite);
 
     }

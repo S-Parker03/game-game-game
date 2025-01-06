@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemInfo item)
     {
+        // Check if the item is a key item or a lore item and add it to the appropriate list
         if (item.itemType == ItemInfo.ItemType.Key)
         {
             KeyItems.Add(item);
@@ -43,6 +44,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(ItemInfo item)
     {
+        // Check if the item is a key item or a lore item and remove it from the appropriate list
         if (item.itemType == ItemInfo.ItemType.Key)
         {
             KeyItems.Remove(item);
@@ -53,6 +55,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // Debugging function to check key items
     void checkKeyItems()
     {
         foreach (ItemInfo item in KeyItems)
@@ -61,6 +64,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // Debugging function to check lore items
     void checkLoreItems()
     {
         foreach (ItemInfo item in LoreItems)
@@ -69,6 +73,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // Function to check if the player has a certain key item
     public bool hasKeyItem(string itemID){
         foreach (ItemInfo item in KeyItems)
         {

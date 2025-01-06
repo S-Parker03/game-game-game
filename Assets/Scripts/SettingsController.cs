@@ -24,36 +24,39 @@ public class SettingsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //initialize the settings variables
         sensitivityPercent = 50;
         volumePercent = 50;
         brightnessPercent = 0;
         torchRadiusPercent = 50;
-
+        //find the settings, main menu and pause menu objects
         settings = GameObject.Find("Settings");
         mainMenu = GameObject.Find("MainMenu");
         pauseMenu = GameObject.Find("Inventory");
-
+        //find the settings UI
         settingsUI = settings.GetComponent<UIDocument>();
         settingsRoot = settingsUI.rootVisualElement;
+        //hide the settings menu
         settingsRoot.style.display = DisplayStyle.None;
-
-
     }
 
     void Awake()
     {
+        //find the settings UI and main menu object
         settings = GameObject.Find("Settings");
         mainMenu = GameObject.Find("MainMenu");
-
         settingsUI = settings.GetComponent<UIDocument>();
         settingsRoot = settingsUI.rootVisualElement;
         settingsRoot.style.display = DisplayStyle.None;
 
-        //Volume
+        //Find the settings sliders
         Slider volumeSlider = settingsRoot.Q<Slider>("VolumeSlider");
+        //and reegister an event listener for when the value changes
         volumeSlider.RegisterValueChangedCallback(evt =>
         {
+            //then update the percentage
             volumePercent = (int)evt.newValue;
+            //and update the label
             volumeSlider.label = "Volume: " + volumePercent + "%";
         }
         );
@@ -82,10 +85,14 @@ public class SettingsManager : MonoBehaviour
         }
         );
         //Close Menu
+        //Find the close button
         Button closeButton = settingsRoot.Q<Button>("CloseButton");
+        //and add an event listener for when it is clicked
         closeButton.RegisterCallback<ClickEvent>(evt => {
             Debug.Log("Close Button Clicked");
+            //hide the settings menu
             settingsRoot.style.display = DisplayStyle.None;
+            //and show the previous menu
             if (previousMenu == "MainMenu")
             {
                 settingsRoot.style.display = DisplayStyle.None;

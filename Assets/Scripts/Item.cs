@@ -12,8 +12,8 @@ using UnityEngine.UIElements;
 [System.Serializable]
 public class ItemInfo : MonoBehaviour
 {
-    // Start is called before the first frame update
 
+    //define variables for each item
     public bool hasItem;
     public string itemName;
 
@@ -27,14 +27,17 @@ public class ItemInfo : MonoBehaviour
 
     public GameObject pickupObject;
 
-
+    
+    // collection function to handle physical items
     public void collect(){
+        //disable the collider and set the object to inactive
         if (pickupObject.GetComponent<Collider>() != null){
             pickupObject.GetComponent<Collider>().enabled = false;
         }
         if (pickupObject != null){
             pickupObject.SetActive(false);
         }
+        //set the hasItem variable to true
         hasItem = true;
     }
 

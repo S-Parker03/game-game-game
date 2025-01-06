@@ -22,13 +22,14 @@ public class InventoryController : MonoBehaviour
     public bool guiNeedsUpdating = true;
 
     private void Awake(){
+        // Find the root visual element
         m_Root = GetComponent<UIDocument>().rootVisualElement;
         
     }
 
     private void OnGUI()
     {
-        
+        // If the GUI needs updating, update the GUI
         if (guiNeedsUpdating)
         {
             // Ensure the inventory object exists
@@ -78,11 +79,13 @@ public class InventoryController : MonoBehaviour
                 return;
             }
 
+            // Find the buttons in the UI
             Button keyItemsButton = m_Root.Q<Button>("KeyItemsButton");
             Button loreItemsButton = m_Root.Q<Button>("LoreItemsButton");
             Button closeButton = m_Root.Q<Button>("CloseButton");
             Button settingsButton = m_Root.Q<Button>("SettingsButton");
             Button menuButton = m_Root.Q<Button>("QuitButton");
+            // Add a click event to the buttons
             keyItemsButton.RegisterCallback<ClickEvent>(OnNavButtonClick);
             loreItemsButton.RegisterCallback<ClickEvent>(OnNavButtonClick);
             closeButton.RegisterCallback<ClickEvent>(evt => {
@@ -102,7 +105,7 @@ public class InventoryController : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             });
             
-
+            // Set the background color of the buttons based on the current page
             if(currentPage == ItemType.Key){
                 loreItemsButton.style.backgroundColor = new StyleColor(new Color(125f / 255f, 0f, 0f));
                 keyItemsButton.style.backgroundColor = new StyleColor(new Color(72f / 255f, 17f / 255f, 17f / 255f));
@@ -116,12 +119,13 @@ public class InventoryController : MonoBehaviour
                 keyItemsButton.style.borderBottomColor = new StyleColor(new Color(125f / 255f, 0f, 0f));
                 
             }
-
+            // Display the items
             DisplayItems(currentPage);
             guiNeedsUpdating = false;
         }
     }
 
+    // Method to display the items in the inventory
     public void DisplayItems(ItemType page)
     {
         // Ensure m_SlotContainer is not null
@@ -134,21 +138,26 @@ public class InventoryController : MonoBehaviour
         // Clear the SlotContainer
         m_SlotContainer.Clear();
 
-        // Create InventorySlots and add them as children to the SlotContainer
+        // Create InventorySlots for each item on the page and add them to the SlotContainer
         if (page == ItemType.Key)
         {
             foreach (ItemInfo item in Inventory.KeyItems)
             {
                 Debug.Log("Displaying item " + item.itemName);
+                // Create a new InventorySlot
                 InventorySlot slot = new InventorySlot();
+                // Set the properties of the InventorySlot
                 slot.ItemGuid = item.itemID;
                 slot.ItemName = item.itemName;
                 slot.ItemDescription = item.itemDescription;
                 slot.Icon.sprite = item.itemImage;
+                // Add the InventorySlot to the InventoryItems list
                 InventoryItems.Add(slot);
+                // Add the InventorySlot to the SlotContainer
                 m_SlotContainer.Add(slot);
             }
         }
+        //same as above but for lore items
         else if (page == ItemType.Lore)
         {
             foreach (ItemInfo item in Inventory.LoreItems)
@@ -165,11 +174,12 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    // Method to handle the click event on the navigation buttons
     private void OnNavButtonClick(ClickEvent evt){
         Button button = (Button)evt.target;
-        Button otherButton = m_Root.Q<Button>(button.name == "KeyItemsButton" ? "LoreItemsButton" : "KeyItemsButton");
         string buttonName = button.name;
         Debug.Log("Button clicked: " + buttonName);
+        // Set the current page based on the button clicked
         if (buttonName == "KeyItemsButton")
         {
             currentPage = ItemType.Key;
@@ -183,4 +193,6 @@ public class InventoryController : MonoBehaviour
             guiNeedsUpdating = true;
         }
     }
+
+    
 }

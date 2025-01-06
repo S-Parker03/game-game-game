@@ -29,36 +29,31 @@ public class PlayerInteract : MonoBehaviour
 
     void Start()
     {
-
+        // Get the player object
         playerObj = GameObject.FindGameObjectWithTag("Player");
 
     }
 
     void FixedUpdate()
     {
+        //draws a line from the camera to the max use distance
         Debug.DrawLine(cam4ray.position, cam4ray.position + cam4ray.forward * MaxUseDistance, Color.red);
         // code to highlight an interactable object (item, npc or door) when the player is in range
         if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance))
         {
             if (lastObject != null && lastObject != hit.collider.gameObject)
             {
+                // if the last object is not the same as the current object, unhighlight the last object
                 highlight(lastObject, false);
             }    
             if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item")
             || hit.collider.CompareTag("SanityPickUp") || hit.collider.CompareTag("NPC") || hit.collider.CompareTag("CanBeUnlocked")) 
             {
+                // if the object is a door, item, sanity pickup, npc or can be unlocked, highlight the object
                 highlight(hit.collider.gameObject, true);
                 lastObject = hit.collider.gameObject;
-                // Debug.Log("highlighted"+hit.collider.gameObject.name);
-                
-                
             }
-
-            
         }
-        
-        
-
     }
 
     // Method to use the binding set up in the "Use" action in the input system
@@ -67,6 +62,7 @@ public class PlayerInteract : MonoBehaviour
         // Use Raycast to detect how far away the player's front is from an object
         if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance))
         {
+            // Draw a ray to show where the player is looking
             Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
             // Get Door collider component and see if it's been hit
             if (hit.collider.TryGetComponent<Door>(out Door door) && hit.collider.CompareTag("Door"))
@@ -81,6 +77,7 @@ public class PlayerInteract : MonoBehaviour
                     door.Open(playerObj.transform.position);
                 }
             }
+            // Get ItemInfo component and see if it's been hit
             else if (hit.collider.TryGetComponent<ItemInfo>(out ItemInfo itemInfo))
             {
                 Debug.Log("Item hit: " + itemInfo.itemName);
@@ -89,16 +86,18 @@ public class PlayerInteract : MonoBehaviour
                 {
                     //sound for item pickup
                     SoundManager.instance.PlayItemPickUpClip(ItemPickUpSound, transform, 1f);
-
+                    // get the player object
                     GameObject player = GameObject.FindGameObjectWithTag("Player");
-                    GameObject inventoryUI = GameObject.Find("Inventory");
                     if (player != null)
                     {
+                        // get the inventory component of the player
                         Inventory inventory = player.GetComponent<Inventory>();
                         
                         if (inventory != null)
                         {
+                            // if the inventory was found add the item to the inventory
                             inventory.AddItem(itemInfo);
+                            // collect the item
                             itemInfo.collect();
                             Debug.Log("Item attemepted to add to inventory: " + itemInfo.itemName);
                         }
@@ -114,71 +113,75 @@ public class PlayerInteract : MonoBehaviour
                     
                 }
             }
+            // Get SanityPickUp component and see if it's been hit  
             else if (hit.collider.CompareTag("SanityPickUp")){
+                // check for the player object
                 if (playerObj != null)
                 {
-
+                    // check if the player's sanity is less than 5
                     if (playerObj.GetComponent<PlayerController>().Sanity < 5)
                     {
+                        // check if the player's dependency is less than 50
                         if (playerObj.GetComponent<Dependency>().DependencyPercent < 50)
                         {
+                            // increase the player's sanity by 1
                             playerObj.GetComponent<PlayerController>().ChangeSanity(1);
+                            // increase the player's dependency by 20
                             playerObj.GetComponent<Dependency>().changeDependency(20f);
-                            SoundManager.instance.PlaySanityPickUpClip(SanityPickUpSound, transform, 1f); // sound for sanity pickup
+                            // play the sound for the sanity pickup
+                            SoundManager.instance.PlaySanityPickUpClip(SanityPickUpSound, transform, 1f);
+                            // destroy the sanity pickup object
                             Destroy(hit.collider.gameObject);
                         }
+                        // if the player's deoendency is greater than 50
                         else
                         {
+                            // do not increase the player's sanity
                             Destroy(hit.collider.gameObject);
+                            // increase the player's dependency by 10
                             playerObj.GetComponent<Dependency>().changeDependency(10f);
                         }
                     }
                     else
                     {
+                        // if the player's sanity is full, do not increase the player's sanity
                         Debug.Log("Sanity is full");
                     }
                 }
+            // Get NPC component and see if it's been hit
             } else if (hit.collider.CompareTag("NPC"))
             {
-
+            
             } else if (hit.collider.CompareTag("CanBeUnlocked"))
+            // Get UnlockDoor component and see if it's been hit
             {
                 Debug.Log("Unlocking door");
+                //Attempt to unlock the door
                 hit.collider.GetComponent<UnlockDoor>().Unlock();
             }
         }
     }
 
+    // Method to highlight an object
+
     public void highlight(GameObject obj, bool toggle)
     {
+        // create an outline object
         Outline outline;
-        // List<Material> materials = new List<Material>();
-        // Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
-        
-        // foreach (Renderer r in renderers)
-        // {
-        //     materials.AddRange(new List<Material>(r.materials));
-        // }
 
         if(toggle == true)
         {
-            
-            // foreach (Material m in materials)
-            // {
-            //     m.EnableKeyword("_EMISSION");
-            //     m.SetColor("_EmissionColor", Color.gray);
-            //     m.SetFloat("_EmissionBrightness", 0.1f);
-            // }
-            // Debug.Log("highlighted" + obj.name);
+            // if the object does not have an outline, add an outline to the object
             if (obj.GetComponent<Outline>() == null )
             {
                 outline = obj.AddComponent<Outline>();
             }
+            // if the object already has an outline, get the outline component
             else
             {
                 outline = obj.GetComponent<Outline>();
             }
-
+            // set the outline properties
             outline.OutlineMode = Outline.Mode.OutlineAll;
             outline.OutlineColor = new Color(175f / 255f, 0f, 0f);
             outline.OutlineWidth = 20f;
@@ -186,14 +189,10 @@ public class PlayerInteract : MonoBehaviour
         }
         if(toggle == false)
         {
+            // if the object has an outline, disable the outline
             outline = obj.GetComponent<Outline>();
             outline.enabled = false;
-            // foreach (Material m in materials)
-            // {
-                // m.DisableKeyword("_EMISSION");
-                
-            // }
-            // Debug.Log("unhighlighted" + obj.name);
+
         }
     }
 

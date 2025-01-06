@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     //run once at start
     void Awake()
     {
+        //set up the player action controls
         playerActionControls = new PlayerActionControls();
         sprintAction = playerActionControls.Player.Sprint;
         jumpAction = playerActionControls.Player.Jump;
@@ -95,40 +96,16 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-
+        //find the player's rigidbody
         playerbody = gameObject.GetComponent<Rigidbody>();
         volume = cam.GetComponent<PostProcessVolume>();
-
-        // playerCollider = GameObject.FindGameObjectWithTag("GroundCollider");
     }
 
-    // // Method to use the binding set up in the "Use" action in the input system
-    // public void OnUse()
-    // {
-    //     // Use Raycast to detect how far away the player's front is from an object
-    //     if (Physics.Raycast(cam4ray.position, cam4ray.forward, out RaycastHit hit, MaxUseDistance, UseLayers))
-    //     {
-    //         Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
-    //         // Get Door collider component and see if it's been hit
-    //         if(hit.collider.TryGetComponent<Door>(out Door door))
-    //         {
-    //             //if door is open, then run close method. Otherwise open door with open method
-    //             if (door.isOpen)
-    //             {
-    //                 door.Close();
-    //             }
-    //             else
-    //             {
-    //                 door.Open(transform.position);
-    //             }
-                
-    //         }
-    //     } 
-    // }
 
+    //Method to handle movement input
     void OnMove(InputValue value) {
         moveValue = value.Get<Vector2>();
+        //play footsteps sound if moving
         if(isGrounded && moveValue.magnitude > 0.1f && !footsteps.isPlaying){
             footsteps.Play();
         } else {
@@ -136,12 +113,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Method to handle look input
     void OnLook(InputValue value) {
         lookValue = value.Get<Vector2>();
     }
 
     //function to check if sprinting
-    public bool sprintCheck(){
+    public bool SprintCheck(){
         if(sprintAction.ReadValue<float>() > 0){
             return true;
         }
@@ -149,13 +127,14 @@ public class PlayerController : MonoBehaviour
     }
 
     //function to check if jumping
-    public bool jumpCheck(){
+    public bool JumpCheck(){
         if(jumpAction.ReadValue<float>() > 0){
             return true;
         }
         else{return false;}
     }
 
+    // FixedUpdate is called at fixed intervals
     private void FixedUpdate()
     {
         // Movement \\
@@ -163,49 +142,58 @@ public class PlayerController : MonoBehaviour
         Vector3 mouse = new Vector2(lookValue.x, lookValue.y);
 
         //check if sprinting
-        if(sprintCheck()){
+        if(SprintCheck()){
             speed = 200;
         }
         else{
             speed = 150;
         }        
-        
+
+        //handle camera rotation
         vertRotate += mouse.y * sensitivity;
         vertRotate = Mathf.Clamp(vertRotate, -70, 70);
         cam.transform.eulerAngles = new Vector3(-vertRotate, horizRotate, 0);
         horizRotate = (horizRotate + mouse.x * sensitivity) % 360f;
-
+        //rotate the player body
         playerbody.MoveRotation(UnityEngine.Quaternion.Euler(0, horizRotate, 0));
+        //move the player
         playerbody.velocity = (transform.right * movement.x + transform.forward * movement.z) * speed * Time.fixedDeltaTime  + transform.up * playerbody.velocity.y ;
-
-        if (jumpCheck() && isGrounded)
+        //jump
+        if (JumpCheck() && isGrounded)
         {
             playerbody.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
             isGrounded = false;
         }
+
         sanitySlider.value = Sanity;
+
         SanityEffects();
 
     }
 
+    // Update is called once per frame
     void Update(){
-        //multiply torch radius and sensitivity by their percentages from settings controller
+        
+        //find the torch and torch ambience lights
         Light torch = GameObject.Find("Torch").GetComponent<Light>();
         Light torchAmbience = GameObject.Find("Torch Ambience").GetComponent<Light>();
         SettingsManager settings = GameObject.Find("Settings").GetComponent<SettingsManager>();
         float spotAngleMult = settings.torchRadiusPercent/100.0f;
+        //multiply torch radius and sensitivity by their percentages from settings controller
         torch.spotAngle = 160.0f * spotAngleMult;
         torchAmbience.spotAngle = 250.0f * spotAngleMult;
         sensitivity = settings.sensitivityPercent/200.0f + 0.05f;
-
+        //adjust brightness
         AdjustBrightness(settings.brightnessPercent / 400.0f);
         
     }
     //function to adjust brightness of the game
     public void AdjustBrightness(float brightness){
+        //set the ambient light to the brightness
         RenderSettings.ambientLight = new Color(brightness, brightness, brightness, 1.0f);
     }
 
+    //function to handle collision with the ground
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Grounded")
@@ -215,10 +203,13 @@ public class PlayerController : MonoBehaviour
         
     }
 
+
+    //function to handle collision with death planes
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "DeathPlane")
         {
+            //kill the player
             ChangeSanity(-99999);
         }
     }
@@ -232,15 +223,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //debug function to kill the player
     void OnKillYourSelf(){
         ChangeSanity(-99999);
     }
 
+    //debug function to lower sanity
     void OnLowerSanity(){
         ChangeSanity(-1);
-        // sound for damage
     }
     
+    //function to handle sanity effects
     // Sanity camera effects
     void SanityEffects(){
         if (volume.profile.TryGetSettings<Vignette>(out Vignette vignette))
