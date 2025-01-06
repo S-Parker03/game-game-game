@@ -83,7 +83,9 @@ public class Pause : MonoBehaviour
         player.GetComponent<PlayerInteract>().enabled = false;
         player.GetComponent<PlayerInput>().enabled = false;
         player.GetComponent<Dependency>().enabled = false;
-        UnityEngine.Cursor.visible = true; // so the cursor is visible when the game is paused
+        dependencySlider.SetActive(false);
+        sanityDial.SetActive(false);
+        // UnityEngine.Cursor.visible = true; // so the cursor is visible when the game is paused
 
         // enemy.GetComponent<EnemyController>().enabled = false;
         

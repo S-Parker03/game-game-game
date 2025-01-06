@@ -29,6 +29,10 @@ public class PlayerInteract : MonoBehaviour
 
     private DialogueManager dialogueManager; // Reference to the DialogueManager script
 
+    public GameObject dependencySlider;
+
+    public GameObject sanityDial;
+
     [SerializeField] private TextAsset OldLadyInkJson;// The ink file to load
     [SerializeField] private TextAsset VaseGuyInkJson;// The ink file to load
     [SerializeField] private TextAsset CreepyGuyInkJson;// The ink file to load
@@ -101,19 +105,21 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-           else if (hit.collider.CompareTag("NPC"))
-{
-    Debug.Log("NPC detected: " + hit.collider.gameObject.name);
+            else if (hit.collider.CompareTag("NPC"))
+            {
+                Debug.Log("NPC detected: " + hit.collider.gameObject.name);
 
-    if (pauseScript != null)
-    {
-        pauseScript.pauseGame();
+                if (pauseScript != null)
+                {
+                    pauseScript.pauseGame();
+                    dependencySlider.SetActive(true);
+                    sanityDial.SetActive(true);
 
-        // Call StartDialogue from the singleton DialogueManager with the NPC's specific Ink JSON
-        if (DialogueManager.instance != null)
-        {
-           string npcName = hit.collider.gameObject.name;
-           Debug.Log("NPC name: " + npcName);
+                    // Call StartDialogue from the singleton DialogueManager with the NPC's specific Ink JSON
+                    if (DialogueManager.instance != null)
+                    {
+                    string npcName = hit.collider.gameObject.name;
+                    Debug.Log("NPC name: " + npcName);
 
                         if (npcName == "old lady")
                         {
