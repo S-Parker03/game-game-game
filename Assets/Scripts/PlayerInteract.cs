@@ -25,12 +25,30 @@ public class PlayerInteract : MonoBehaviour
 
     [SerializeField]private AudioClip ItemPickUpSound;
 
+    private Pause pauseScript; // Reference to the Pause script
 
+    private DialogueManager dialogueManager; // Reference to the DialogueManager script
+
+    [SerializeField] private TextAsset OldLadyInkJson;// The ink file to load
+    [SerializeField] private TextAsset VaseGuyInkJson;// The ink file to load
+    [SerializeField] private TextAsset CreepyGuyInkJson;// The ink file to load
+    [SerializeField] private TextAsset YellowKingInkJson;// The ink file to load
+    [SerializeField] private TextAsset AngelGhostInkJson;// The ink file to load
+    [SerializeField] private TextAsset FountainInkJson;// The ink file to load
 
     void Start()
     {
         // Get the player object
         playerObj = GameObject.FindGameObjectWithTag("Player");
+
+        pauseScript = UnityEngine.Object.FindFirstObjectByType<Pause>();
+
+        if (pauseScript == null)
+        {
+            Debug.LogError("Pause script not found in the scene.");
+        }
+
+
 
     }
 
@@ -47,7 +65,7 @@ public class PlayerInteract : MonoBehaviour
                 highlight(lastObject, false);
             }    
             if (hit.collider.CompareTag("Door") || hit.collider.CompareTag("Item")
-            || hit.collider.CompareTag("SanityPickUp") || hit.collider.CompareTag("NPC") || hit.collider.CompareTag("CanBeUnlocked")) 
+            || hit.collider.CompareTag("SanityPickUp") || hit.collider.CompareTag("NPC")) 
             {
                 // if the object is a door, item, sanity pickup, npc or can be unlocked, highlight the object
                 highlight(hit.collider.gameObject, true);
@@ -62,10 +80,10 @@ public class PlayerInteract : MonoBehaviour
         // Use Raycast to detect how far away the player's front is from an object
         if (Physics.Raycast(cam4ray.position, cam4ray.forward, out hit, MaxUseDistance))
         {
-            // Draw a ray to show where the player is looking
+            Debug.Log("Raycast hit: " + hit.collider.name);
             Debug.DrawRay(cam4ray.position, cam4ray.forward, Color.green);
             // Get Door collider component and see if it's been hit
-            if (hit.collider.TryGetComponent<Door>(out Door door) && hit.collider.CompareTag("Door"))
+            if (hit.collider.TryGetComponent<Door>(out Door door))
             {
                 // If door is open, then run close method. Otherwise open door with open method
                 if (door.isOpen)
@@ -77,10 +95,73 @@ public class PlayerInteract : MonoBehaviour
                     door.Open(playerObj.transform.position);
                 }
             }
-            // Get ItemInfo component and see if it's been hit
+
+           else if (hit.collider.CompareTag("NPC"))
+{
+    Debug.Log("NPC detected: " + hit.collider.gameObject.name);
+
+    if (pauseScript != null)
+    {
+        pauseScript.pauseGame();
+
+        // Call StartDialogue from the singleton DialogueManager with the NPC's specific Ink JSON
+        if (DialogueManager.instance != null)
+        {
+           string npcName = hit.collider.gameObject.name;
+           Debug.Log("NPC name: " + npcName);
+
+                        if (npcName == "old lady")
+                        {
+                            DialogueManager.instance.StartDialogue(OldLadyInkJson);
+                        }
+                        else if (npcName == "VaseGuy")
+                        {
+                            DialogueManager.instance.StartDialogue(VaseGuyInkJson);
+                        }
+                        else if (npcName == "CreepyGuy")
+                        {
+                            DialogueManager.instance.StartDialogue(CreepyGuyInkJson);
+                        }
+                        else if (npcName == "YellowKing")
+                        {
+                            DialogueManager.instance.StartDialogue(YellowKingInkJson);
+                        }
+                        else if (npcName == "AngelGhost")
+                        {
+                            DialogueManager.instance.StartDialogue(AngelGhostInkJson);
+                        }
+                        else if (npcName == "Fountain")
+                        {
+                            DialogueManager.instance.StartDialogue(FountainInkJson);
+                        }
+                        else if (npcName == "VaseGuy")
+                        {
+                            DialogueManager.instance.StartDialogue(VaseGuyInkJson);
+                        }
+                        // Add more else if statements for other NPCs
+                        else
+                        {
+                            Debug.LogError("No Ink JSON assigned for this NPC.");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("DialogueManager instance is not assigned.");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Pause script is not assigned.");
+                }
+            }
+            
+
+           
+
+
+
             else if (hit.collider.TryGetComponent<ItemInfo>(out ItemInfo itemInfo))
             {
-                Debug.Log("Item hit: " + itemInfo.itemName);
                 // Get the ItemInfo component from the hit object and interact with it
                 if (itemInfo != null)
                 {
@@ -126,11 +207,8 @@ public class PlayerInteract : MonoBehaviour
                         {
                             // increase the player's sanity by 1
                             playerObj.GetComponent<PlayerController>().ChangeSanity(1);
-                            // increase the player's dependency by 20
-                            playerObj.GetComponent<Dependency>().changeDependency(20f);
-                            // play the sound for the sanity pickup
-                            SoundManager.instance.PlaySanityPickUpClip(SanityPickUpSound, transform, 1f);
-                            // destroy the sanity pickup object
+                            playerObj.GetComponent<Dependency>().changeDependency(10f);
+                            SoundManager.instance.PlaySanityPickUpClip(SanityPickUpSound, transform, 1f); // sound for sanity pickup
                             Destroy(hit.collider.gameObject);
                         }
                         // if the player's deoendency is greater than 50
@@ -148,16 +226,6 @@ public class PlayerInteract : MonoBehaviour
                         Debug.Log("Sanity is full");
                     }
                 }
-            // Get NPC component and see if it's been hit
-            } else if (hit.collider.CompareTag("NPC"))
-            {
-            
-            } else if (hit.collider.CompareTag("CanBeUnlocked"))
-            // Get UnlockDoor component and see if it's been hit
-            {
-                Debug.Log("Unlocking door");
-                //Attempt to unlock the door
-                hit.collider.GetComponent<UnlockDoor>().Unlock();
             }
         }
     }
@@ -195,6 +263,5 @@ public class PlayerInteract : MonoBehaviour
 
         }
     }
-
 
 }

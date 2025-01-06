@@ -8,6 +8,8 @@ using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+  
+
 
 public class Pause : MonoBehaviour
 {
@@ -31,9 +33,13 @@ public class Pause : MonoBehaviour
     public bool paused;
 
     public bool gameOver;
+    public @PlayerActionControls playerControls; 
     // Start is called before the first frame update
     void Start()
     {
+        playerControls = new @PlayerActionControls();  // Initialize input controls
+        Debug.Log("player controls is initialised properly");
+        playerControls.Enable();  // Enable the input controls
         //initialize the player, UIs and settings objects
         paused = false;
         player = GameObject.Find("Player");
