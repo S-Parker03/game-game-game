@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
+using UnityEngine.EventSystems; 
 
 public class DialogueManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class DialogueManager : MonoBehaviour
 
     private TextMeshProUGUI[] choiceTexts;
     public static DialogueManager instance;
+
+    private Pause pauseScript;    
 
     private void Awake() {
         if (instance == null) {
@@ -47,6 +50,13 @@ public class DialogueManager : MonoBehaviour
             index++;
         }
 
+        pauseScript = GetComponent<Pause>();
+        if (pauseScript == null)
+        {
+            Debug.LogError("Pause script not found on the same GameObject.");
+        }
+
+
     }
 
 
@@ -55,6 +65,12 @@ public class DialogueManager : MonoBehaviour
         if (!isdialogueActive)
         {
             return;
+        }
+
+        // Check for mouse button input to continue the dialogue
+        if (Input.GetMouseButtonDown(0)) // 0 is for left mouse button
+        {
+            nextDialogue();
         }
 
     }
@@ -73,12 +89,14 @@ public class DialogueManager : MonoBehaviour
 public void nextDialogue(){
     if (currentStory.canContinue)
         {
+             Debug.Log("Continuing story...");
             dialogueText.text = currentStory.Continue();
             DisplayChoices();
         }
 
         else
         {
+            Debug.Log("Ending dialogue...");
             EndDialogue();
         }
         
@@ -88,6 +106,16 @@ public void nextDialogue(){
         dialoguePanel.SetActive(false);
         isdialogueActive = false;
         dialogueText.text = "";
+
+        // Call the ResumeDialogue function from the Pause script
+        if (pauseScript != null)
+        {
+            pauseScript.resumeGame();
+        }
+        else
+        {
+            Debug.LogError("Pause script reference is null.");
+        }
 
     }
 
@@ -113,6 +141,37 @@ public void nextDialogue(){
         {
             choiceList[i].gameObject.SetActive(false);
         }
+         StartCoroutine(SelectFirstChoice());
+        // If there are no choices, continue the dialogue automatically
+        if (choices.Count == 0)
+        {
+            nextDialogue();
+        }
+
+       
+    }
+
+    public void OnChoiceSelected(int choiceIndex)
+    {
+        Debug.Log("Choice selected: " + choiceIndex);
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        nextDialogue();
+    }
+
+    private IEnumerator SelectFirstChoice()
+    {
+       //this is the weird part of the unity event system
+       //first have one selected and then wati for the end of the frame to select the actual choice
+        EventSystem.current.SetSelectedGameObject(null);
+        yield return new WaitForEndOfFrame();
+        EventSystem.current.SetSelectedGameObject(choiceList[0].gameObject);
+    }
+
+    public void MakeChoice(int choiceIndex)
+    {
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        Debug.Log("Choice selected: " + choiceIndex);
+        nextDialogue();
     }
 
 }

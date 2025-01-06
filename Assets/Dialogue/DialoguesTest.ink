@@ -1,2 +1,6 @@
-this is the dialogue test file!
-one more line
+Well hello
+Would you bring all the vases to me?
+* [Yes]
+    great! I knew you were kind 
+* [No]
+    And here I thought you were kind

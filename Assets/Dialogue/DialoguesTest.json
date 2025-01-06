@@ -1,1 +1,1 @@
-﻿{"inkVersion":21,"root":[["^this is the dialogue test file!","\n","^one more line","\n",["done",{"#f":5,"#n":"g-0"}],null],"done",{"#f":1}],"listDefs":{}}
+﻿{"inkVersion":21,"root":[["^Well hello","\n","^Would you bring all the vases to me?","\n","ev","str","^Yes","/str","/ev",{"*":"0.c-0","flg":20},"ev","str","^No","/str","/ev",{"*":"0.c-1","flg":20},{"c-0":["\n","^great! I knew you were kind","\n",{"->":"0.g-0"},{"#f":5}],"c-1":["\n","^And here I thought you were kind","\n",{"->":"0.g-0"},{"#f":5}],"g-0":["done",{"#f":5}]}],"done",{"#f":1}],"listDefs":{}}
