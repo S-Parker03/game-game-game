@@ -344,7 +344,7 @@
                 {
                     "name": "",
                     "id": "4c519e1d-e6a6-4c0a-a017-3f0295c06359",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",

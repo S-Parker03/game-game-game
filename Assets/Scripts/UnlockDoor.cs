@@ -16,20 +16,22 @@ public class UnlockDoor : MonoBehaviour
 
     public GameObject basement;
 
-    // Start is called before the first frame update
+    public GameObject roof;
+
+
     void Start()
     {
       lobbyDoor = GameObject.Find("Lobby Door");
       player = GameObject.Find("Player");  
     }
 
-    // Update is called once per frame
     void Update()
     {
         playerTransform = player.transform;
         Unlock();
     }
 
+    // unlock door function
     public void Unlock()
     {
         if (doorUnlocked)
@@ -50,6 +52,7 @@ public class UnlockDoor : MonoBehaviour
             Debug.Log("Item " + item.itemName + " found");
         }
 
+        // if all glass pieces are collected hide/unlock door
         if (hasAllItems)
         {
             if( door == lobbyDoor){
@@ -59,6 +62,7 @@ public class UnlockDoor : MonoBehaviour
             basement.SetActive(false);
             doorUnlocked = true;
             door.tag = "Door";
+            roof.SetActive(false);
             door.GetComponent<Door>().Open(playerTransform.position);
         }
     }

@@ -38,7 +38,6 @@ public class PlayerInteract : MonoBehaviour
 
     public GameObject sanityDial;
 
-    private GameObject basementPiece;
 
     [SerializeField] private TextAsset OldLadyInkJson;// The ink file to load
     [SerializeField] private TextAsset VaseGuyInkJson;// The ink file to load
@@ -59,7 +58,6 @@ public class PlayerInteract : MonoBehaviour
             Debug.LogError("Pause script not found in the scene.");
         }
 
-        basementPiece = GameObject.Find("Basement");
 
     }
 
@@ -136,12 +134,10 @@ public class PlayerInteract : MonoBehaviour
             }
 
             // else if (hit.collider.gameObject.name == "yellow king"){
-            //     basementPiece.SetActive(false);
             //     int currentSanity = playerController.Sanity;
             //     int lowSanity = currentSanity - 1;
             //     playerController.ChangeSanity(-lowSanity);
             //     dependency.changeDependency(+100);
-            //     // DialogueManager.instance.StartDialogue(YellowKingInkJson);                
             // }
 
             else if (hit.collider.CompareTag("NPC"))
@@ -175,12 +171,10 @@ public class PlayerInteract : MonoBehaviour
                         else if (npcName == "yellow king")
                         {
                             DialogueManager.instance.StartDialogue(YellowKingInkJson);
-                            basementPiece.SetActive(false);
                             int lowSanity = playerController.Sanity - 1;
                             playerController.ChangeSanity(-lowSanity);
                             dependency.changeDependency(100);
                             
-
                         }
                         else if (npcName == "angel ghost")
                         {

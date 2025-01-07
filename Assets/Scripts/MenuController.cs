@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    // Start is called before the first frame update
     Pause pause;
     GameObject player;
     
@@ -24,12 +23,6 @@ public class MenuController : MonoBehaviour
         mainMenu = GetComponent<UIDocument>();
         pause.pauseGame();
         OpenMenu();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void OnGUI()
@@ -62,6 +55,7 @@ public class MenuController : MonoBehaviour
 
     }
 
+    
     private void StartGame(ClickEvent evt)
     {
         Debug.Log("Start Button Clicked");

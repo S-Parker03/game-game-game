@@ -20,15 +20,23 @@ Pick up green blocks, by going through them to raise your sanity meter
 
 If your sanity drops to 0, you lose the game
 
-When you pick up green blocks, your dependency will go up
-If your dependency is too high, picking up new health items won't raise your sanity as high anymore. 
+When you pick up green Laudunum bottles, your dependency will go up
+If your dependency is too high, picking up new health items won't raise your sanity as high anymore.
+
+Dialogue controls
+-------------
+E - interact with NPC to start dialogue
+Mouseclick - progress dialogue that doesn't require choice
+Left and Right arrows - select between dialogue choices
+Enter - Confirm dialogue choice
 
 
 Game controls
 -------------
-Esc - pause game
+Tab - pause game/Inventory
 
 Reset button - resets game - player and enemy position, and sanity and dependency counters
+
 
 
 Resources used
