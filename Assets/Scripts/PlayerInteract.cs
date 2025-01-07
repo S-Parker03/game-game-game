@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
-
+using TMPro;
 
 
 // class for checking if the NPC is in range of the player and if key E is pressed
@@ -13,11 +13,16 @@ public class PlayerInteract : MonoBehaviour
 {
 
     public Transform cam4ray;
-        //Variables to do with Door Interactions\\
+    public TextMeshPro UseText;
+
+    //Variables to do with Door Interactions\\
     public float MaxUseDistance = 20f;
     public LayerMask UseLayers;
     RaycastHit hit;
     private GameObject playerObj;
+
+    public PlayerController playerController;
+    public Dependency dependency;
 
     private GameObject lastObject = null;
 
@@ -28,6 +33,12 @@ public class PlayerInteract : MonoBehaviour
     private Pause pauseScript; // Reference to the Pause script
 
     private DialogueManager dialogueManager; // Reference to the DialogueManager script
+
+    public GameObject dependencySlider;
+
+    public GameObject sanityDial;
+
+    private GameObject basementPiece;
 
     [SerializeField] private TextAsset OldLadyInkJson;// The ink file to load
     [SerializeField] private TextAsset VaseGuyInkJson;// The ink file to load
@@ -48,7 +59,7 @@ public class PlayerInteract : MonoBehaviour
             Debug.LogError("Pause script not found in the scene.");
         }
 
-
+        basementPiece = GameObject.Find("Basement");
 
     }
 
@@ -79,6 +90,8 @@ public class PlayerInteract : MonoBehaviour
 
     }
 
+
+
     // Method to use the binding set up in the "Use" action in the input system
     public void OnUse()
     {
@@ -101,20 +114,51 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-           else if (hit.collider.CompareTag("NPC"))
-{
-    Debug.Log("NPC detected: " + hit.collider.gameObject.name);
+            // Adapted from LiamAcademy Rotating and Sliding Doors tutorial on 
+            // youtube - https://www.youtube.com/watch?v=cPltQK5LlGE \\
+            else if (hit.collider.CompareTag("AlwaysLocked")){
+                UseText.SetText("Locked");
+                UseText.gameObject.SetActive(true);
+                UseText.transform.position = hit.point - (hit.point - cam4ray.position).normalized * 0.1f;
+                UseText.transform.rotation = Quaternion.LookRotation((hit.point - cam4ray.position).normalized);
+                // Start a coroutine to disable the text after 5 seconds
+                StartCoroutine(DisableUseTextAfterDelay(1f));            
+            }
 
-    if (pauseScript != null)
-    {
-        pauseScript.pauseGame();
-        Debug.Log("Game paused.");
+            else if (hit.collider.CompareTag("CanBeUnlocked")){
+                UseText.SetText("Collect More Glass Pieces to Open This Door");
+                UseText.gameObject.SetActive(true);
+                UseText.transform.position = hit.point - (hit.point - cam4ray.position).normalized * 0.1f;
+                UseText.transform.rotation = Quaternion.LookRotation((hit.point - cam4ray.position).normalized);
 
-        // Call StartDialogue from the singleton DialogueManager with the NPC's specific Ink JSON
-        if (DialogueManager.instance != null)
-        {
-           string npcName = hit.collider.gameObject.name;
-           Debug.Log("NPC name: " + npcName);
+                // Start a coroutine to disable the text after 5 seconds
+                StartCoroutine(DisableUseTextAfterDelay(1f));            
+            }
+
+            else if (hit.collider.gameObject.name == "yellow king"){
+                basementPiece.SetActive(false);
+                int currentSanity = playerController.Sanity;
+                int lowSanity = currentSanity - 1;
+                playerController.ChangeSanity(-lowSanity);
+                dependency.changeDependency(+100);
+                // DialogueManager.instance.StartDialogue(YellowKingInkJson);                
+            }
+
+            else if (hit.collider.CompareTag("NPC"))
+            {
+                Debug.Log("NPC detected: " + hit.collider.gameObject.name);
+
+                if (pauseScript != null)
+                {
+                    pauseScript.pauseGame();
+                    dependencySlider.SetActive(true);
+                    sanityDial.SetActive(true);
+
+                    // Call StartDialogue from the singleton DialogueManager with the NPC's specific Ink JSON
+                    if (DialogueManager.instance != null)
+                    {
+                    string npcName = hit.collider.gameObject.name;
+                    Debug.Log("NPC name: " + npcName);
 
                         if (npcName == "old lady")
                         {
@@ -131,6 +175,7 @@ public class PlayerInteract : MonoBehaviour
                         else if (npcName == "YellowKing")
                         {
                             DialogueManager.instance.StartDialogue(YellowKingInkJson);
+
                         }
                         else if (npcName == "AngelGhost")
                         {
@@ -224,6 +269,20 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator DisableUseTextAfterDelay(float delay)
+    {
+        // Wait for the specified number of seconds
+        yield return new WaitForSeconds(delay);
+        
+        // Disable the UseText object
+        UseText.gameObject.SetActive(false);
+    }
+
+    private void Invoke(object v1, float v2)
+    {
+        throw new NotImplementedException();
     }
 
     public void highlight(GameObject obj, bool toggle)

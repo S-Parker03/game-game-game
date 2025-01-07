@@ -24,8 +24,8 @@ public class UnlockDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         playerTransform = player.transform;
+        Unlock();
     }
 
     public void Unlock()
@@ -41,6 +41,8 @@ public class UnlockDoor : MonoBehaviour
             if (!player.GetComponent<Inventory>().hasKeyItem(item.itemID))
             {
                 hasAllItems = false;
+                // Debug.Log("Player does NOT have item: " + item.itemName);
+
                 break;
             }
             Debug.Log("Item " + item.itemName + " found");

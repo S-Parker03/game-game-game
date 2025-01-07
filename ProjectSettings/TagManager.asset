@@ -15,6 +15,7 @@ TagManager:
   - CanBeUnlocked
   - NPC
   - DeathPlane
+  - Blood
   layers:
   - Default
   - TransparentFX
