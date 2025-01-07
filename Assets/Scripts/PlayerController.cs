@@ -207,15 +207,6 @@ public class PlayerController : MonoBehaviour
             SoundManager.instance.PlayDamageClip(DamageSound, transform, 1f);
         }
     }
-
-    void OnKillYourSelf(){
-        ChangeSanity(-99999);
-    }
-
-    void OnLowerSanity(){
-        ChangeSanity(-1);
-        // sound for damage
-    }
     
     // Sanity camera effects
     void SanityEffects(){

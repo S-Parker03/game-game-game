@@ -135,14 +135,14 @@ public class PlayerInteract : MonoBehaviour
                 StartCoroutine(DisableUseTextAfterDelay(1f));            
             }
 
-            else if (hit.collider.gameObject.name == "yellow king"){
-                basementPiece.SetActive(false);
-                int currentSanity = playerController.Sanity;
-                int lowSanity = currentSanity - 1;
-                playerController.ChangeSanity(-lowSanity);
-                dependency.changeDependency(+100);
-                // DialogueManager.instance.StartDialogue(YellowKingInkJson);                
-            }
+            // else if (hit.collider.gameObject.name == "yellow king"){
+            //     basementPiece.SetActive(false);
+            //     int currentSanity = playerController.Sanity;
+            //     int lowSanity = currentSanity - 1;
+            //     playerController.ChangeSanity(-lowSanity);
+            //     dependency.changeDependency(+100);
+            //     // DialogueManager.instance.StartDialogue(YellowKingInkJson);                
+            // }
 
             else if (hit.collider.CompareTag("NPC"))
             {
@@ -174,6 +174,10 @@ public class PlayerInteract : MonoBehaviour
                         }
                         else if (npcName == "yellow king")
                         {
+                            basementPiece.SetActive(false);
+                            int lowSanity = playerController.Sanity - 1;
+                            playerController.ChangeSanity(-lowSanity);
+                            dependency.changeDependency(100);
                             DialogueManager.instance.StartDialogue(YellowKingInkJson);
 
                         }

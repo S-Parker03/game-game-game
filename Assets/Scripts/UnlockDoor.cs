@@ -14,6 +14,8 @@ public class UnlockDoor : MonoBehaviour
 
     public GameObject lobbyDoor;
 
+    public GameObject basement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,9 @@ public class UnlockDoor : MonoBehaviour
         {
             if( door == lobbyDoor){
                 door.SetActive(false);
+                basement.SetActive(false);
             }
+            basement.SetActive(false);
             doorUnlocked = true;
             door.tag = "Door";
             door.GetComponent<Door>().Open(playerTransform.position);
