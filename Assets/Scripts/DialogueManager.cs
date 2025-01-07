@@ -26,9 +26,6 @@ public class DialogueManager : MonoBehaviour
 
     private bool isdialogueActive;
 
-    private GameObject basementPiece;
-
-
     // Reference to the choices UI
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choiceList;
@@ -74,8 +71,6 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogError("Pause script not found on the same GameObject.");
         }
-
-        basementPiece = GameObject.Find("Basement");
 
 
     }
@@ -160,11 +155,6 @@ public void nextDialogue()
             Debug.LogError("Pause script reference is null.");
         }
 
-        // yellow king - make basement glass piece active after conversation
-        // so player can pick it up.
-        if (!basementPiece.activeSelf){
-            basementPiece.SetActive(true);
-        }
     }
 
 // function to display the choices on the screen - as buttons 
