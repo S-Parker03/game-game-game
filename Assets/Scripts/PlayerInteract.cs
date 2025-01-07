@@ -164,7 +164,7 @@ public class PlayerInteract : MonoBehaviour
                         {
                             DialogueManager.instance.StartDialogue(OldLadyInkJson);
                         }
-                        else if (npcName == "VaseGuy")
+                        else if (npcName == "vase guy")
                         {
                             DialogueManager.instance.StartDialogue(VaseGuyInkJson);
                         }
@@ -172,12 +172,12 @@ public class PlayerInteract : MonoBehaviour
                         {
                             DialogueManager.instance.StartDialogue(CreepyGuyInkJson);
                         }
-                        else if (npcName == "YellowKing")
+                        else if (npcName == "yellow king")
                         {
                             DialogueManager.instance.StartDialogue(YellowKingInkJson);
 
                         }
-                        else if (npcName == "AngelGhost")
+                        else if (npcName == "angel ghost")
                         {
                             DialogueManager.instance.StartDialogue(AngelGhostInkJson);
                         }
@@ -185,10 +185,10 @@ public class PlayerInteract : MonoBehaviour
                         {
                             DialogueManager.instance.StartDialogue(FountainInkJson);
                         }
-                        else if (npcName == "VaseGuy")
-                        {
-                            DialogueManager.instance.StartDialogue(VaseGuyInkJson);
-                        }
+                        // else if (npcName == "VaseGuy")
+                        // {
+                            // DialogueManager.instance.StartDialogue(VaseGuyInkJson);
+                        // }
                         // Add more else if statements for other NPCs
                         else
                         {

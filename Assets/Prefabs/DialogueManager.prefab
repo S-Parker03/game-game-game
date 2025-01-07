@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2196913916062773540}
+  - component: {fileID: 7213540432504060635}
+  - component: {fileID: 4904533993375980795}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -31,3 +33,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7213540432504060635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428128442591719822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f391ae5f5c6eafc4fad8716f0fc8f7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  choiceList:
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &4904533993375980795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428128442591719822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561346183c751dc4691efecf81226a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam4ray: {fileID: 0}
+  UseText: {fileID: 0}
+  MaxUseDistance: 2
+  UseLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  playerController: {fileID: 0}
+  dependency: {fileID: 0}
+  SanityPickUpSound: {fileID: 8300000, guid: a6d47aab4838b7f45acd80919764490b, type: 3}
+  ItemPickUpSound: {fileID: 8300000, guid: 1b2bf157223051944b775813ce4b6b83, type: 3}
+  dependencySlider: {fileID: 0}
+  sanityDial: {fileID: 0}
+  OldLadyInkJson: {fileID: 4900000, guid: f135bd337ed7c104087bbc7d89fadd69, type: 3}
+  VaseGuyInkJson: {fileID: 4900000, guid: 0c68a66476fa5ba4c9b9770743c4e7dd, type: 3}
+  CreepyGuyInkJson: {fileID: 4900000, guid: 3898fa9569d2bc044a6a59765c2a70e0, type: 3}
+  YellowKingInkJson: {fileID: 4900000, guid: 63953dad62139c7409d88ffc47bc2e0b, type: 3}
+  AngelGhostInkJson: {fileID: 4900000, guid: 1b5acf54e09f45a42aae7dbc8dfc937e, type: 3}
+  FountainInkJson: {fileID: 4900000, guid: 65baec387a01fc1428827854a0e34c48, type: 3}
