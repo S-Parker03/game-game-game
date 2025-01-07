@@ -25,20 +25,6 @@ public class Dependency : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //debug for dependency system\\
-        if (Input.GetKeyDown(KeyCode.Keypad8)){
-            changeDependency(10f);
-            Debug.Log(dependencyPercent);
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad2)){
-            changeDependency(-10f);
-            Debug.Log(dependencyPercent);
-
-        }
-        //---------------------------\\
-
         //manages dependency over time (decreases)
         dependencyPercent -=0.01f;
         dependencyPercent = Mathf.Clamp(dependencyPercent, 0, 100);
