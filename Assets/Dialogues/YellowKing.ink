@@ -1,6 +1,6 @@
 -> YellowKing
 
-===YellowKing===
+=== YellowKing ===
 So, you’ve made it this far. You’ve pieced together the puzzle—sketches, broken vases, cryptic dreams—fragments of things lost. So, let me ask you, Everett Hensley or may I say detective Everett Hensley. Do you know everything now?
 *[Yes]
 Well then I have served my purpose and I bid farewell to you. But before I leave, there is something waiting for you upstairs at the rooftop.

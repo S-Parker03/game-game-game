@@ -174,11 +174,12 @@ public class PlayerInteract : MonoBehaviour
                         }
                         else if (npcName == "yellow king")
                         {
+                            DialogueManager.instance.StartDialogue(YellowKingInkJson);
                             basementPiece.SetActive(false);
                             int lowSanity = playerController.Sanity - 1;
                             playerController.ChangeSanity(-lowSanity);
                             dependency.changeDependency(100);
-                            DialogueManager.instance.StartDialogue(YellowKingInkJson);
+                            
 
                         }
                         else if (npcName == "angel ghost")
